@@ -1,0 +1,3 @@
+[environments.development]
+
+store = "https://dawn-shop-task.myshopify.com/"
