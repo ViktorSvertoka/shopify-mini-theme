@@ -18,7 +18,8 @@
   <div id="featured-products-grid" class="featured-products__grid">
     {% if section.settings.collection != blank %}
       {% assign collection = collections[section.settings.collection] %}
-      {% for product in collection.products | slice: 0, section.settings.products_count %}
+      {% assign limited_products = collection.products | slice: 0, section.settings.products_count %}
+      {% for product in limited_products %}
         <article class="featured-products__item product-card" data-product-id="{{ product.id }}">
           <a href="{{ product.url }}" class="product-card__link">
             <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}" class="product-card__image">
@@ -81,8 +82,6 @@
   });
 </script>
 
-
-
 {% schema %}
 {
   "name": "Featured Products",
@@ -127,7 +126,7 @@
   "presets": [
     {
       "name": "Featured Products",
-      "category": "Products"
+      "category": "Custom sections"
     }
   ]
 }
