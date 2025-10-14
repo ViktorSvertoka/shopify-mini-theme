@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "image_banner": {
@@ -29,33 +38,32 @@
       "settings": {
         "image_overlay_opacity": 40,
         "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
         "image_behavior": "none",
+        "desktop_content_position": "bottom-center",
         "desktop_content_alignment": "center",
+        "show_text_box": false,
         "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
         "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
         "show_text_below": false
       }
     },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
+        "collection": "all",
+        "products_to_show": 8,
         "title": "Featured products",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
         "columns_desktop": 4,
-        "color_scheme": "scheme-1",
+        "enable_desktop_slider": false,
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
+        "color_scheme": "scheme-1",
         "image_ratio": "adapt",
         "image_shape": "default",
         "show_secondary_image": true,
@@ -63,13 +71,63 @@
         "show_rating": false,
         "quick_add": "none",
         "columns_mobile": "2",
+        "swipe_on_mobile": false,
         "padding_top": 44,
         "padding_bottom": 36
+      }
+    },
+    "promo_banners_c9VXHW": {
+      "type": "promo-banners",
+      "blocks": {
+        "banner_tUHH4G": {
+          "type": "banner",
+          "settings": {
+            "image": "shopify://shop_images/product-01.webp",
+            "title": "Nike Air Max Plus",
+            "button_text": "Add to Bag",
+            "button_link": "shopify://collections/all",
+            "aspect_ratio": "3-2"
+          }
+        },
+        "banner_WBaVyh": {
+          "type": "banner",
+          "settings": {
+            "image": "shopify://shop_images/product-02.webp",
+            "title": "Nike Air Max Plus",
+            "button_text": "Add to Bag",
+            "button_link": "shopify://collections/all",
+            "aspect_ratio": "3-2"
+          }
+        },
+        "banner_cYzD77": {
+          "type": "banner",
+          "settings": {
+            "image": "shopify://shop_images/product-03.webp",
+            "title": "Nike Air Max Plus",
+            "button_text": "Add to Bag",
+            "button_link": "shopify://collections/all",
+            "aspect_ratio": "3-2"
+          }
+        }
+      },
+      "block_order": [
+        "banner_tUHH4G",
+        "banner_WBaVyh",
+        "banner_cYzD77"
+      ],
+      "name": "Promo Banners",
+      "settings": {
+        "heading": "Promo Banners",
+        "subheading": "<p>Your favorite products at special prices</p>",
+        "text_alignment": "center",
+        "section_padding": 46,
+        "color_scheme": "light"
       }
     }
   },
   "order": [
     "image_banner",
-    "featured_collection"
+    "featured_collection",
+    "promo_banners_c9VXHW"
   ]
 }
