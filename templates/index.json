@@ -123,11 +123,24 @@
         "section_padding": 46,
         "color_scheme": "light"
       }
+    },
+    "featured_products_KYFVRy": {
+      "type": "featured-products",
+      "name": "Featured Products",
+      "settings": {
+        "heading": "New Product",
+        "collection": "nike",
+        "products_count": 6,
+        "show_price": true,
+        "show_rating": false,
+        "show_add_to_cart": true
+      }
     }
   },
   "order": [
     "image_banner",
     "featured_collection",
-    "promo_banners_c9VXHW"
+    "promo_banners_c9VXHW",
+    "featured_products_KYFVRy"
   ]
 }
