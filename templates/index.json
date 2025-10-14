@@ -129,7 +129,7 @@
       "name": "Featured Products",
       "settings": {
         "heading": "New Product",
-        "collection": "nike",
+        "collection": "nike-air-max-plus",
         "products_count": 6,
         "show_price": true,
         "show_rating": false,
