@@ -1,0 +1,134 @@
+{{ 'section-featured-products.css' | asset_url | stylesheet_tag }}
+
+<section class="featured-products">
+  {% if section.settings.heading != blank %}
+    <h2 class="featured-products__title">{{ section.settings.heading }}</h2>
+  {% endif %}
+
+  <div class="featured-products__controls">
+    <label for="sort-by" class="featured-products__label">Sort by:</label>
+    <select id="sort-by" name="sort-by" class="featured-products__select">
+      <option value="best-selling">Best Selling</option>
+      <option value="price-low">Price: Low to High</option>
+      <option value="price-high">Price: High to Low</option>
+      <option value="title-ascending">Alphabetically, A–Z</option>
+    </select>
+  </div>
+
+  <div id="featured-products-grid" class="featured-products__grid">
+    {% if section.settings.collection != blank %}
+      {% assign collection = collections[section.settings.collection] %}
+      {% for product in collection.products | slice: 0, section.settings.products_count %}
+        <article class="featured-products__item product-card" data-product-id="{{ product.id }}">
+          <a href="{{ product.url }}" class="product-card__link">
+            <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}" class="product-card__image">
+            <h3 class="product-card__title">{{ product.title }}</h3>
+          </a>
+
+          {% if section.settings.show_price %}
+            <p class="product-card__price">{{ product.price | money }}</p>
+          {% endif %}
+
+          {% if section.settings.show_rating %}
+            <div class="product-card__rating">⭐ {{ product.metafields.reviews.rating.value | default: '4.5' }}</div>
+          {% endif %}
+
+          {% if section.settings.show_add_to_cart %}
+            <button class="product-card__button" data-product-id="{{ product.id }}">Add to cart</button>
+          {% endif %}
+        </article>
+      {% endfor %}
+    {% else %}
+      <p class="featured-products__empty">Select a collection to display products.</p>
+    {% endif %}
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const sortSelect = document.getElementById('sort-by');
+    const sectionId = '{{ section.id }}';
+
+    sortSelect?.addEventListener('change', async (e) => {
+      const sortValue = e.target.value;
+
+      const url = `${window.location.pathname}?sections=${sectionId}&sort_by=${sortValue}`;
+      const response = await fetch(url);
+      const data = await response.json();
+
+      const updatedHTML = data[sectionId];
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(updatedHTML, 'text/html');
+
+      const updatedGrid = doc.querySelector('#featured-products-grid');
+      document.querySelector('#featured-products-grid').innerHTML = updatedGrid.innerHTML;
+    });
+
+    document.body.addEventListener('click', async (e) => {
+      if (e.target.classList.contains('product-card__button')) {
+        e.preventDefault();
+        const productId = e.target.dataset.productId;
+
+        await fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: productId, quantity: 1 })
+        });
+
+        document.dispatchEvent(new CustomEvent('cart:updated'));
+      }
+    });
+  });
+</script>
+
+
+
+{% schema %}
+{
+  "name": "Featured Products",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_count",
+      "label": "Number of products",
+      "min": 2,
+      "max": 12,
+      "default": 6
+    },
+    {
+      "type": "checkbox",
+      "id": "show_price",
+      "label": "Show product price",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "label": "Show product rating",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_add_to_cart",
+      "label": "Show Add to Cart button",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Products",
+      "category": "Products"
+    }
+  ]
+}
+{% endschema %}
