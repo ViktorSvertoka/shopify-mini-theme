@@ -1,0 +1,33 @@
+.promo-banners__grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1280px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.promo-banners__item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.promo-banners--light {
+  background: #fff;
+  color: #000;
+}
+.promo-banners--dark {
+  background: #111;
+  color: #fff;
+}
+.promo-banners--accent {
+  background: #f4c542;
+  color: #111;
+}
