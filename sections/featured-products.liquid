@@ -17,7 +17,7 @@
 
   <div id="featured-products-grid" class="featured-products__grid">
     {% if section.settings.collection != blank %}
-      {% assign collection = section.settings.collection %}
+      {% assign collection = collections[section.settings.collection] %}
       {% assign limited_products = collection.products | slice: 0, section.settings.products_count %}
       {% for product in limited_products %}
         <article class="featured-products__item product-card" data-product-id="{{ product.id }}">
@@ -35,7 +35,7 @@
           {% endif %}
 
           {% if section.settings.show_add_to_cart %}
-            <button class="product-card__button" data-product-id="{{ product.id }}">Add to cart</button>
+            <button class="product-card__button" data-product-id="{{ product.variants.first.id }}">Add to cart</button>
           {% endif %}
         </article>
       {% endfor %}
