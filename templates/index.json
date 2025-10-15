@@ -84,7 +84,7 @@
           "settings": {
             "image": "shopify://shop_images/product-01.webp",
             "title": "Nike Air Max Plus",
-            "button_text": "Add to Bag",
+            "button_text": "View Product",
             "button_link": "shopify://collections/all",
             "aspect_ratio": "3-2"
           }
@@ -94,7 +94,7 @@
           "settings": {
             "image": "shopify://shop_images/product-02.webp",
             "title": "Nike Air Max Plus",
-            "button_text": "Add to Bag",
+            "button_text": "View Product",
             "button_link": "shopify://collections/all",
             "aspect_ratio": "3-2"
           }
@@ -104,7 +104,7 @@
           "settings": {
             "image": "shopify://shop_images/product-03.webp",
             "title": "Nike Air Max Plus",
-            "button_text": "Add to Bag",
+            "button_text": "View Product",
             "button_link": "shopify://collections/all",
             "aspect_ratio": "3-2"
           }
@@ -132,7 +132,7 @@
         "collection": "nike-air-max-plus",
         "products_count": 3,
         "show_price": true,
-        "show_rating": false,
+        "show_rating": true,
         "show_add_to_cart": true
       }
     }
