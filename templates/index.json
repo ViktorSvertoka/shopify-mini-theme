@@ -36,6 +36,7 @@
         "button"
       ],
       "settings": {
+        "image": "shopify://shop_images/hero-02_2x_aafb6dc2-73a2-474f-839a-6b6ec19d91ba.webp",
         "image_overlay_opacity": 40,
         "image_height": "large",
         "image_behavior": "none",
