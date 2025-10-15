@@ -17,7 +17,7 @@
 
   <div id="featured-products-grid" class="featured-products__grid">
     {% if section.settings.collection != blank %}
-      {% assign collection = collections[section.settings.collection] %}
+      {% assign collection = section.settings.collection %}
       {% assign limited_products = collection.products | slice: 0, section.settings.products_count %}
       {% for product in limited_products %}
         <article class="featured-products__item product-card" data-product-id="{{ product.id }}">
