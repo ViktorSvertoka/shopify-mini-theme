@@ -1,0 +1,146 @@
+{{ 'section-promo-banners.css' | asset_url | stylesheet_tag }}
+
+<div class="promo-banners promo-banners--{{ section.settings.color_scheme }}" style="padding: {{ section.settings.section_padding }}px 20px;">
+  <div class="promo-banners__header" style="text-align: {{ section.settings.text_alignment }};">
+    {% if section.settings.heading != blank %}
+      <h2 class="promo-banners__heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+    {% if section.settings.subheading != blank %}
+      <div class="promo-banners__subheading">{{ section.settings.subheading }}</div>
+    {% endif %}
+  </div>
+
+  <div class="promo-banners__grid">
+    {% for block in section.blocks %}
+      {% assign image = block.settings.image %}
+      {% assign has_link = false %}
+      {% if block.settings.button_link != blank and block.settings.button_link != '' %}
+        {% assign has_link = true %}
+      {% endif %}
+
+      <div class="promo-banners__item promo-banners__item--{{ block.settings.aspect_ratio }}" {{ block.shopify_attributes }}>
+        {% if has_link %}
+          <a href="{{ block.settings.button_link }}" class="promo-banners__link">
+        {% endif %}
+        
+        {% if image != blank %}
+          <div class="promo-banners__image-wrapper">
+            <img 
+              src="{{ image | image_url: width: 800 }}" 
+              alt="{{ block.settings.title | escape }}"
+              class="promo-banners__image"
+              loading="lazy"
+            >
+          </div>
+        {% endif %}
+
+        <div class="promo-banners__content">
+          {% if block.settings.title != blank %}
+            <h3 class="promo-banners__title">{{ block.settings.title }}</h3>
+          {% endif %}
+
+          {% if block.settings.button_text != blank and has_link %}
+            <span class="promo-banners__btn">{{ block.settings.button_text }}</span>
+          {% endif %}
+        </div>
+
+        {% if has_link %}
+          </a>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Promo Banners",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "label": "Section padding (px)",
+      "min": 0,
+      "max": 100,
+      "default": 40
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "options": [
+        { "value": "light", "label": "Light" },
+        { "value": "dark", "label": "Dark" },
+        { "value": "accent", "label": "Accent" }
+      ],
+      "default": "light"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "banner",
+      "name": "Banner",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button text"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "select",
+          "id": "aspect_ratio",
+          "label": "Aspect ratio",
+          "options": [
+            { "value": "16-9", "label": "16:9" },
+            { "value": "1-1", "label": "1:1" },
+            { "value": "3-2", "label": "3:2" }
+          ],
+          "default": "16-9"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Promo Banners",
+      "category": "Banners"
+    }
+  ]
+}
+{% endschema %}
