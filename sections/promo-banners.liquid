@@ -1,9 +1,9 @@
 {{ 'section-promo-banners.css' | asset_url | stylesheet_tag }}
 
-<div class="promo-banners promo-banners--{{ section.settings.color_scheme }}" style="padding: {{ section.settings.section_padding }}px;">
+<div class="promo-banners promo-banners--{{ section.settings.color_scheme }}" style="padding: {{ section.settings.section_padding }}px 20px;">
   <div class="promo-banners__header" style="text-align: {{ section.settings.text_alignment }};">
     {% if section.settings.heading != blank %}
-      <h2>{{ section.settings.heading }}</h2>
+      <h2 class="promo-banners__heading">{{ section.settings.heading }}</h2>
     {% endif %}
     {% if section.settings.subheading != blank %}
       <div class="promo-banners__subheading">{{ section.settings.subheading }}</div>
@@ -13,15 +13,39 @@
   <div class="promo-banners__grid">
     {% for block in section.blocks %}
       {% assign image = block.settings.image %}
-      <div class="promo-banners__item promo-banners__item--{{ block.settings.aspect_ratio }}">
+      {% assign has_link = false %}
+      {% if block.settings.button_link != blank and block.settings.button_link != '' %}
+        {% assign has_link = true %}
+      {% endif %}
+
+      <div class="promo-banners__item promo-banners__item--{{ block.settings.aspect_ratio }}" {{ block.shopify_attributes }}>
+        {% if has_link %}
+          <a href="{{ block.settings.button_link }}" class="promo-banners__link">
+        {% endif %}
+        
         {% if image != blank %}
-          <img src="{{ image | image_url: width: 800 }}" alt="{{ block.settings.title | escape }}">
+          <div class="promo-banners__image-wrapper">
+            <img 
+              src="{{ image | image_url: width: 800 }}" 
+              alt="{{ block.settings.title | escape }}"
+              class="promo-banners__image"
+              loading="lazy"
+            >
+          </div>
         {% endif %}
-        {% if block.settings.title %}
-          <h3>{{ block.settings.title }}</h3>
-        {% endif %}
-        {% if block.settings.button_text and block.settings.button_link %}
-          <a href="{{ block.settings.button_link }}" class="promo-banners__btn">{{ block.settings.button_text }}</a>
+
+        <div class="promo-banners__content">
+          {% if block.settings.title != blank %}
+            <h3 class="promo-banners__title">{{ block.settings.title }}</h3>
+          {% endif %}
+
+          {% if block.settings.button_text != blank and has_link %}
+            <span class="promo-banners__btn">{{ block.settings.button_text }}</span>
+          {% endif %}
+        </div>
+
+        {% if has_link %}
+          </a>
         {% endif %}
       </div>
     {% endfor %}
