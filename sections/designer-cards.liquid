@@ -17,14 +17,14 @@
         {% endfor %}
       </div>
     {% else %}
-      <p>У цієї колекції ще не додано дизайнерів.</p>
+      <p>No products have been added to this collection yet...</p>
     {% endif %}
   </div>
 
   {% if section.settings.selected_collection %}
   <div class="designer-cards__actions">
     <a href="{{ section.settings.selected_collection.url }}" class="designer-cards__button">
-      Show all designers →
+      Show all Products
     </a>
   </div>
 {% endif %}
@@ -36,8 +36,8 @@
     {
       "type": "text",
       "id": "heading",
-      "label": "Заголовок",
-      "default": "Our Designers"
+      "label": "Title",
+      "default": "Our Teams of Designers"
     },
     {
       "type": "collection",
@@ -47,7 +47,7 @@
     {
       "type": "range",
       "id": "limit",
-      "label": "Кількість дизайнерів для показу",
+      "label": "Number of designers to display",
       "min": 1,
       "max": 10,
       "step": 1,
@@ -56,8 +56,8 @@
     {
       "type": "text",
       "id": "button_label",
-      "label": "Текст кнопки",
-      "default": "Show all designers →"
+      "label": "Button text",
+      "default": "Show all Products"
     }
   ],
   "presets": [
