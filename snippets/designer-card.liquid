@@ -1,0 +1,44 @@
+<article class="designer-card">
+  {% if d.photo %}
+    {{ d.photo | image_url: width: 300 | image_tag: class: "designer-card__photo" }}
+  {% endif %}
+
+  <h3 class="designer-card__name">{{ d.name }}</h3>
+  {% if d.role %}
+    <p class="designer-card__role">{{ d.role }}</p>
+  {% endif %}
+
+  {% if d.bio %}
+    <p class="designer-card__bio">{{ d.bio }}</p>
+  {% endif %}
+
+  {% if d.tags.value %}
+    <div class="designer-card__section-label">Tags</div>
+    <ul class="designer-card__tags">
+      {% for tag in d.tags.value %}
+        <li class="designer-card__tag">{{ tag }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {% if d.links.value %}
+    <div class="designer-card__section-label">Portfolio links</div>
+    <ul class="designer-card__links">
+      {% for link in d.links.value %}
+        <li><a href="{{ link }}" class="designer-card__link" target="_blank">{{ link }}</a></li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {% if d.date_of_birth %}
+    <p class="designer-card__dob">
+      <strong>Date of birth:</strong> {{ d.date_of_birth | date: "%B %d, %Y" }}
+    </p>
+  {% endif %}
+
+  {% if d.verified %}
+    <div class="designer-card__verified">
+      <span>✔︎</span> Verified Designer
+    </div>
+  {% endif %}
+</article>
