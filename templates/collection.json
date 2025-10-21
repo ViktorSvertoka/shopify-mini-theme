@@ -41,7 +41,10 @@
       "type": "designer-cards",
       "name": "Designer cards",
       "settings": {
-        "heading": "Our Designers"
+        "heading": "Our Designers",
+        "selected_collection": "our-designers",
+        "limit": 4,
+        "button_label": "Show all designers →"
       }
     }
   },
