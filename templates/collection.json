@@ -43,7 +43,7 @@
       "settings": {
         "heading": "Our Designers",
         "selected_collection": "our-designers",
-        "limit": 4,
+        "limit": 3,
         "button_label": "Show all designers →"
       }
     }
