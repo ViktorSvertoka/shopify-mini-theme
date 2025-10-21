@@ -6,11 +6,13 @@
       <h2 class="designer-cards__title">{{ section.settings.heading }}</h2>
     {% endif %}
 
-    {% assign designers = collection.metafields.custom.designers.value %}
+    {% assign target_collection = section.settings.selected_collection | default: collection %}
+    {% assign designers = target_collection.metafields.custom.designers.value %}
+
 
     {% if designers %}
       <div class="designer-cards__grid">
-        {% for d in designers %}
+        {% for d in designers limit: section.settings.limit %}
           {% render 'designer-card', d: d %}
         {% endfor %}
       </div>
@@ -19,19 +21,50 @@
     {% endif %}
   </div>
 
-  {% schema %}
-  {
-    "name": "Designer cards",
-    "templates": ["collection"],
-    "settings": [
-      {
-        "type": "text",
-        "id": "heading",
-        "label": "Заголовок",
-        "default": "Our Designers"
-      }
-    ],
-    "presets": [{ "name": "Designer cards" }]
-  }
-  {% endschema %}
+  {% if section.settings.selected_collection %}
+  <div class="designer-cards__actions">
+    <a href="{{ section.settings.selected_collection.url }}" class="designer-cards__button">
+      Show all designers →
+    </a>
+  </div>
+{% endif %}
+
+ {% schema %}
+{
+  "name": "Designer cards",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Заголовок",
+      "default": "Our Designers"
+    },
+    {
+      "type": "collection",
+      "id": "selected_collection",
+      "label": "Collection to show designers from"
+    },
+    {
+      "type": "range",
+      "id": "limit",
+      "label": "Кількість дизайнерів для показу",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Текст кнопки",
+      "default": "Show all designers →"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Designer cards"
+    }
+  ]
+}
+{% endschema %}
 </section>
