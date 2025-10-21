@@ -109,3 +109,24 @@
   font-weight: 600;
   color: #1b5e20;
 }
+
+.designer-cards__actions {
+  text-align: center;
+  margin-top: 32px;
+}
+
+.designer-cards__button {
+  display: inline-block;
+  background-color: #111;
+  color: #fff;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.designer-cards__button:hover {
+  background-color: #222;
+  transform: translateY(-2px);
+}
