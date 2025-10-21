@@ -136,12 +136,23 @@
         "show_rating": true,
         "show_add_to_cart": true
       }
+    },
+    "designer_cards_EQTcTq": {
+      "type": "designer-cards",
+      "name": "Designer cards",
+      "settings": {
+        "heading": "Our Designers",
+        "selected_collection": "our-designers",
+        "limit": 3,
+        "button_label": "Show all designers →"
+      }
     }
   },
   "order": [
     "image_banner",
     "featured_collection",
     "promo_banners_c9VXHW",
-    "featured_products_KYFVRy"
+    "featured_products_KYFVRy",
+    "designer_cards_EQTcTq"
   ]
 }
