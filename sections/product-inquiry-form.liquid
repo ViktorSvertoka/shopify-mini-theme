@@ -1,0 +1,178 @@
+{{ 'product-inquiry-form.css' | asset_url | stylesheet_tag }}
+
+<section class="product-inquiry" id="product-inquiry-{{ section.id }}">
+  {%- assign current_variant = product.selected_or_first_available_variant -%}
+  {%- assign product_form_id = 'product-form-' | append: section.id -%}
+
+  {%- form 'product', product, id: product_form_id, class: 'product-inquiry__form', novalidate: 'novalidate' -%}
+
+    {%- if form.posted_successfully? -%}
+      <div class="product-inquiry__status product-inquiry__status--success" role="status" aria-live="polite" tabindex="-1" autofocus>
+        <p>{{ 'products.product.added_to_cart' | t }}</p>
+      </div>
+    {%- endif -%}
+
+    {%- if form.errors -%}
+      <div class="product-inquiry__status product-inquiry__status--error" role="alert" aria-live="assertive" tabindex="-1" autofocus>
+        <h3 class="product-inquiry__error-title">{{ 'products.product.error_heading' | t }}</h3>
+        {{ form.errors | default_errors }}
+      </div>
+    {%- endif -%}
+
+    {%- unless product.has_only_default_variant -%}
+      <div class="product-inquiry__field">
+        <label for="Variant-{{ section.id }}" class="product-inquiry__label">
+          {{ 'products.product.variant' | t }}
+        </label>
+        <select
+          id="Variant-{{ section.id }}"
+          name="id"
+          class="product-inquiry__select"
+          form="{{ product_form_id }}"
+        >
+          {%- for variant in product.variants -%}
+            <option
+              value="{{ variant.id }}"
+              {% if variant == current_variant %}selected{% endif %}
+              {% unless variant.available %}disabled{% endunless %}
+            >
+              {{ variant.title }}
+              {%- if variant.available -%}
+                - {{ variant.price | money }}
+              {%- else -%}
+                - {{ 'products.product.sold_out' | t }}
+              {%- endif -%}
+            </option>
+          {%- endfor -%}
+        </select>
+      </div>
+    {%- else -%}
+      <input type="hidden" name="id" value="{{ current_variant.id }}">
+    {%- endunless -%}
+
+    <div class="product-inquiry__field">
+      <label for="Quantity-{{ section.id }}" class="product-inquiry__label">
+        {{ 'products.product.quantity.label' | t }}
+      </label>
+      <input
+        type="number"
+        id="Quantity-{{ section.id }}"
+        class="product-inquiry__input product-inquiry__input--quantity"
+        name="quantity"
+        value="1"
+        min="1"
+      >
+    </div>
+
+    <div class="product-inquiry__properties">
+      <div class="product-inquiry__field">
+        <label for="Property-Reason-{{ section.id }}" class="product-inquiry__label">
+          {{ 'products.product.properties.reason' | t }}
+        </label>
+        <input
+          type="text"
+          id="Property-Reason-{{ section.id }}"
+          class="product-inquiry__input"
+          name="properties[{{ 'products.product.properties.reason' | t }}]"
+          placeholder="{{ 'products.product.properties.reason_placeholder' | t }}"
+        >
+      </div>
+
+      <div class="product-inquiry__field">
+        <label for="Property-Contact-{{ section.id }}" class="product-inquiry__label">
+          {{ 'products.product.properties.contact' | t }}
+        </label>
+        <select
+          id="Property-Contact-{{ section.id }}"
+          class="product-inquiry__select"
+          name="properties[{{ 'products.product.properties.contact' | t }}]"
+        >
+          <option value="">{{ 'products.product.properties.contact_choose' | t }}</option>
+          <option value="email">{{ 'products.product.properties.contact_email' | t }}</option>
+          <option value="phone">{{ 'products.product.properties.contact_phone' | t }}</option>
+          <option value="messenger">{{ 'products.product.properties.contact_messenger' | t }}</option>
+        </select>
+      </div>
+
+      <div class="product-inquiry__field">
+        <fieldset class="product-inquiry__fieldset">
+          <legend class="product-inquiry__legend">{{ 'products.product.properties.gift_wrap' | t }}</legend>
+          <div class="product-inquiry__radio-group">
+            <label class="product-inquiry__radio">
+              <input type="radio" name="properties[{{ 'products.product.properties.gift_wrap' | t }}]" value="yes">
+              {{ 'products.product.properties.gift_wrap_yes' | t }}
+            </label>
+            <label class="product-inquiry__radio">
+              <input type="radio" name="properties[{{ 'products.product.properties.gift_wrap' | t }}]" value="no" checked>
+              {{ 'products.product.properties.gift_wrap_no' | t }}
+            </label>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="product-inquiry__actions">
+      <button
+        type="submit"
+        name="add"
+        class="product-inquiry__button"
+        {% unless current_variant.available %}disabled{% endunless %}
+      >
+        {%- if current_variant.available -%}
+          {{ 'products.product.add_to_cart' | t }}
+        {%- else -%}
+          {{ 'products.product.sold_out' | t }}
+        {%- endif -%}
+      </button>
+
+      {%- unless current_variant.available -%}
+        <p class="product-inquiry__availability" role="status">
+          {{ 'products.product.unavailable' | t }}
+        </p>
+      {%- endunless -%}
+    </div>
+
+  {%- endform -%}
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('{{ product_form_id }}');
+    if (!form) return;
+
+    const variantSelect = document.getElementById('Variant-{{ section.id }}');
+    const submitButton = form.querySelector('button[type="submit"]');
+
+    if (variantSelect) {
+      variantSelect.addEventListener('change', function() {
+        const selectedOption = this.options[this.selectedIndex];
+        const isAvailable = !selectedOption.disabled;
+
+        submitButton.disabled = !isAvailable;
+        submitButton.textContent = isAvailable 
+          ? '{{ 'products.product.add_to_cart' | t }}'
+          : '{{ 'products.product.sold_out' | t }}';
+      });
+    }
+
+    form.addEventListener('submit', function() {
+      if (!submitButton.disabled) {
+        submitButton.disabled = true;
+        submitButton.textContent = '{{ 'products.product.adding' | t }}';
+        form.setAttribute('aria-busy', 'true');
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Product Inquiry Form",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Product Inquiry Form"
+    }
+  ]
+}
+{% endschema %}

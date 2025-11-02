@@ -1,0 +1,61 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "contact": {
+    "form": {
+      "title": "Зв'яжіться з нами",
+      "name": "Ім'я",
+      "name_placeholder": "Ваше ім'я",
+      "email": "Електронна пошта",
+      "email_placeholder": "your.email@example.com",
+      "phone": "Телефон",
+      "phone_placeholder": "+380 (XX) XXX-XX-XX",
+      "comment": "Повідомлення",
+      "comment_placeholder": "Як ми можемо вам допомогти?",
+      "send": "Надіслати",
+      "sending": "Надсилання...",
+      "post_success": "Дякуємо за звернення! Ми зв'яжемося з вами найближчим часом.",
+      "error_heading": "Будь ласка, виправте наступні помилки:",
+      "required": "обов'язково",
+      "honeypot_label": "Не заповнюйте це поле"
+    }
+  },
+  "products": {
+    "facets": {
+      "filter_by_label": "Фільтрувати за",
+      "availability": "Наявність",
+      "price": "Ціна",
+      "sort_by_label": "Сортувати за",
+      "product_count_simple": "{{ count }} товарів"
+    },
+    "product": {
+      "variant": "Варіант",
+      "quantity": { "label": "Кількість" },
+      "add_to_cart": "Додати в кошик",
+      "adding": "Додається...",
+      "added_to_cart": "Товар успішно додано!",
+      "sold_out": "Немає в наявності",
+      "unavailable": "Цей варіант недоступний",
+      "error_heading": "Виправте наступні помилки:",
+      "properties": {
+        "reason": "Причина покупки",
+        "reason_placeholder": "Наприклад: подарунок, особисте користування, бізнес",
+        "contact": "Зручний спосіб зв’язку",
+        "contact_choose": "Оберіть спосіб зв’язку",
+        "contact_email": "Email",
+        "contact_phone": "Телефон",
+        "contact_messenger": "Messenger",
+        "gift_wrap": "Подарункове пакування",
+        "gift_wrap_yes": "Так, потрібно",
+        "gift_wrap_no": "Ні, дякую"
+      }
+    }
+  }
+}
