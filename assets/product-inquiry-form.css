@@ -1,23 +1,35 @@
 .product-inquiry {
-  padding: 32px 20px;
+  padding: 40px 20px;
   background-color: #fafafa;
-  border-top: 1px solid #eee;
-  margin-top: 40px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  text-align: left;
 }
 
 .product-inquiry__form {
   width: 100%;
-  max-width: 420px;
+  max-width: 480px;
   background: #fff;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-  padding: 24px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  padding: 28px 24px;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .product-inquiry__field {
@@ -41,12 +53,13 @@
   border-radius: 6px;
   font-size: 15px;
   background-color: #fff;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .product-inquiry__input:focus,
 .product-inquiry__select:focus {
   border-color: #000;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
   outline: none;
 }
 
@@ -131,23 +144,12 @@
   margin-bottom: 4px;
 }
 
-@media (min-width: 1024px) {
-  .product-inquiry {
-    justify-content: flex-start;
-    padding-left: 60px;
-  }
-
-  .product-inquiry__form {
-    margin-top: 0;
-  }
-}
-
 @media (max-width: 768px) {
   .product-inquiry {
-    padding: 16px;
+    padding: 24px 16px;
   }
 
   .product-inquiry__form {
-    padding: 16px;
+    padding: 20px;
   }
 }
