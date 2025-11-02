@@ -1,10 +1,11 @@
 {{ 'product-inquiry-form.css' | asset_url | stylesheet_tag }}
 
+{%- if product -%}
 <section class="product-inquiry" id="product-inquiry-{{ section.id }}">
   {%- assign current_variant = product.selected_or_first_available_variant -%}
   {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
-  {%- form 'product', product, id: product_form_id, class: 'product-inquiry__form', novalidate: 'novalidate' -%}
+  {%- form 'product', product, id: product_form_id, class: 'product-inquiry__form', data-type: 'add-to-cart-form', novalidate: 'novalidate' -%}
 
     {%- if form.posted_successfully? -%}
       <div class="product-inquiry__status product-inquiry__status--success" role="status" aria-live="polite" tabindex="-1" autofocus>
@@ -24,11 +25,7 @@
         <label for="Variant-{{ section.id }}" class="product-inquiry__label">
           {{ 'products.product.variant' | t }}
         </label>
-        <select
-          id="Variant-{{ section.id }}"
-          name="id"
-          class="product-inquiry__select"
-        >
+        <select id="Variant-{{ section.id }}" name="id" class="product-inquiry__select">
           {%- for variant in product.variants -%}
             <option
               value="{{ variant.id }}"
@@ -60,6 +57,7 @@
         name="quantity"
         value="1"
         min="1"
+        required
       >
     </div>
 
@@ -133,6 +131,11 @@
 
   {%- endform -%}
 </section>
+{%- else -%}
+  <p class="product-inquiry__warning">
+    ⚠️ This section must be used on a product page with a product object.
+  </p>
+{%- endif -%}
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
@@ -146,18 +149,17 @@
       variantSelect.addEventListener('change', function() {
         const selectedOption = this.options[this.selectedIndex];
         const isAvailable = !selectedOption.disabled;
-
         submitButton.disabled = !isAvailable;
         submitButton.textContent = isAvailable 
-          ? '{{ 'products.product.add_to_cart' | t }}'
-          : '{{ 'products.product.sold_out' | t }}';
+          ? '{{ "products.product.add_to_cart" | t }}'
+          : '{{ "products.product.sold_out" | t }}';
       });
     }
 
     form.addEventListener('submit', function() {
       if (!submitButton.disabled) {
         submitButton.disabled = true;
-        submitButton.textContent = '{{ 'products.product.adding' | t }}';
+        submitButton.textContent = '{{ "products.product.adding" | t }}';
         form.setAttribute('aria-busy', 'true');
       }
     });
@@ -175,3 +177,4 @@
   ]
 }
 {% endschema %}
+
