@@ -1,218 +1,145 @@
-{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
+{{ 'contact-form.css' | asset_url | stylesheet_tag }}
 
-{%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-  }
+<section class="contact" id="contact-section-{{ section.id }}">
+  <div class="contact__container">
+    <h2 class="contact__title">
+      {{ section.settings.heading | default: 'contact.form.title' | t }}
+    </h2>
 
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
-  }
-{%- endstyle -%}
+    {%- form 'contact', class: 'contact__form', id: 'ContactForm' -%}
 
-<div class="color-{{ section.settings.color_scheme }} gradient">
-  <div class="contact page-width page-width--narrow section-{{ section.id }}-padding">
-    {%- if section.settings.heading != blank -%}
-      <h2 class="title title-wrapper--no-top-margin inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-        {{ section.settings.heading }}
-      </h2>
-    {%- else -%}
-      <h2 class="visually-hidden">{{ 'templates.contact.form.title' | t }}</h2>
-    {%- endif -%}
-    {%- liquid
-      assign contact_form_class = 'isolate'
-      if settings.animations_reveal_on_scroll
-        assign contact_form_class = 'isolate scroll-trigger animate--slide-in'
-      endif
-    -%}
-    {%- form 'contact', id: 'ContactForm', class: contact_form_class -%}
       {%- if form.posted_successfully? -%}
-        <h2 class="form-status form-status-list form__message" tabindex="-1" autofocus>
-          {{- 'icon-success.svg' | inline_asset_content -}}
-          {{ 'templates.contact.form.post_success' | t }}
-        </h2>
-      {%- elsif form.errors -%}
-        <div class="form__message">
-          <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>
-            {{- 'icon-error.svg' | inline_asset_content -}}
-            {{ 'templates.contact.form.error_heading' | t }}
-          </h2>
+        <div class="contact__status contact__status--success" role="status" aria-live="polite" tabindex="-1" autofocus>
+          <svg class="contact__status-icon" aria-hidden="true" focusable="false" width="20" height="20">
+            <use href="#icon-success"></use>
+          </svg>
+          <p class="contact__status-text">{{ 'contact.form.post_success' | t }}</p>
         </div>
-        <ul class="form-status-list caption-large" role="list">
-          <li>
-            <a href="#ContactForm-email" class="link">
-              {{ form.errors.translated_fields.email | capitalize }}
-              {{ form.errors.messages.email }}
-            </a>
-          </li>
-        </ul>
       {%- endif -%}
-      <div class="contact__fields">
-        <div class="field">
-          <input
-            class="field__input"
-            autocomplete="name"
-            type="text"
-            id="ContactForm-name"
-            name="contact[{{ 'templates.contact.form.name' | t }}]"
-            value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
-            placeholder="{{ 'templates.contact.form.name' | t }}"
-          >
-          <label class="field__label" for="ContactForm-name">{{ 'templates.contact.form.name' | t }}</label>
+
+      {%- if form.errors -%}
+        <div class="contact__status contact__status--error" role="alert" aria-live="assertive" tabindex="-1" autofocus>
+          <h3 class="contact__status-title">{{ 'contact.form.error_heading' | t }}</h3>
+          {{ form.errors | default_errors }}
         </div>
-        <div class="field field--with-error">
-          <input
-            autocomplete="email"
-            type="email"
-            id="ContactForm-email"
-            class="field__input"
-            name="contact[email]"
-            spellcheck="false"
-            autocapitalize="off"
-            value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
-            aria-required="true"
-            {% if form.errors contains 'email' %}
-              aria-invalid="true"
-              aria-describedby="ContactForm-email-error"
-            {% endif %}
-            placeholder="{{ 'templates.contact.form.email' | t }}"
-          >
-          <label class="field__label" for="ContactForm-email">
-            {{- 'templates.contact.form.email' | t }}
-            <span aria-hidden="true">*</span></label
-          >
-          {%- if form.errors contains 'email' -%}
-            <small class="contact__field-error" id="ContactForm-email-error">
-              <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
-              <span class="form__message">
-                <span class="svg-wrapper">
-                  {{- 'icon-error.svg' | inline_asset_content -}}
-                </span>
-                {{- form.errors.translated_fields.email | capitalize }}
-                {{ form.errors.messages.email -}}
-              </span>
-            </small>
-          {%- endif -%}
-        </div>
+      {%- endif -%}
+
+      <div class="contact__field contact__field--hidden" aria-hidden="true">
+        <label for="contact-honeypot" class="contact__label">{{ 'contact.form.honeypot_label' | t }}</label>
+        <input type="text" name="contact[honeypot]" id="contact-honeypot" class="contact__input" tabindex="-1" autocomplete="off">
       </div>
-      <div class="field">
+
+      <div class="contact__field">
+        <label for="ContactForm-name" class="contact__label">{{ 'contact.form.name' | t }}</label>
+        <input
+          type="text"
+          id="ContactForm-name"
+          class="contact__input"
+          name="contact[{{ 'contact.form.name' | t }}]"
+          autocomplete="name"
+          placeholder="{{ 'contact.form.name_placeholder' | t }}"
+          value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+        >
+      </div>
+
+      <div class="contact__field">
+        <label for="ContactForm-email" class="contact__label">
+          {{ 'contact.form.email' | t }} <span class="contact__required" aria-label="{{ 'contact.form.required' | t }}">*</span>
+        </label>
+        <input
+          type="email"
+          id="ContactForm-email"
+          class="contact__input{% if form.errors contains 'email' %} contact__input--error{% endif %}"
+          name="contact[email]"
+          autocomplete="email"
+          placeholder="{{ 'contact.form.email_placeholder' | t }}"
+          value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+          required
+        >
+        {%- if form.errors contains 'email' -%}
+          <span class="contact__error">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</span>
+        {%- endif -%}
+      </div>
+
+      <div class="contact__field">
+        <label for="ContactForm-phone" class="contact__label">{{ 'contact.form.phone' | t }}</label>
         <input
           type="tel"
           id="ContactForm-phone"
-          class="field__input"
+          class="contact__input"
+          name="contact[{{ 'contact.form.phone' | t }}]"
           autocomplete="tel"
-          name="contact[{{ 'templates.contact.form.phone' | t }}]"
-          pattern="[0-9\-]*"
-          value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
-          placeholder="{{ 'templates.contact.form.phone' | t }}"
+          placeholder="{{ 'contact.form.phone_placeholder' | t }}"
+          pattern="\+?[0-9\s\-\(\)]+"
+          value="{{ form.phone }}"
         >
-        <label class="field__label" for="ContactForm-phone">{{ 'templates.contact.form.phone' | t }}</label>
       </div>
-      <div class="field">
-        <textarea
-          rows="10"
-          id="ContactForm-body"
-          class="text-area field__input"
-          name="contact[{{ 'templates.contact.form.comment' | t }}]"
-          placeholder="{{ 'templates.contact.form.comment' | t }}"
-        >
-          {{- form.body -}}
-        </textarea>
-        <label class="form__label field__label" for="ContactForm-body">
-          {{- 'templates.contact.form.comment' | t -}}
+
+      <div class="contact__field">
+        <label for="ContactForm-message" class="contact__label">
+          {{ 'contact.form.comment' | t }} <span class="contact__required" aria-label="{{ 'contact.form.required' | t }}">*</span>
         </label>
+        <textarea
+          id="ContactForm-message"
+          class="contact__textarea{% if form.errors contains 'body' %} contact__input--error{% endif %}"
+          name="contact[body]"
+          rows="5"
+          placeholder="{{ 'contact.form.comment_placeholder' | t }}"
+          required
+        >{{ form.body }}</textarea>
+        {%- if form.errors contains 'body' -%}
+          <span class="contact__error">{{ form.errors.translated_fields.body | capitalize }} {{ form.errors.messages.body }}</span>
+        {%- endif -%}
       </div>
-      <div class="contact__button">
-        <button type="submit" class="button">
-          {{ 'templates.contact.form.send' | t }}
+
+      <input type="hidden" name="contact[tag]" value="contact-form">
+
+      <div class="contact__actions">
+        <button type="submit" class="contact__button">
+          {{ 'contact.form.send' | t }}
         </button>
       </div>
+
     {%- endform -%}
   </div>
-</div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('ContactForm');
+    if (!form) return;
+
+    form.addEventListener('submit', function(e) {
+      const honeypot = document.getElementById('contact-honeypot');
+      if (honeypot && honeypot.value !== '') {
+        e.preventDefault();
+        alert('Spam detected');
+        return false;
+      }
+      
+      const submitBtn = form.querySelector('button[type="submit"]');
+      if (submitBtn && !submitBtn.disabled) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = '{{ 'contact.form.sending' | t }}';
+        form.setAttribute('aria-busy', 'true');
+      }
+    });
+  });
+</script>
 
 {% schema %}
 {
-  "name": "t:sections.contact-form.name",
-  "tag": "section",
-  "class": "section",
-  "disabled_on": {
-    "groups": ["header", "footer"]
-  },
+  "name": "Contact Form",
   "settings": [
     {
-      "type": "inline_richtext",
+      "type": "text",
       "id": "heading",
-      "default": "t:sections.contact-form.settings.title.default",
-      "label": "t:sections.contact-form.settings.title.label"
-    },
-    {
-      "type": "select",
-      "id": "heading_size",
-      "options": [
-        {
-          "value": "h2",
-          "label": "t:sections.all.heading_size.options__1.label"
-        },
-        {
-          "value": "h1",
-          "label": "t:sections.all.heading_size.options__2.label"
-        },
-        {
-          "value": "h0",
-          "label": "t:sections.all.heading_size.options__3.label"
-        },
-        {
-          "value": "hxl",
-          "label": "t:sections.all.heading_size.options__4.label"
-        },
-        {
-          "value": "hxxl",
-          "label": "t:sections.all.heading_size.options__5.label"
-        }
-      ],
-      "default": "h1",
-      "label": "t:sections.all.heading_size.label"
-    },
-    {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "t:sections.all.colors.label",
-      "default": "scheme-1"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 36
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
+      "label": "Heading",
+      "default": "Contact Us"
     }
   ],
   "presets": [
-    {
-      "name": "t:sections.contact-form.presets.name"
-    }
+    { "name": "Contact Form" }
   ]
 }
 {% endschema %}
