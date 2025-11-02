@@ -1,68 +1,76 @@
-# Shopify Mini Theme — Designer Cards Section
+# [ДЗ] Shopify: Реалізовано Contact Form та Product Inquiry Form
 
-Мінімалістичне розширення теми для виведення дизайнерів за допомогою
-**metaobject** та **metafield**.  
-Секція динамічно показує картки дизайнерів із фото, біографією, тегами,
-портфоліо та статусом перевірки.
+## Опис завдання
 
-## Функціонал
+Реалізовано дві форми відповідно до домашнього завдання з теми **«Робота з
+формами в Shopify»**:
 
-### Designer Metaobject
+- **Contact Form** — форма зворотного зв’язку
+- **Product Inquiry Form** — форма запиту про товар / додавання до кошика
 
-Створено окремий тип **Designer**, який зберігає дані про кожного дизайнера:
-ім’я, роль, біографію, навички, посилання на портфоліо, дату народження, статус
-перевірки та фото.  
-Метаоб’єкт дозволяє легко оновлювати або додавати нових дизайнерів без
-редагування коду.
+## Реалізований функціонал
 
-### Collection Metafield
+- [x] Створено секцію **`contact-form.liquid`**
+- [x] Створено секцію **`product-inquiry-form.liquid`**
+- [x] Додано файли стилів **`contact-form.css`** та
+      **`product-inquiry-form.css`**
+- [x] Реалізовано **повідомлення успіху / помилок** через
+      `form.posted_successfully?` і `form.errors`
+- [x] Впроваджено **honeypot-антиспам-поле**
+- [x] Додано **ARIA-атрибути**: `aria-live`, `aria-describedby`, `aria-invalid`,
+      `aria-busy`
+- [x] Кнопка сабміту блокується під час відправлення
+- [x] Повідомлення про статус у ролях `role="status"` і `role="alert"`
+- [x] Валідація кількості (`min="1"`) для продукту
+- [x] Обробка стану **недоступного варіанту** (`disabled`, aria-live)
+- [x] Передача **custom properties** у line item:
+  - `properties[Reason]`
+  - `properties[Preferred contact]`
+  - `properties[Gift wrap]`
+- [x] Повна **локалізація** (через `| t`) у файлах `en.default.json` та
+      `uk.json`
 
-Для колекцій додано метаполе, що дозволяє прив’язати кілька дизайнерів до
-конкретної колекції.  
-Завдяки цьому секція автоматично відображає лише тих дизайнерів, які належать до
-вибраної колекції.
+## Технології та підходи
 
-![Metaobject fields](./screenshot-01.png)
+- Shopify Liquid (Sections, Snippets, Localization)
+- HTML5 + CSS3 (модульна структура, BEM-like класи)
+- a11y / ARIA best practices
+- Git + GitHub (feature branching workflow)
 
-![Metaobject fields](./screenshot-02.png)
+## Contact Form - функціональність
 
-![Metaobject fields](./screenshot-03.png)
+- Поля: Name, Email (required), Phone, Message (required)
+- Honeypot-антиспам
+- Повідомлення про успіх/помилки з підтримкою ARIA
+- Валідація email та message
+- Тексти через переклади (`| t`)
+- Динамічна зміна стану кнопки при сабміті
 
-![Metaobject fields](./screenshot-04.png)
+![Contact Form](./screenshot-01.png)
 
-### Designer Cards Section
+![Contact Form](./screenshot-02.png)
 
-Секція **Designer Cards** відображає дизайнерів у вигляді адаптивної сітки.  
-Для кожного дизайнера показуються:
+![Contact Form](./screenshot-03.png)
 
-- Фото та роль
-- Біографія
-- Список тегів
-- Посилання на портфоліо
-- Дата народження
-- Статус “Verified Designer” або “Not verified”
+## Product Inquiry Form - функціональність
 
-### Візуальне оформлення
+- На базі `{% form 'product', product %}` із правильним `variant.id`
+- Валідація `quantity` (`min="1"`)
+- Обробка недоступних варіантів (`disabled`)
+- Кастомні властивості (`properties[...]`):
+  - **Reason**, **Preferred Contact**, **Gift wrap (yes/no)**
+- Повідомлення про успіх і помилки
+- ARIA-live оновлення тексту кнопки
+- Локалізація всіх текстів
 
-- Акуратний мінімалістичний дизайн у стилі Shopify
-- Адаптивна сітка карток (CSS Grid)
-- Винесені змінні кольорів у `:root`
-- Ефекти наведення та тіні для карток
-- Візуальне розділення перевірених і неперевірених дизайнерів
+![Product Inquiry Form](./screenshot-04.png)
 
-![Results](./screenshot-05.png)
+![Product Inquiry Form](./screenshot-05.png)
 
-![Results](./screenshot-06.png)
+![Product Inquiry Form](./screenshot-06.png)
 
-### Технології
+## Перевірка функціональності
 
-- **Shopify Metaobjects & Metafields**
-- **Liquid Templates**
-- **CSS Grid + змінні кольорів**
-- **Shopify Theme Editor** для динамічного керування даними
-
-### Результат
-
-✅ Динамічне підключення дизайнерів через адмінку  
-✅ Гнучке відображення контенту без редагування коду  
-✅ Стильна секція, яку можна перевикористовувати в інших частинах теми
+- Надсилання контактної форми - показує повідомлення успіху
+- Product Inquiry - додає товар до кошика з властивостями
+- Варіант недоступний - кнопка “Add to Cart” заблокована
