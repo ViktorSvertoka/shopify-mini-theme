@@ -314,6 +314,12 @@
       {{ content_for_layout }}
     </main>
 
+    {% if template == 'index' %}
+  <div class="page-width" style="margin: 40px auto;">
+    {% render 'banner-product', handle: 'nike-air-max' %}
+  </div>
+{% endif %}
+
     {% sections 'footer-group' %}
 
     <ul hidden>
