@@ -17,11 +17,18 @@
 {%- endif -%}
 
 <div class="banner-product flex items-start flex-col xl:flex-row gap-6 relative w-full max-w-[468px] xl:max-w-none">
-  <div
-    class="banner-product__gallery max-w-[568px] xl:max-w-[650px] w-full flex items-center flex-col-reverse xl:flex-row xl:items-start xl:justify-between gap-6 mx-auto xl:mx-0"
-    data-all-images='{{ banner_product.images | map: "src" | default: [ "product-placeholder.jpg" | asset_url ] | json }}'
-  >
+  <div class="banner-product__gallery max-w-[568px] xl:max-w-[650px] w-full flex items-center flex-col-reverse xl:flex-row xl:items-start xl:justify-between gap-6 mx-auto xl:mx-0"
+       data-all-images='[
+         {%- if banner_product.images != blank -%}
+           {%- for image in banner_product.images -%}
+             "{{ image | image_url: width: 800 }}"{% unless forloop.last %},{% endunless %}
+           {%- endfor -%}
+         {%- else -%}
+           "{{ 'product-placeholder.jpg' | asset_url }}"
+         {%- endif -%}
+       ]'>
     <div class="banner-product__thumbs m-0 w-full px-[15px] xl:px-0 xl:w-[88px] transition-opacity duration-300 opacity-100 flex xl:flex-col flex-wrap gap-4 xl:gap-0"></div>
+
     <div class="banner-product__main aspect-square m-0 rounded-base overflow-hidden"></div>
   </div>
 
@@ -32,7 +39,13 @@
 
     {%- if banner_product.tags contains "Highly Rated" -%}
       <p class="banner-product__badge inline-flex items-center justify-center gap-1.5 px-2 py-1 text-dark dark:text-darkInverse bg-white dark:bg-whiteInverse rounded-base text-sm m-0 absolute top-4 left-4 sm:left-[130px] z-10">
-        <img src="{{ 'icon-star.svg' | asset_url }}" alt="Star" class="badge__icon block" width="16" height="16">
+        <img 
+          src="{{ 'icon-star.svg' | asset_url }}" 
+          alt="Star" 
+          class="badge__icon block"
+          width="16"
+          height="16"
+        >
         Highly Rated
       </p>
     {%- endif -%}
