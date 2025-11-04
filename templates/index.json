@@ -147,15 +147,11 @@
         "button_label": "Show all designers →"
       }
     },
-    "promo_banners_yHBDfW": {
-      "type": "promo-banners",
-      "name": "Promo Banners",
+    "banner_product_KwBzcQ": {
+      "type": "banner-product",
+      "name": "Banner Product",
       "settings": {
-        "heading": "",
-        "subheading": "",
-        "text_alignment": "center",
-        "section_padding": 40,
-        "color_scheme": "light"
+        "product": ""
       }
     }
   },
@@ -165,6 +161,6 @@
     "promo_banners_c9VXHW",
     "featured_products_KYFVRy",
     "designer_cards_EQTcTq",
-    "promo_banners_yHBDfW"
+    "banner_product_KwBzcQ"
   ]
 }
