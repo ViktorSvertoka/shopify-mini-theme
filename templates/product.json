@@ -100,7 +100,7 @@
         "padding_bottom": 28
       }
     },
-    "product_inquiry_form_zhBBTb": {
+    "product_inquiry_form_PYJbVd": {
       "type": "product-inquiry-form",
       "name": "Product Inquiry Form",
       "settings": {}
@@ -109,6 +109,6 @@
   "order": [
     "main",
     "related-products",
-    "product_inquiry_form_zhBBTb"
+    "product_inquiry_form_PYJbVd"
   ]
 }
