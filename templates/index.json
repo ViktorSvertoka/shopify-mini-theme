@@ -146,6 +146,17 @@
         "limit": 3,
         "button_label": "Show all designers →"
       }
+    },
+    "promo_banners_yHBDfW": {
+      "type": "promo-banners",
+      "name": "Promo Banners",
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "text_alignment": "center",
+        "section_padding": 40,
+        "color_scheme": "light"
+      }
     }
   },
   "order": [
@@ -153,6 +164,7 @@
     "featured_collection",
     "promo_banners_c9VXHW",
     "featured_products_KYFVRy",
-    "designer_cards_EQTcTq"
+    "designer_cards_EQTcTq",
+    "promo_banners_yHBDfW"
   ]
 }
