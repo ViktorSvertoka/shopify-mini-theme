@@ -1,21 +1,22 @@
-{% comment %}
-  Section: Banner Product
-  Displays a featured product banner with gallery, colors, sizes, and add-to-cart.
-{% endcomment %}
-
 <script src="{{ 'banner-product.js' | asset_url }}" defer></script>
 
 {%- liquid
-  assign banner_product = all_products[section.settings.product]
+  assign banner_product = nil
+  
+  if product
+    assign banner_product = product
+  elsif handle
+    assign banner_product = all_products[handle]
+  endif
 -%}
 
 {%- if banner_product == nil or banner_product == blank -%}
   <div class="text-dark dark:text-darkInverse p-4">
     Product not found
   </div>
-{%- else -%}
-<div class="banner-product flex items-start flex-col xl:flex-row gap-6 relative w-full max-w-[468px] xl:max-w-none">
+{%- endif -%}
 
+<div class="banner-product flex items-start flex-col xl:flex-row gap-6 relative w-full max-w-[468px] xl:max-w-none">
   <div class="banner-product__gallery max-w-[568px] xl:max-w-[650px] w-full flex items-center flex-col-reverse xl:flex-row xl:items-start xl:justify-between gap-6 mx-auto xl:mx-0"
        data-all-images='[
          {%- if banner_product.images != blank -%}
@@ -27,6 +28,7 @@
          {%- endif -%}
        ]'>
     <div class="banner-product__thumbs m-0 w-full px-[15px] xl:px-0 xl:w-[88px] transition-opacity duration-300 opacity-100 flex xl:flex-col flex-wrap gap-4 xl:gap-0"></div>
+
     <div class="banner-product__main aspect-square m-0 rounded-base overflow-hidden"></div>
   </div>
 
@@ -132,23 +134,3 @@
     </div>
   </div>
 </div>
-{%- endif -%}
-
-{% schema %}
-{
-  "name": "Banner Product",
-  "settings": [
-    {
-      "type": "product",
-      "id": "product",
-      "label": "Select product"
-    }
-  ],
-  "presets": [
-    {
-      "name": "Banner Product",
-      "category": "Product"
-    }
-  ]
-}
-{% endschema %}

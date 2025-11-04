@@ -146,13 +146,6 @@
         "limit": 3,
         "button_label": "Show all designers →"
       }
-    },
-    "banner_product_KwBzcQ": {
-      "type": "banner-product",
-      "name": "Banner Product",
-      "settings": {
-        "product": ""
-      }
     }
   },
   "order": [
@@ -160,7 +153,6 @@
     "featured_collection",
     "promo_banners_c9VXHW",
     "featured_products_KYFVRy",
-    "designer_cards_EQTcTq",
-    "banner_product_KwBzcQ"
+    "designer_cards_EQTcTq"
   ]
 }
