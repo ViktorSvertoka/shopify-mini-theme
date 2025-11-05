@@ -17,8 +17,8 @@
   </div>
 {%- endif -%}
 
-<div class="banner-product flex items-start flex-col xl:flex-row gap-6 relative w-full max-w-[468px] xl:max-w-none">
-  <div class="banner-product__gallery max-w-[568px] xl:max-w-[650px] w-full flex items-center flex-col-reverse xl:flex-row xl:items-start xl:justify-between gap-6 mx-auto xl:mx-0"
+<div class="banner-product">
+  <div class="banner-product__gallery"
        data-all-images='[
          {%- if banner_product.images != blank -%}
            {%- for image in banner_product.images -%}
@@ -33,13 +33,13 @@
     <div class="banner-product__main"></div>
   </div>
 
-  <div class="banner-product__content max-w-full sm:max-w-[612px] w-full px-4 sm:px-0">
-    <h2 class="banner-product__title text-2xl sm:text-[30px] leading-[1.3] sm:leading-[1.2] font-normal m-0 mb-2 text-dark dark:text-darkInverse">
+  <div class="banner-product__content">
+    <h2 class="banner-product__title">
       {{ banner_product.title | escape }}
     </h2>
 
     {%- if banner_product.tags contains "Highly Rated" -%}
-      <p class="banner-product__badge inline-flex items-center justify-center gap-1.5 px-2 py-1 text-dark dark:text-darkInverse bg-white dark:bg-whiteInverse rounded-base text-sm m-0 absolute top-4 left-4 sm:left-[130px] z-10">
+      <p class="banner-product__badge">
         <img 
           src="{{ 'icon-star.svg' | asset_url }}" 
           alt="Star" 
@@ -52,10 +52,10 @@
     {%- endif -%}
 
     {%- if banner_product.price != blank -%}
-      <div class="banner-product__price text-grayDefault dark:text-grayDark mb-4">
+      <div class="banner-product__price">
         {%- if banner_product.compare_at_price > banner_product.price -%}
-          <span class="price price--sale text-dark dark:text-darkInverse font-semibold">{{ banner_product.price | money }}</span>
-          <span class="price price--old text-red-600 ml-2">{{ banner_product.compare_at_price | money }}</span>
+          <span class="price price--sale">{{ banner_product.price | money }}</span>
+          <span class="price price--old">{{ banner_product.compare_at_price | money }}</span>
         {%- else -%}
           <span class="price">{{ banner_product.price | money }}</span>
         {%- endif -%}
@@ -71,7 +71,7 @@
     {%- endfor -%}
 
     {%- if color_option_index != nil -%}
-      <div class="banner-product__colors flex gap-2 mb-4">
+      <div class="banner-product__colors">
         {%- assign images_per_color = 5 -%}
         {%- assign color_index = 0 -%}
         {%- for variant in banner_product.variants -%}
@@ -80,7 +80,7 @@
             {%- assign end_index = start_index | plus: images_per_color | minus: 1 -%}
             <button 
               type="button"
-              class="banner-product__color-btn w-16 h-[68px] border border-stroke dark:border-strokeDark rounded-base overflow-hidden bg-transparent p-0 cursor-pointer hover:border-dark dark:hover:border-darkInverse transition-colors"
+              class="banner-product__color-btn"
               data-start="{{ start_index }}"
               data-end="{{ end_index }}"
               data-price="{{ variant.price | money }}"
@@ -96,7 +96,7 @@
       </div>
 
       <div 
-        class="banner-product__stock text-sm leading-[1.4] mb-[30px] text-dark dark:text-darkInverse"
+        class="banner-product__stock"
         data-not-available="{{ 'products.product.banner.not_available' | t: default: 'Not available' }}"
         data-available-template="{{ 'products.product.banner.available_with_count' | t: count: '__COUNT__', default: 'Available: __COUNT__' }}"
       >
@@ -104,15 +104,15 @@
       </div>
     {%- endif -%}
 
-    <p class="banner-product__select-size text-dark dark:text-darkInverse mb-2">Select Size:</p>
-    <div class="banner-product__sizes flex flex-wrap justify-around gap-2 mb-4">
+    <p class="banner-product__select-size">Select Size:</p>
+    <div class="banner-product__sizes">
       {%- assign sizes = banner_product.variants | map: 'option2' | uniq -%}
       {%- for size in sizes -%}
         {%- assign variant = banner_product.variants | where: 'option2', size | first -%}
         {%- if variant -%}
           <button 
             type="button" 
-            class="banner-product__size-btn px-3 py-3 text-sm leading-[1.4] bg-white dark:bg-whiteInverse text-dark dark:text-darkInverse border border-stroke dark:border-strokeDark rounded-base cursor-pointer w-[136px] hover:border-grayLight dark:hover:border-grayLightDark transition-colors"
+            class="banner-product__size-btn"
             data-variant-id="{{ variant.id }}"
             data-available="{{ variant.available }}"
           >
@@ -125,12 +125,12 @@
     {%- assign first_variant = banner_product.variants.first -%}
     <a 
       href="/cart/add?id={{ first_variant.id }}&quantity=1" 
-      class="banner-product__add-to-cart block text-center no-underline w-full px-4 py-4 bg-dark dark:bg-darkInverse text-white dark:text-whiteInverse rounded-base mb-4 cursor-pointer hover:bg-grayDefault dark:hover:bg-grayDark transition-colors"
+      class="banner-product__add-to-cart"
     >
       Add To Bag
     </a>
 
-    <div class="banner-product__description text-sm leading-normal text-grayDefault dark:text-grayDark">
+    <div class="banner-product__description">
       {{ banner_product.description | truncatewords: 30, '...' }}
     </div>
   </div>
