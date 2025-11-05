@@ -1,22 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const gallery = document.querySelector('[data-all-images]');
+  const gallery = document.querySelector('.banner-product__gallery');
   if (!gallery) return;
-
   const allImages = JSON.parse(gallery.dataset.allImages || '[]');
   const mainImage = document.querySelector('.banner-product__main');
   const thumbsImage = document.querySelector('.banner-product__thumbs');
-  const stockBlock = document.querySelector('.banner-product__stock');
+  const stockBlock = document.querySelector('.js-stock');
   const colorButtons = document.querySelectorAll('.banner-product__color-btn');
   const sizeButtons = document.querySelectorAll('.banner-product__size-btn');
   const priceBlock = document.querySelector('.banner-product__price');
-
   function renderGallery(start, end) {
     const images = allImages.slice(start, end + 1);
     if (!images.length) return;
 
     mainImage.innerHTML = `
       <div>
-          <img
+        <img src="${images[0]}" alt="{{ banner_product.title }}" class="product__image js-main-image" />
+        <img
           src="${images[0]}" 
           alt="{{ banner_product.title }}" 
           loading="lazy" 
@@ -26,10 +25,12 @@ document.addEventListener('DOMContentLoaded', () => {
     thumbsImage.innerHTML = images
       .map(
         (img, idx) => `
-        <div class="rounded-base overflow-hidden cursor-pointer transition-transform duration-300 hover:scale-105 mb-6 last:mb-0">
+        <div class="banner-product__thumb">
           <img 
             src="${img}" 
-            alt="Product thumbnail" 
+            alt="{{ banner_product.title }}" 
+            alt="{{ banner_product.title }}"
+            loading="lazy" 
             class="product__image js-thumb-image ${
               idx === 0 ? 'is-active' : ''
             }" 
@@ -38,75 +39,42 @@ document.addEventListener('DOMContentLoaded', () => {
       `
       )
       .join('');
-
     const mainImg = mainImage.querySelector('.js-main-image');
     const thumbImgs = thumbsImage.querySelectorAll('.js-thumb-image');
-
     thumbImgs.forEach(thumb => {
       thumb.addEventListener('click', () => {
         mainImg.src = thumb.src;
-
-        thumbImgs.forEach(t =>
-          t.classList.remove(
-            'is-active',
-            'ring-2',
-            'ring-dark',
-            'dark:ring-darkInverse'
-          )
-        );
-        thumb.classList.add(
-          'is-active',
-          'ring-2',
-          'ring-dark',
-          'dark:ring-darkInverse'
-        );
+        thumbImgs.forEach(t => t.classList.remove('is-active'));
+        thumb.classList.add('is-active');
       });
     });
-
-    // Add ring to first active thumb
-    if (thumbImgs[0]) {
-      thumbImgs[0].classList.add(
-        'ring-2',
-        'ring-dark',
-        'dark:ring-darkInverse'
-      );
-    }
   }
-
   function updatePrice(price, compare) {
     if (!priceBlock) return;
     if (compare && compare !== 'null') {
       priceBlock.innerHTML = `
-        <span class="price price--sale text-dark dark:text-darkInverse font-semibold">${price}</span>
-        <span class="price price--old line-through text-oldPrice dark:text-oldPriceDark ml-2">${compare}</span>
+        <span class="price price--sale">${price}</span>
+        <span class="price price--old">${compare}</span>
       `;
     } else {
       priceBlock.innerHTML = `<span class="price">${price}</span>`;
     }
   }
-
   if (colorButtons.length) {
     const firstBtn = colorButtons[0];
     renderGallery(
       parseInt(firstBtn.dataset.start),
       parseInt(firstBtn.dataset.end)
     );
-    firstBtn.classList.add(
-      'is-active',
-      '!border-dark',
-      'dark:!border-darkInverse'
-    );
+    firstBtn.classList.add('is-active');
     updatePrice(firstBtn.dataset.price, firstBtn.dataset.compare);
-
     colorButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         const start = parseInt(btn.dataset.start);
         const end = parseInt(btn.dataset.end);
         const qty = parseInt(btn.dataset.qty, 10) || 0;
         const available = btn.dataset.available === 'true';
-
         renderGallery(start, end);
-
         if (stockBlock) {
           if (!available || qty === 0) {
             stockBlock.textContent = stockBlock.dataset.notAvailable;
@@ -115,40 +83,17 @@ document.addEventListener('DOMContentLoaded', () => {
               stockBlock.dataset.availableTemplate.replace('__COUNT__', qty);
           }
         }
-
         updatePrice(btn.dataset.price, btn.dataset.compare);
-
-        colorButtons.forEach(b => {
-          b.classList.remove(
-            'is-active',
-            '!border-dark',
-            'dark:!border-darkInverse'
-          );
-        });
-        btn.classList.add(
-          'is-active',
-          '!border-dark',
-          'dark:!border-darkInverse'
-        );
+        colorButtons.forEach(b => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
       });
     });
   }
-
   if (sizeButtons.length) {
     sizeButtons.forEach(btn => {
       btn.addEventListener('click', () => {
-        sizeButtons.forEach(b => {
-          b.classList.remove(
-            'is-active',
-            '!border-dark',
-            'dark:!border-darkInverse'
-          );
-        });
-        btn.classList.add(
-          'is-active',
-          '!border-dark',
-          'dark:!border-darkInverse'
-        );
+        sizeButtons.forEach(b => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
       });
     });
   }
