@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     mainImage.innerHTML = `
       <div>
-        <img src="${images[0]}" alt="{{ banner_product.title }}" class="product__image js-main-image" />
         <img
           src="${images[0]}" 
           alt="{{ banner_product.title }}" 
@@ -28,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="banner-product__thumb">
           <img 
             src="${img}" 
-            alt="{{ banner_product.title }}" 
             alt="{{ banner_product.title }}"
             loading="lazy" 
             class="product__image js-thumb-image ${
