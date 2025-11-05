@@ -43,7 +43,7 @@
         <img 
           src="{{ 'icon-star.svg' | asset_url }}" 
           alt="Star" 
-          class="badge__icon block"
+          class="badge__icon"
           width="16"
           height="16"
         >
@@ -88,7 +88,7 @@
               data-available="{{ variant.available }}"
               data-qty="{{ variant.inventory_quantity }}"
             >
-              {{ variant.featured_image | image_url: width: 60 | image_tag: alt: variant.featured_image.alt | default: banner_product.title | default: 'Product image', class: 'w-full h-full object-cover block' }}
+              {{ variant.featured_image | image_url: width: 60 | image_tag: alt: variant.featured_image.alt | default: banner_product.title | default: 'Product image' }}
             </button>
             {%- assign color_index = color_index | plus: 1 -%}
           {%- endif -%}
