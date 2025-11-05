@@ -1,4 +1,5 @@
 {% comment %} <script src="{{ 'banner-product.js' | asset_url }}" defer></script> {% endcomment %}
+{{ 'base.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
   assign banner_product = nil
