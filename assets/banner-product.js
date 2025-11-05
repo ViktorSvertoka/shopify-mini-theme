@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     mainImage.innerHTML = `
       <div>
-        <img src="${images[0]}" alt="Product" class="w-[468px] h-[468px] sm:w-[536px] sm:h-[536px] object-cover block js-main-image" />
+        <img src="${images[0]}" alt="Product" class="product__image js-main-image" />
       </div>`;
 
     thumbsImage.innerHTML = images
