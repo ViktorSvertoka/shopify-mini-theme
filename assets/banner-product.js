@@ -2,7 +2,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const gallery = document.querySelector('[data-all-images]');
   if (!gallery) return;
 
-  const allImages = JSON.parse(gallery.dataset.allImages || '[]');
+  let allImages = [];
+  try {
+    allImages = JSON.parse(gallery.dataset.allImages || '[]');
+  } catch (e) {
+    console.error('Invalid JSON in data-all-images:', e);
+  }
+
+  allImages = JSON.parse(gallery.dataset.allImages || '[]');
   const mainImage = document.querySelector('.banner-product__main');
   const thumbsImage = document.querySelector('.banner-product__thumbs');
   const stockBlock = document.querySelector('.banner-product__stock');
