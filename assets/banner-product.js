@@ -16,7 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     mainImage.innerHTML = `
       <div>
-        <img src="${images[0]}" alt="Product" class="product__image js-main-image" />
+          <img
+          src="${images[0]}" 
+          alt="{{ banner_product.title }}" 
+          loading="lazy" 
+          class="product__image js-main-image" />
       </div>`;
 
     thumbsImage.innerHTML = images
