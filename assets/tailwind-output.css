@@ -266,6 +266,9 @@
   .h-\[468px\] {
     height: 468px;
   }
+  .h-full {
+    height: 100%;
+  }
   .w-\[88px\] {
     width: 88px;
   }
