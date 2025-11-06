@@ -394,6 +394,13 @@
       }
     }
   }
+  .hover\:border-gray-light {
+    &:hover {
+      @media (hover: hover) {
+        border-color: var(--color-gray-light);
+      }
+    }
+  }
   .md\:h-\[536px\] {
     @media (width >= 48rem) {
       height: 536px;
