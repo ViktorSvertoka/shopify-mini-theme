@@ -8,3 +8,9 @@
   --color-stroke: #ebebeb;
   --color-old-price: #ff7f7f;
 }
+
+@layer utilities {
+  .is-active {
+    @apply border-dark;
+  }
+}

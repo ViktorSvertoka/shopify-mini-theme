@@ -292,9 +292,6 @@
   .overflow-hidden {
     overflow: hidden;
   }
-  .rounded-\[8px\] {
-    border-radius: 8px;
-  }
   .rounded-lg {
     border-radius: var(--radius-lg);
   }
@@ -461,10 +458,10 @@
       padding: calc(var(--spacing) * 0);
     }
   }
-  .\[\&\.is-active\]\:border-dark {
-    &.is-active {
-      border-color: var(--color-dark);
-    }
+}
+@layer utilities {
+  .is-active {
+    border-color: var(--color-dark);
   }
 }
 @property --tw-rotate-x {
