@@ -164,11 +164,11 @@
   font-weight: 600;
 } */
 
-.banner-product__price .price--old {
+/* .banner-product__price .price--old {
   text-decoration: line-through;
   color: var(--color-old-price);
   margin-left: 8px;
-}
+} */
 
 .banner-product__colors {
   display: flex;
