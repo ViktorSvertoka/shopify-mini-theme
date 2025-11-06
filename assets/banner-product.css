@@ -235,7 +235,7 @@
   }
 } */
 
-.banner-product__add-to-cart {
+/* .banner-product__add-to-cart {
   display: block;
   text-align: center;
   text-decoration: none;
@@ -250,7 +250,7 @@
   &:hover {
     background-color: var(--color-gray);
   }
-}
+} */
 
 .banner-product__description {
   font-size: 14px;
