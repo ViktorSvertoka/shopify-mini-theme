@@ -11,7 +11,7 @@
   {%- assign unique_colors = banner_product.variants | map: 'option1' | uniq -%}
   {%- assign images_per_color = 5 -%}
 
-  <div class="banner-product__colors">
+  <div class="flex gap-2 mb-4">
     {%- for color in unique_colors -%}
       {%- assign color_variant = banner_product.variants | where: 'option1', color | first -%}
       {%- if color_variant -%}
