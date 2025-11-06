@@ -232,6 +232,9 @@
   .mb-9 {
     margin-bottom: calc(var(--spacing) * 9);
   }
+  .ml-2 {
+    margin-left: calc(var(--spacing) * 2);
+  }
   .block {
     display: block;
   }
@@ -403,6 +406,9 @@
   }
   .italic {
     font-style: italic;
+  }
+  .line-through {
+    text-decoration-line: line-through;
   }
   .opacity-100 {
     opacity: 100%;
