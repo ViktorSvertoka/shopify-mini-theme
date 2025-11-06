@@ -233,6 +233,9 @@
   .mb-9 {
     margin-bottom: calc(var(--spacing) * 9);
   }
+  .mb-\[30px\] {
+    margin-bottom: 30px;
+  }
   .ml-2 {
     margin-left: calc(var(--spacing) * 2);
   }
@@ -599,6 +602,11 @@
   .xl\:justify-between {
     @media (width >= 80rem) {
       justify-content: space-between;
+    }
+  }
+  .xl\:justify-center {
+    @media (width >= 80rem) {
+      justify-content: center;
     }
   }
   .xl\:gap-0 {
