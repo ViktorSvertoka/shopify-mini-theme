@@ -591,48 +591,6 @@
   .is-active {
     border-color: var(--c-dark);
   }
-  .w-main-sm {
-    width: var(--sz-main-sm);
-  }
-  .h-main-sm {
-    height: var(--sz-main-sm);
-  }
-  .w-main-md {
-    width: var(--sz-main-md);
-  }
-  .h-main-md {
-    height: var(--sz-main-md);
-  }
-  .w-thumb {
-    width: var(--sz-thumb);
-  }
-  .h-thumb {
-    height: var(--sz-thumb);
-  }
-  .w-color-btn {
-    width: var(--sz-color-btn-w);
-  }
-  .h-color-btn {
-    height: var(--sz-color-btn-h);
-  }
-  .w-size-btn {
-    width: var(--sz-size-btn);
-  }
-  .mt-section {
-    margin-top: var(--mt-section);
-  }
-  .mb-stock {
-    margin-bottom: var(--mb-stock);
-  }
-  .text-sm {
-    font-size: var(--fs-sm);
-  }
-  .leading-sm {
-    line-height: var(--lh-sm);
-  }
-  .leading-md {
-    line-height: var(--lh-md);
-  }
 }
 @property --tw-rotate-x {
   syntax: "*";
