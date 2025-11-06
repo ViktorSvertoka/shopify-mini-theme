@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         src="${images[0]}" 
         alt="Product image" 
         loading="lazy" 
-        class="product__image js-main-image" 
+        class="js-main-image w-[468px] h-[468px] object-cover block md:w-[536px] md:h-[536px]" 
       />`;
 
     thumbsImage.innerHTML = images
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
             src="${img}" 
             alt="Product thumbnail"
             loading="lazy" 
-            class="product__image js-thumb-image ${
+            class="js-thumb-image w-[468px] h-[468px] object-cover block md:w-[536px] md:h-[536px] ${
               idx === 0 ? 'is-active' : ''
             }" 
           />

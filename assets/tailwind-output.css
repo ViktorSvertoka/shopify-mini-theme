@@ -231,6 +231,12 @@
   .aspect-square {
     aspect-ratio: 1 / 1;
   }
+  .h-\[468px\] {
+    height: 468px;
+  }
+  .w-\[468px\] {
+    width: 468px;
+  }
   .w-full {
     width: 100%;
   }
@@ -272,6 +278,9 @@
   .border {
     border-style: var(--tw-border-style);
     border-width: 1px;
+  }
+  .object-cover {
+    object-fit: cover;
   }
   .px-\[15px\] {
     padding-inline: 15px;
@@ -322,6 +331,16 @@
   .duration-300 {
     --tw-duration: 300ms;
     transition-duration: 300ms;
+  }
+  .md\:h-\[536px\] {
+    @media (width >= 48rem) {
+      height: 536px;
+    }
+  }
+  .md\:w-\[536px\] {
+    @media (width >= 48rem) {
+      width: 536px;
+    }
   }
   .xl\:mx-0 {
     @media (width >= 80rem) {
