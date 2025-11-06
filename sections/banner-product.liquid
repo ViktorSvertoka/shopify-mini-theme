@@ -1,6 +1,7 @@
 <script src="{{ 'banner-product.js' | asset_url }}" defer></script>
 {{ 'banner-product.css' | asset_url | stylesheet_tag }}
 
+<div>
 {%- liquid
   assign banner_product = nil
   
@@ -21,6 +22,7 @@
 </div>
 
 {%- endif -%}
+</div>
 
 {% schema %}
 {
