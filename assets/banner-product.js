@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const mainImage = document.querySelector('.banner-product__main');
-  const thumbsImage = document.querySelector('.banner-product__thumbs');
+  const thumbsImage = document.querySelector('.js-thumbs');
   const stockBlock = document.querySelector('.banner-product__stock');
   const colorButtons = document.querySelectorAll('.banner-product__color-btn');
   const sizeButtons = document.querySelectorAll('.banner-product__size-btn');
