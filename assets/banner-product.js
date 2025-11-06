@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const stockBlock = document.querySelector('.banner-product__stock');
   const colorButtons = document.querySelectorAll('.banner-product__color-btn');
   const sizeButtons = document.querySelectorAll('.js-size-btn');
-  const priceBlock = document.querySelector('.banner-product__price');
+  const priceBlock = document.querySelector('.js-price');
 
   function renderGallery(start, end) {
     const images = allImages.slice(start, end + 1);
