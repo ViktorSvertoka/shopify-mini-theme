@@ -1,8 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const gallery = document.querySelector('[data-all-images]');
+  const gallery = document.querySelector('.banner-product__gallery');
   if (!gallery) return;
 
-  const allImages = JSON.parse(gallery.dataset.allImages || '[]');
+  let allImages = [];
+  try {
+    allImages = JSON.parse(gallery.dataset.allImages || '[]');
+  } catch (e) {
+    console.error('Failed to parse images:', e);
+    return;
+  }
+
+  if (!allImages.length) {
+    console.warn('No images found');
+    return;
+  }
+
   const mainImage = document.querySelector('.banner-product__main');
   const thumbsImage = document.querySelector('.banner-product__thumbs');
   const stockBlock = document.querySelector('.banner-product__stock');
@@ -15,18 +27,22 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!images.length) return;
 
     mainImage.innerHTML = `
-      <div>
-        <img src="${images[0]}" alt="Product" class="w-[468px] h-[468px] sm:w-[536px] sm:h-[536px] object-cover block js-main-image" />
-      </div>`;
+      <img
+        src="${images[0]}" 
+        alt="Product image" 
+        loading="lazy" 
+        class="product__image js-main-image" 
+      />`;
 
     thumbsImage.innerHTML = images
       .map(
         (img, idx) => `
-        <div class="rounded-base overflow-hidden cursor-pointer transition-transform duration-300 hover:scale-105 mb-6 last:mb-0">
+        <div class="banner-product__thumb" style="cursor: pointer;">
           <img 
             src="${img}" 
-            alt="Product thumbnail" 
-            class="w-[88px] h-[88px] object-cover block js-thumb-image ${
+            alt="Product thumbnail"
+            loading="lazy" 
+            class="product__image js-thumb-image ${
               idx === 0 ? 'is-active' : ''
             }" 
           />
@@ -41,40 +57,18 @@ document.addEventListener('DOMContentLoaded', () => {
     thumbImgs.forEach(thumb => {
       thumb.addEventListener('click', () => {
         mainImg.src = thumb.src;
-
-        thumbImgs.forEach(t =>
-          t.classList.remove(
-            'is-active',
-            'ring-2',
-            'ring-dark',
-            'dark:ring-darkInverse'
-          )
-        );
-        thumb.classList.add(
-          'is-active',
-          'ring-2',
-          'ring-dark',
-          'dark:ring-darkInverse'
-        );
+        thumbImgs.forEach(t => t.classList.remove('is-active'));
+        thumb.classList.add('is-active');
       });
     });
-
-    // Add ring to first active thumb
-    if (thumbImgs[0]) {
-      thumbImgs[0].classList.add(
-        'ring-2',
-        'ring-dark',
-        'dark:ring-darkInverse'
-      );
-    }
   }
 
   function updatePrice(price, compare) {
     if (!priceBlock) return;
-    if (compare && compare !== 'null') {
+    if (compare && compare !== 'null' && compare !== '₹0.00') {
       priceBlock.innerHTML = `
-        <span class="price price--sale text-dark dark:text-darkInverse font-semibold">${price}</span>
-        <span class="price price--old line-through text-oldPrice dark:text-oldPriceDark ml-2">${compare}</span>
+        <span class="price price--sale">${price}</span>
+        <span class="price price--old">${compare}</span>
       `;
     } else {
       priceBlock.innerHTML = `<span class="price">${price}</span>`;
@@ -87,11 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
       parseInt(firstBtn.dataset.start),
       parseInt(firstBtn.dataset.end)
     );
-    firstBtn.classList.add(
-      'is-active',
-      '!border-dark',
-      'dark:!border-darkInverse'
-    );
+    firstBtn.classList.add('is-active');
     updatePrice(firstBtn.dataset.price, firstBtn.dataset.compare);
 
     colorButtons.forEach(btn => {
@@ -105,46 +95,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (stockBlock) {
           if (!available || qty === 0) {
-            stockBlock.textContent = stockBlock.dataset.notAvailable;
-          } else {
             stockBlock.textContent =
-              stockBlock.dataset.availableTemplate.replace('__COUNT__', qty);
+              stockBlock.dataset.notAvailable || 'Not available';
+          } else {
+            const template =
+              stockBlock.dataset.availableTemplate || 'Available: __COUNT__';
+            stockBlock.textContent = template.replace('__COUNT__', qty);
           }
         }
 
         updatePrice(btn.dataset.price, btn.dataset.compare);
 
-        colorButtons.forEach(b => {
-          b.classList.remove(
-            'is-active',
-            '!border-dark',
-            'dark:!border-darkInverse'
-          );
-        });
-        btn.classList.add(
-          'is-active',
-          '!border-dark',
-          'dark:!border-darkInverse'
-        );
+        colorButtons.forEach(b => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
       });
     });
+  } else {
+    renderGallery(0, allImages.length - 1);
   }
 
   if (sizeButtons.length) {
     sizeButtons.forEach(btn => {
       btn.addEventListener('click', () => {
-        sizeButtons.forEach(b => {
-          b.classList.remove(
-            'is-active',
-            '!border-dark',
-            'dark:!border-darkInverse'
-          );
-        });
-        btn.classList.add(
-          'is-active',
-          '!border-dark',
-          'dark:!border-darkInverse'
+        sizeButtons.forEach(b => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+
+        const addToCartBtn = document.querySelector(
+          '.banner-product__add-to-cart'
         );
+        if (addToCartBtn && btn.dataset.variantId) {
+          addToCartBtn.href = `/cart/add?id=${btn.dataset.variantId}&quantity=1`;
+        }
       });
     });
   }
