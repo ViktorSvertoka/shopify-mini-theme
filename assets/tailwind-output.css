@@ -9,6 +9,8 @@
       "Courier New", monospace;
     --color-white: #ffffff;
     --spacing: 0.25rem;
+    --text-sm: 0.875rem;
+    --text-sm--line-height: calc(1.25 / 0.875);
     --font-weight-normal: 400;
     --font-weight-semibold: 600;
     --leading-normal: 1.5;
@@ -445,6 +447,10 @@
   }
   .text-center {
     text-align: center;
+  }
+  .text-sm {
+    font-size: var(--text-sm);
+    line-height: var(--tw-leading, var(--text-sm--line-height));
   }
   .text-\[14px\] {
     font-size: 14px;
