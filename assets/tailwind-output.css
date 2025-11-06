@@ -401,6 +401,9 @@
   .py-8 {
     padding-block: calc(var(--spacing) * 8);
   }
+  .pt-\[100px\] {
+    padding-top: 100px;
+  }
   .text-center {
     text-align: center;
   }
