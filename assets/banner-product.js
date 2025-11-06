@@ -120,9 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sizeButtons.forEach(b => b.classList.remove('is-active'));
         btn.classList.add('is-active');
 
-        const addToCartBtn = document.querySelector(
-          '.banner-product__add-to-cart'
-        );
+        const addToCartBtn = document.querySelector('.js-add-to-cart');
         if (addToCartBtn && btn.dataset.variantId) {
           addToCartBtn.href = `/cart/add?id=${btn.dataset.variantId}&quantity=1`;
         }
