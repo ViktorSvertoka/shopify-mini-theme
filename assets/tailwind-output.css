@@ -295,6 +295,9 @@
   .text-center {
     text-align: center;
   }
+  .text-dark {
+    color: var(--color-dark);
+  }
   .text-old-price {
     color: var(--color-old-price);
   }
