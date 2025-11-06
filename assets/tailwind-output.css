@@ -18,6 +18,7 @@
     --font-weight-normal: 400;
     --font-weight-semibold: 600;
     --leading-normal: 1.5;
+    --radius-lg: 0.5rem;
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
@@ -227,6 +228,9 @@
   .table {
     display: table;
   }
+  .aspect-square {
+    aspect-ratio: 1 / 1;
+  }
   .w-full {
     width: 100%;
   }
@@ -261,6 +265,9 @@
   }
   .overflow-hidden {
     overflow: hidden;
+  }
+  .rounded-lg {
+    border-radius: var(--radius-lg);
   }
   .px-\[15px\] {
     padding-inline: 15px;
