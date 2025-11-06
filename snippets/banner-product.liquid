@@ -19,7 +19,15 @@
 
 <div class="banner-product">
   <div class="banner-product__gallery"
-     data-all-images='[{% if banner_product.images != blank %}{% for image in banner_product.images %}"{{ image | image_url: width: 800 }}"{% unless forloop.last %},{% endunless %}{% endfor %}{% else %}"{{ 'product-placeholder.jpg' | asset_url }}"{% endif %}]'>
+       data-all-images='[
+         {%- if banner_product.images != blank -%}
+           {%- for image in banner_product.images -%}
+             "{{ image | image_url: width: 800 }}"{% unless forloop.last %},{% endunless %}
+           {%- endfor -%}
+         {%- else -%}
+           "{{ 'product-placeholder.jpg' | asset_url }}"
+         {%- endif -%}
+       ]'>
     <div class="banner-product__thumbs"></div>
 
     <div class="banner-product__main"></div>
