@@ -50,7 +50,7 @@
   }
 } */
 
-.banner-product__thumbs {
+/* .banner-product__thumbs {
   margin: 0;
   width: 100%;
   padding: 0 15px;
@@ -66,7 +66,7 @@
     flex-wrap: wrap;
     gap: 0;
   }
-}
+} */
 
 .banner-product__thumb {
   border-radius: 8px;
