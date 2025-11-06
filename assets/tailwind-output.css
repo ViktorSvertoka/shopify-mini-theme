@@ -22,6 +22,7 @@
     --color-gray-light: #cacacb;
     --color-stroke: #ebebeb;
     --color-old-price: #ff7f7f;
+    --mt-section: 100px;
   }
 }
 @layer base {
@@ -286,9 +287,6 @@
   }
   .w-\[136px\] {
     width: 136px;
-  }
-  .w-\[168px\] {
-    width: 168px;
   }
   .w-\[468px\] {
     width: 468px;
@@ -620,6 +618,9 @@
 @layer utilities {
   .is-active {
     border-color: var(--color-dark);
+  }
+  .mt-section {
+    margin-top: var(--mt-section);
   }
 }
 @property --tw-rotate-x {

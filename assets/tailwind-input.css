@@ -37,4 +37,8 @@
   .is-active {
     @apply border-dark;
   }
+
+  .mt-section {
+    margin-top: var(--mt-section);
+  }
 }
