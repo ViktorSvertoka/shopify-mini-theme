@@ -2,16 +2,16 @@
 
 @theme {
   /* 🎨 Кольори */
-  --color-dark: #111111;
-  --color-white: #ffffff;
-  --color-gray: #737373;
-  --color-gray-light: #cacacb;
-  --color-stroke: #ebebeb;
-  --color-old-price: #ff7f7f;
+  --c-dark: #111111;
+  --c-white: #ffffff;
+  --c-gray: #737373;
+  --c-gray-light: #cacacb;
+  --c-stroke: #ebebeb;
+  --c-old: #ff7f7f;
 
   /* 📏 Розміри зображень */
-  --sz-main-sm: 468px;
-  --sz-main-md: 536px;
+  --sz-sm: 468px;
+  --sz-md: 536px;
   --sz-thumb: 88px;
   --sz-color-btn-w: 64px;
   --sz-color-btn-h: 68px;
@@ -34,11 +34,62 @@
 }
 
 @layer utilities {
+  /* 🟦 Активний елемент */
   .is-active {
-    @apply border-dark;
+    @apply border-[var(--c-dark)];
   }
 
+  /* 🖼️ Головне зображення */
+  .w-main-sm {
+    width: var(--sz-main-sm);
+  }
+  .h-main-sm {
+    height: var(--sz-main-sm);
+  }
+  .w-main-md {
+    width: var(--sz-main-md);
+  }
+  .h-main-md {
+    height: var(--sz-main-md);
+  }
+
+  /* 🖼️ Мініатюри */
+  .w-thumb {
+    width: var(--sz-thumb);
+  }
+  .h-thumb {
+    height: var(--sz-thumb);
+  }
+
+  /* 🎨 Кнопки кольорів */
+  .w-color-btn {
+    width: var(--sz-color-btn-w);
+  }
+  .h-color-btn {
+    height: var(--sz-color-btn-h);
+  }
+
+  /* 📏 Кнопки розмірів */
+  .w-size-btn {
+    width: var(--sz-size-btn);
+  }
+
+  /* 🧩 Відступи */
   .mt-section {
     margin-top: var(--mt-section);
+  }
+  .mb-stock {
+    margin-bottom: var(--mb-stock);
+  }
+
+  /* 🔤 Текст */
+  .text-sm {
+    font-size: var(--fs-sm);
+  }
+  .leading-sm {
+    line-height: var(--lh-sm);
+  }
+  .leading-md {
+    line-height: var(--lh-md);
   }
 }

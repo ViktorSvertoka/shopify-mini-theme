@@ -7,7 +7,7 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-white: #ffffff;
+    --color-white: #fff;
     --spacing: 0.25rem;
     --font-weight-normal: 400;
     --font-weight-semibold: 600;
@@ -17,12 +17,16 @@
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
-    --color-dark: #111111;
-    --color-gray: #737373;
-    --color-gray-light: #cacacb;
-    --color-stroke: #ebebeb;
-    --color-old-price: #ff7f7f;
+    --c-dark: #111111;
+    --sz-thumb: 88px;
+    --sz-color-btn-w: 64px;
+    --sz-color-btn-h: 68px;
+    --sz-size-btn: 136px;
     --mt-section: 100px;
+    --mb-stock: 30px;
+    --fs-sm: 14px;
+    --lh-sm: 1.4;
+    --lh-md: 1.5;
   }
 }
 @layer base {
@@ -225,9 +229,6 @@
   .mx-auto {
     margin-inline: auto;
   }
-  .mt-\[100px\] {
-    margin-top: 100px;
-  }
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
   }
@@ -357,12 +358,6 @@
     border-style: var(--tw-border-style);
     border-width: 1px;
   }
-  .border-stroke {
-    border-color: var(--color-stroke);
-  }
-  .bg-dark {
-    background-color: var(--color-dark);
-  }
   .bg-transparent {
     background-color: transparent;
   }
@@ -424,15 +419,6 @@
   .font-semibold {
     --tw-font-weight: var(--font-weight-semibold);
     font-weight: var(--font-weight-semibold);
-  }
-  .text-dark {
-    color: var(--color-dark);
-  }
-  .text-gray {
-    color: var(--color-gray);
-  }
-  .text-old-price {
-    color: var(--color-old-price);
   }
   .text-white {
     color: var(--color-white);
@@ -501,20 +487,6 @@
         --tw-scale-y: 105%;
         --tw-scale-z: 105%;
         scale: var(--tw-scale-x) var(--tw-scale-y);
-      }
-    }
-  }
-  .hover\:border-gray-light {
-    &:hover {
-      @media (hover: hover) {
-        border-color: var(--color-gray-light);
-      }
-    }
-  }
-  .hover\:bg-gray {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-gray);
       }
     }
   }
@@ -617,10 +589,49 @@
 }
 @layer utilities {
   .is-active {
-    border-color: var(--color-dark);
+    border-color: var(--c-dark);
+  }
+  .w-main-sm {
+    width: var(--sz-main-sm);
+  }
+  .h-main-sm {
+    height: var(--sz-main-sm);
+  }
+  .w-main-md {
+    width: var(--sz-main-md);
+  }
+  .h-main-md {
+    height: var(--sz-main-md);
+  }
+  .w-thumb {
+    width: var(--sz-thumb);
+  }
+  .h-thumb {
+    height: var(--sz-thumb);
+  }
+  .w-color-btn {
+    width: var(--sz-color-btn-w);
+  }
+  .h-color-btn {
+    height: var(--sz-color-btn-h);
+  }
+  .w-size-btn {
+    width: var(--sz-size-btn);
   }
   .mt-section {
     margin-top: var(--mt-section);
+  }
+  .mb-stock {
+    margin-bottom: var(--mb-stock);
+  }
+  .text-sm {
+    font-size: var(--fs-sm);
+  }
+  .leading-sm {
+    line-height: var(--lh-sm);
+  }
+  .leading-md {
+    line-height: var(--lh-md);
   }
 }
 @property --tw-rotate-x {
