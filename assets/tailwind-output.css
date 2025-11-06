@@ -293,6 +293,9 @@
   .aspect-square {
     aspect-ratio: 1 / 1;
   }
+  .h-88 {
+    height: calc(var(--spacing) * 88);
+  }
   .h-468 {
     height: calc(var(--spacing) * 468);
   }

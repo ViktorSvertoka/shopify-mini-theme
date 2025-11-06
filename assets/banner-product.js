@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
             src="${img}" 
             alt="Product thumbnail"
             loading="lazy" 
-            class="js-thumb-image w-88 h-[88px] object-cover block ${
+            class="js-thumb-image w-88 h-88 object-cover block ${
               idx === 0 ? 'is-active' : ''
             }" 
           />
