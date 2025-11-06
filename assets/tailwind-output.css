@@ -9,8 +9,6 @@
       "Courier New", monospace;
     --color-white: #ffffff;
     --spacing: 0.25rem;
-    --text-sm: 0.875rem;
-    --text-sm--line-height: calc(1.25 / 0.875);
     --font-weight-normal: 400;
     --font-weight-semibold: 600;
     --leading-normal: 1.5;
@@ -24,15 +22,11 @@
     --color-gray-light: #cacacb;
     --color-stroke: #ebebeb;
     --color-old-price: #ff7f7f;
-    --sz-thumb: 88px;
-    --sz-color-btn-w: 64px;
-    --sz-color-btn-h: 68px;
-    --sz-size-btn: 136px;
-    --mt-section: 100px;
-    --mb-stock: 30px;
-    --fs-sm: 14px;
-    --lh-sm: 1.4;
-    --lh-md: 1.5;
+    --size-8: 8px;
+    --size-16: 16px;
+    --size-100: 100px;
+    --size-650: 650px;
+    --radius-base: 8px;
   }
 }
 @layer base {
@@ -629,47 +623,20 @@
   .is-active {
     border-color: var(--color-dark);
   }
-  .w-main-sm {
-    width: var(--sz-main-sm);
+  .w-8 {
+    width: var(--size-8);
   }
-  .h-main-sm {
-    height: var(--sz-main-sm);
+  .p-16 {
+    padding: var(--size-16);
   }
-  .w-main-md {
-    width: var(--sz-main-md);
+  .mt-100 {
+    margin-top: var(--size-100);
   }
-  .h-main-md {
-    height: var(--sz-main-md);
+  .max-w-650 {
+    max-width: var(--size-650);
   }
-  .w-thumb {
-    width: var(--sz-thumb);
-  }
-  .h-thumb {
-    height: var(--sz-thumb);
-  }
-  .w-color-btn {
-    width: var(--sz-color-btn-w);
-  }
-  .h-color-btn {
-    height: var(--sz-color-btn-h);
-  }
-  .w-size-btn {
-    width: var(--sz-size-btn);
-  }
-  .mt-section {
-    margin-top: var(--mt-section);
-  }
-  .mb-stock {
-    margin-bottom: var(--mb-stock);
-  }
-  .text-sm {
-    font-size: var(--fs-sm);
-  }
-  .leading-sm {
-    line-height: var(--lh-sm);
-  }
-  .leading-md {
-    line-height: var(--lh-md);
+  .rounded-base {
+    border-radius: var(--radius-base);
   }
 }
 @property --tw-rotate-x {
