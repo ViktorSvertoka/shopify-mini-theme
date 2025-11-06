@@ -251,6 +251,9 @@
   .mx-auto {
     margin-inline: auto;
   }
+  .mt-100 {
+    margin-top: calc(var(--spacing) * 100);
+  }
   .mt-\[100px\] {
     margin-top: 100px;
   }
