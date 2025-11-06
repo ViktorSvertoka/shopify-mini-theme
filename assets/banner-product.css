@@ -154,10 +154,10 @@
   display: block;
 } */
 
-.banner-product__price {
+/* .banner-product__price {
   color: var(--color-gray);
   margin-bottom: 16px;
-}
+} */
 
 .banner-product__price .price--sale {
   color: var(--color-dark);
