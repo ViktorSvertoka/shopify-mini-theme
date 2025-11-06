@@ -15,21 +15,23 @@
   <div class="">
     Product not found
   </div>
-{%- endif -%}
+{%- else -%}
 
 <div class="banner-product">
-  <div class="banner-product__gallery"
-       data-all-images='[
-         {%- if banner_product.images != blank -%}
-           {%- for image in banner_product.images -%}
-             "{{ image | image_url: width: 800 }}"{% unless forloop.last %},{% endunless %}
-           {%- endfor -%}
-         {%- else -%}
-           "{{ 'product-placeholder.jpg' | asset_url }}"
-         {%- endif -%}
-       ]'>
-    <div class="banner-product__thumbs"></div>
+  {%- capture images_json -%}
+    [
+    {%- if banner_product.images != blank -%}
+      {%- for image in banner_product.images -%}
+        "{{ image | image_url: width: 800 }}"{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    {%- else -%}
+      "{{ 'product-placeholder.jpg' | asset_url }}"
+    {%- endif -%}
+    ]
+  {%- endcapture -%}
 
+  <div class="banner-product__gallery" data-all-images='{{ images_json | strip_newlines }}'>
+    <div class="banner-product__thumbs"></div>
     <div class="banner-product__main"></div>
   </div>
 
@@ -88,7 +90,12 @@
               data-available="{{ variant.available }}"
               data-qty="{{ variant.inventory_quantity }}"
             >
-              {{ variant.featured_image | image_url: width: 60 | image_tag: alt: variant.featured_image.alt | default: banner_product.title | default: 'Product image' }}
+              <img 
+                src="{{ variant.featured_image | image_url: width: 60 }}" 
+                alt="{{ variant.featured_image.alt | default: banner_product.title }}"
+                width="60"
+                height="60"
+              >
             </button>
             {%- assign color_index = color_index | plus: 1 -%}
           {%- endif -%}
@@ -135,3 +142,5 @@
     </div>
   </div>
 </div>
+
+{%- endif -%}
