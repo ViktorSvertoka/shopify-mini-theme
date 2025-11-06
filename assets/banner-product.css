@@ -128,7 +128,7 @@
   }
 } */
 
-.banner-product__badge {
+/* .banner-product__badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -148,7 +148,7 @@
     top: 16px;
     left: 130px;
   }
-}
+} */
 
 .badge__icon {
   display: block;
