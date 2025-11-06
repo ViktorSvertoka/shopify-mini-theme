@@ -37,12 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
     thumbsImage.innerHTML = images
       .map(
         (img, idx) => `
-        <div class="rounded-lg overflow-hidden cursor-pointer transition-transform duration-300 flex flex-col xl:flex-row gap-6 hover:scale-105">
+        <div class="rounded-lg overflow-hidden cursor-pointer transition-transform duration-300 flex flex-col xl:flex-row  hover:scale-105">
           <img 
             src="${img}" 
             alt="Product thumbnail"
             loading="lazy" 
-            class="js-thumb-image w-[88px] h-[88px] object-cover block ${
+            class="js-thumb-image gap-6 w-[88px] h-[88px] object-cover block ${
               idx === 0 ? 'is-active' : ''
             }" 
           />
