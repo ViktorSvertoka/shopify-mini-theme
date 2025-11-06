@@ -40,6 +40,14 @@
     --size-568: 568px;
     --size-612: 612px;
     --size-650: 650px;
+    --font-xs: 12px;
+    --font-sm: 14px;
+    --font-md: 24px;
+    --font-lg: 30px;
+    --line-xs: 1.2;
+    --line-sm: 1.3;
+    --line-md: 1.4;
+    --line-lg: 1.5;
     --radius-base: 8px;
   }
 }
@@ -769,6 +777,30 @@
   }
   .max-w-650 {
     max-width: var(--size-650);
+  }
+  .text-xs {
+    font-size: var(--font-xs);
+  }
+  .text-sm {
+    font-size: var(--font-sm);
+  }
+  .text-md {
+    font-size: var(--font-md);
+  }
+  .text-lg {
+    font-size: var(--font-lg);
+  }
+  .leading-xs {
+    line-height: var(--line-xs);
+  }
+  .leading-sm {
+    line-height: var(--line-sm);
+  }
+  .leading-md {
+    line-height: var(--line-md);
+  }
+  .leading-lg {
+    line-height: var(--line-lg);
   }
   .rounded-base {
     border-radius: var(--radius-base);

@@ -191,6 +191,33 @@
     max-width: var(--size-650);
   }
 
+  /* Typography utilities */
+  .text-xs {
+    font-size: var(--font-xs);
+  }
+  .text-sm {
+    font-size: var(--font-sm);
+  }
+  .text-md {
+    font-size: var(--font-md);
+  }
+  .text-lg {
+    font-size: var(--font-lg);
+  }
+
+  .leading-xs {
+    line-height: var(--line-xs);
+  }
+  .leading-sm {
+    line-height: var(--line-sm);
+  }
+  .leading-md {
+    line-height: var(--line-md);
+  }
+  .leading-lg {
+    line-height: var(--line-lg);
+  }
+
   /* Radius */
   .rounded-base {
     border-radius: var(--radius-base);
