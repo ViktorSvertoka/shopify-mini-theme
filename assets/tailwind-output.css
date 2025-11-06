@@ -10,6 +10,7 @@
     --color-white: #ffffff;
     --spacing: 0.25rem;
     --font-weight-normal: 400;
+    --font-weight-semibold: 600;
     --radius-lg: 0.5rem;
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -383,6 +384,10 @@
   .font-normal {
     --tw-font-weight: var(--font-weight-normal);
     font-weight: var(--font-weight-normal);
+  }
+  .font-semibold {
+    --tw-font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-semibold);
   }
   .text-dark {
     color: var(--color-dark);
