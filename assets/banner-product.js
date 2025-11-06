@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const mainImage = document.querySelector('.js-main');
   const thumbsImage = document.querySelector('.js-thumbs');
   const stockBlock = document.querySelector('.banner-product__stock');
-  const colorButtons = document.querySelectorAll('.banner-product__color-btn');
+  const colorButtons = document.querySelectorAll('.js-color-btn');
   const sizeButtons = document.querySelectorAll('.js-size-btn');
   const priceBlock = document.querySelector('.js-price');
 
