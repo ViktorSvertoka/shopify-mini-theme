@@ -9,7 +9,7 @@
   {%- endif -%}
 
   {%- if banner_product.price != blank -%}
-    <div class="banner-product__price">
+    <div class="js-price text-gray mb-4">
       {%- if banner_product.compare_at_price > banner_product.price -%}
         <span class="price price--sale">{{ banner_product.price | money }}</span>
         <span class="price price--old">{{ banner_product.compare_at_price | money }}</span>
