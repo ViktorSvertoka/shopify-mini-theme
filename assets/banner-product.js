@@ -26,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const images = allImages.slice(start, end + 1);
     if (!images.length) return;
 
-    // Render main image
     mainImage.innerHTML = `
       <img
         src="${images[0]}" 
@@ -35,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
         class="product__image js-main-image" 
       />`;
 
-    // Render thumbnails
     thumbsImage.innerHTML = images
       .map(
         (img, idx) => `
@@ -53,7 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
       )
       .join('');
 
-    // Add click handlers to thumbnails
     const mainImg = mainImage.querySelector('.js-main-image');
     const thumbImgs = thumbsImage.querySelectorAll('.js-thumb-image');
 
@@ -78,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Initialize gallery with first color or all images
   if (colorButtons.length) {
     const firstBtn = colorButtons[0];
     renderGallery(
@@ -88,7 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
     firstBtn.classList.add('is-active');
     updatePrice(firstBtn.dataset.price, firstBtn.dataset.compare);
 
-    // Add color button handlers
     colorButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         const start = parseInt(btn.dataset.start);
@@ -98,7 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         renderGallery(start, end);
 
-        // Update stock info
         if (stockBlock) {
           if (!available || qty === 0) {
             stockBlock.textContent =
@@ -117,18 +111,15 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   } else {
-    // No color buttons, show all images
     renderGallery(0, allImages.length - 1);
   }
 
-  // Size button handlers
   if (sizeButtons.length) {
     sizeButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         sizeButtons.forEach(b => b.classList.remove('is-active'));
         btn.classList.add('is-active');
 
-        // Update add to cart link
         const addToCartBtn = document.querySelector(
           '.banner-product__add-to-cart'
         );
