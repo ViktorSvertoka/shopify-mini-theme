@@ -64,7 +64,6 @@
       </div>
     {%- endif -%}
 
-    {%- comment %} Find color option {% endcomment -%}
     {%- assign color_option_index = nil -%}
     {%- for option in banner_product.options_with_values -%}
       {%- assign opt_name = option.name | downcase -%}
@@ -74,14 +73,12 @@
       {%- endif -%}
     {%- endfor -%}
 
-    {%- comment %} Render color buttons - one per unique color {% endcomment -%}
     {%- if color_option_index != nil -%}
       {%- assign unique_colors = banner_product.variants | map: 'option1' | uniq -%}
       {%- assign images_per_color = 5 -%}
       
       <div class="banner-product__colors">
         {%- for color in unique_colors -%}
-          {%- comment %} Find first variant with this color {% endcomment -%}
           {%- assign color_variant = banner_product.variants | where: 'option1', color | first -%}
           
           {%- if color_variant -%}
@@ -89,7 +86,6 @@
             {%- assign start_index = color_index | times: images_per_color -%}
             {%- assign end_index = start_index | plus: images_per_color | minus: 1 -%}
             
-            {%- comment %} Get the image for this color (from variant or product images) {% endcomment -%}
             {%- if color_variant.image -%}
               {%- assign color_image = color_variant.image -%}
             {%- elsif banner_product.images[start_index] -%}
