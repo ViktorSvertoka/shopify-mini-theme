@@ -204,9 +204,9 @@
   margin-bottom: 30px;
 }
 
-.banner-product__select-size {
+/* .banner-product__select-size {
   color: var(--color-dark);
-}
+} */
 
 .banner-product__sizes {
   display: flex;
