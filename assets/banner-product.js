@@ -68,10 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (compare && compare !== 'null' && compare !== '₹0.00') {
       priceBlock.innerHTML = `
         <span class="text-dark font-semibold">${price}</span>
-        <span class="price price--old">${compare}</span>
+        <span class="line-through text-old-price ml-2">${compare}</span>
       `;
     } else {
-      priceBlock.innerHTML = `<span class="price">${price}</span>`;
+      priceBlock.innerHTML = `<span>${price}</span>`;
     }
   }
 
