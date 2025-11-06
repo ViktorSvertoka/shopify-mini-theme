@@ -9,28 +9,24 @@
   --color-stroke: #ebebeb;
   --color-old-price: #ff7f7f;
 
-  /* Image sizes */
+  /* Sizes */
   --sz-sm: 468px;
   --sz-md: 536px;
   --sz-thumb: 88px;
   --sz-color-btn-w: 64px;
   --sz-color-btn-h: 68px;
   --sz-size-btn: 136px;
-
-  /* Spacing, gaps, margins */
   --sp-lg: 24px;
   --sp-md: 16px;
   --sp-sm: 8px;
   --mt-section: 100px;
   --mb-stock: 30px;
+  --fs-sm: 14px;
+  --r-base: 8px;
 
   /* Typography */
-  --fs-sm: 14px;
   --lh-sm: 1.4;
   --lh-md: 1.5;
-
-  /* Border radius */
-  --r-base: 8px;
 }
 
 @layer utilities {
