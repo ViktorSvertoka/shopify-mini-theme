@@ -231,8 +231,14 @@
   .aspect-square {
     aspect-ratio: 1 / 1;
   }
+  .h-\[88px\] {
+    height: 88px;
+  }
   .h-\[468px\] {
     height: 468px;
+  }
+  .w-\[88px\] {
+    width: 88px;
   }
   .w-\[468px\] {
     width: 468px;
