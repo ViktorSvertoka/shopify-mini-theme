@@ -35,6 +35,6 @@
 
 @layer utilities {
   .is-active {
-    @apply border-dark;
+    @apply border-с-dark;
   }
 }
