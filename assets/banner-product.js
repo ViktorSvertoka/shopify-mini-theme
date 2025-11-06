@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const thumbsImage = document.querySelector('.js-thumbs');
   const stockBlock = document.querySelector('.banner-product__stock');
   const colorButtons = document.querySelectorAll('.banner-product__color-btn');
-  const sizeButtons = document.querySelectorAll('.banner-product__size-btn');
+  const sizeButtons = document.querySelectorAll('.js-size-btn');
   const priceBlock = document.querySelector('.banner-product__price');
 
   function renderGallery(start, end) {
