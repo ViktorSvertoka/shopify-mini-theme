@@ -242,6 +242,9 @@
   .w-\[88px\] {
     width: 88px;
   }
+  .w-\[136px\] {
+    width: 136px;
+  }
   .w-\[468px\] {
     width: 468px;
   }
@@ -289,6 +292,9 @@
   .overflow-hidden {
     overflow: hidden;
   }
+  .rounded-\[8px\] {
+    border-radius: 8px;
+  }
   .rounded-lg {
     border-radius: var(--radius-lg);
   }
@@ -296,8 +302,17 @@
     border-style: var(--tw-border-style);
     border-width: 1px;
   }
+  .border-stroke {
+    border-color: var(--color-stroke);
+  }
+  .bg-white {
+    background-color: var(--color-white);
+  }
   .object-cover {
     object-fit: cover;
+  }
+  .p-3 {
+    padding: calc(var(--spacing) * 3);
   }
   .px-\[15px\] {
     padding-inline: 15px;
@@ -307,6 +322,13 @@
   }
   .text-center {
     text-align: center;
+  }
+  .text-\[14px\] {
+    font-size: 14px;
+  }
+  .leading-\[1\.4\] {
+    --tw-leading: 1.4;
+    line-height: 1.4;
   }
   .text-dark {
     color: var(--color-dark);
@@ -432,6 +454,11 @@
       padding: calc(var(--spacing) * 0);
     }
   }
+  .\[\&\.is-active\]\:border-dark {
+    &.is-active {
+      border-color: var(--color-dark);
+    }
+  }
 }
 @property --tw-rotate-x {
   syntax: "*";
@@ -457,6 +484,10 @@
   syntax: "*";
   inherits: false;
   initial-value: solid;
+}
+@property --tw-leading {
+  syntax: "*";
+  inherits: false;
 }
 @property --tw-shadow {
   syntax: "*";
@@ -609,6 +640,7 @@
       --tw-skew-x: initial;
       --tw-skew-y: initial;
       --tw-border-style: solid;
+      --tw-leading: initial;
       --tw-shadow: 0 0 #0000;
       --tw-shadow-color: initial;
       --tw-shadow-alpha: 100%;
