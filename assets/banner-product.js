@@ -33,10 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
         loading="lazy" 
         class="js-main-image w-[468px] h-[468px] object-cover block md:w-[536px] md:h-[536px]" 
       />
-      <p class="inline-flex items-center justify-center gap-1.5 px-2 py-1 text-dark bg-white rounded-lg text-[14px] m-0 absolute top-4 left-2 z-10 md:left-[130px]">
-      <img src="{{ 'icon-star.svg' | asset_url }}" class="block" alt="Star" width="16" height="16">
-      Highly Rated
-    </p>
       `;
 
     thumbsImage.innerHTML = images
