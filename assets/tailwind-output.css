@@ -260,6 +260,9 @@
   .aspect-square {
     aspect-ratio: 1 / 1;
   }
+  .h-\[68px\] {
+    height: 68px;
+  }
   .h-\[88px\] {
     height: 88px;
   }
@@ -268,6 +271,9 @@
   }
   .h-full {
     height: 100%;
+  }
+  .w-\[64px\] {
+    width: 64px;
   }
   .w-\[88px\] {
     width: 88px;
@@ -353,11 +359,17 @@
   .bg-dark {
     background-color: var(--color-dark);
   }
+  .bg-transparent {
+    background-color: transparent;
+  }
   .bg-white {
     background-color: var(--color-white);
   }
   .object-cover {
     object-fit: cover;
+  }
+  .p-0 {
+    padding: calc(var(--spacing) * 0);
   }
   .p-3 {
     padding: calc(var(--spacing) * 3);
