@@ -216,7 +216,7 @@
   margin-bottom: 16px;
 } */
 
-.banner-product__size-btn {
+/* .banner-product__size-btn {
   padding: 12px;
   font-size: 14px;
   line-height: 1.4;
@@ -233,7 +233,7 @@
   &:hover {
     border-color: var(--color-gray-light);
   }
-}
+} */
 
 .banner-product__add-to-cart {
   display: block;
