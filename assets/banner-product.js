@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     thumbsImage.innerHTML = images
       .map(
         (img, idx) => `
-        <div class="banner-product__thumb" style="cursor: pointer;">
+        <div class="banner-product__thumb rounded-lg overflow-hidden cursor-pointer transition-transform duration-300 mb-6 last:mb-0 hover:scale-105">
           <img 
             src="${img}" 
             alt="Product thumbnail"
