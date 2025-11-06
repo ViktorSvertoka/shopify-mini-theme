@@ -7,7 +7,7 @@
   --color-old-price: #ff7f7f;
 } */
 
-/* .banner-product {
+.banner-product {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
@@ -19,7 +19,7 @@
     flex-direction: row;
     width: 100%;
   }
-} */
+}
 
 .banner-product__content {
   max-width: 100%;
