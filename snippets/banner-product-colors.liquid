@@ -1,7 +1,7 @@
 {%- assign color_option_index = nil -%}
 {%- for option in banner_product.options_with_values -%}
   {%- assign opt_name = option.name | downcase -%}
-  {%- if opt_name contains 'color' or opt_name contains 'colour' or opt_name contains 'цвет' -%}
+  {%- if opt_name contains 'color' or opt_name contains 'colour' -%}
     {%- assign color_option_index = forloop.index0 -%}
     {%- break -%}
   {%- endif -%}
