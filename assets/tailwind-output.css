@@ -305,6 +305,9 @@
   .h-full {
     height: 100%;
   }
+  .w-468 {
+    width: calc(var(--spacing) * 468);
+  }
   .w-\[64px\] {
     width: 64px;
   }
