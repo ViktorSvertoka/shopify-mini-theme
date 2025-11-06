@@ -555,6 +555,11 @@
       left: 130px;
     }
   }
+  .md\:h-536 {
+    @media (width >= 48rem) {
+      height: calc(var(--spacing) * 536);
+    }
+  }
   .md\:h-\[536px\] {
     @media (width >= 48rem) {
       height: 536px;
