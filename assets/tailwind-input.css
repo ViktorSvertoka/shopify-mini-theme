@@ -10,8 +10,8 @@
   --color-old-price: #ff7f7f;
 
   /* 📏 Розміри зображень */
-  --sz-sm: 468px;
-  --sz-md: 536px;
+  --sz-main-sm: 468px;
+  --sz-main-md: 536px;
   --sz-thumb: 88px;
   --sz-color-btn-w: 64px;
   --sz-color-btn-h: 68px;
