@@ -16,7 +16,7 @@
   </div>
 {%- else -%}
 
-<div class="banner-product">
+<div class="flex items-start flex-col gap-6 relative w-[468px] xl:flex-row xl:w-full">
   {% render 'banner-product-gallery', banner_product: banner_product %}
   {% render 'banner-product-content', banner_product: banner_product %}
 </div>
