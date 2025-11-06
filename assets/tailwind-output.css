@@ -224,6 +224,9 @@
   .mx-auto {
     margin-inline: auto;
   }
+  .mt-\[100px\] {
+    margin-top: 100px;
+  }
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
   }
