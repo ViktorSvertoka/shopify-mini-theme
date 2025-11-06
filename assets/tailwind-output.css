@@ -194,6 +194,9 @@
   .left-4 {
     left: calc(var(--spacing) * 4);
   }
+  .left-8 {
+    left: calc(var(--spacing) * 8);
+  }
   .isolate {
     isolation: isolate;
   }
