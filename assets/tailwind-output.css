@@ -272,6 +272,9 @@
   .h-full {
     height: 100%;
   }
+  .w-16 {
+    width: calc(var(--spacing) * 16);
+  }
   .w-\[64px\] {
     width: 64px;
   }
