@@ -1,0 +1,36 @@
+<div class="banner-product__content">
+  <h2 class="banner-product__title">{{ banner_product.title | escape }}</h2>
+
+  {%- if banner_product.tags contains "Highly Rated" -%}
+    <p class="banner-product__badge">
+      <img src="{{ 'icon-star.svg' | asset_url }}" alt="Star" width="16" height="16">
+      Highly Rated
+    </p>
+  {%- endif -%}
+
+  {%- if banner_product.price != blank -%}
+    <div class="banner-product__price">
+      {%- if banner_product.compare_at_price > banner_product.price -%}
+        <span class="price price--sale">{{ banner_product.price | money }}</span>
+        <span class="price price--old">{{ banner_product.compare_at_price | money }}</span>
+      {%- else -%}
+        <span class="price">{{ banner_product.price | money }}</span>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  {% render 'banner-product-colors', banner_product: banner_product %}
+  {% render 'banner-product-sizes', banner_product: banner_product %}
+
+  {%- assign first_variant = banner_product.variants.first -%}
+  <a 
+    href="/cart/add?id={{ first_variant.id }}&quantity=1" 
+    class="banner-product__add-to-cart"
+  >
+    Add To Bag
+  </a>
+
+  <div class="banner-product__description">
+    {{ banner_product.description | truncatewords: 30, '...' }}
+  </div>
+</div>

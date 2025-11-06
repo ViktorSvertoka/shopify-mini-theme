@@ -1,0 +1,16 @@
+{%- capture images_json -%}
+  [
+  {%- if banner_product.images != blank -%}
+    {%- for image in banner_product.images -%}
+      "{{ image | image_url: width: 800 }}"{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  {%- else -%}
+    "{{ 'product-placeholder.jpg' | asset_url }}"
+  {%- endif -%}
+  ]
+{%- endcapture -%}
+
+<div class="banner-product__gallery" data-all-images='{{ images_json | strip_newlines }}'>
+  <div class="banner-product__thumbs"></div>
+  <div class="banner-product__main"></div>
+</div>
