@@ -176,7 +176,7 @@
   margin-bottom: 16px;
 } */
 
-.banner-product__color-btn {
+/* .banner-product__color-btn {
   width: 64px;
   height: 68px;
   border: 1px solid var(--color-stroke);
@@ -196,7 +196,7 @@
     object-fit: cover;
     display: block;
   }
-}
+} */
 
 .banner-product__stock {
   font-size: 14px;
