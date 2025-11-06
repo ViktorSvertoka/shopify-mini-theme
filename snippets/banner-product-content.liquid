@@ -1,12 +1,12 @@
 <div class="max-w-full w-full px-4 md:max-w-[612px] md:px-0">
   <h2 class="text-[24px] leading-[1.3] font-normal mb-2 md:text-[30px] md:leading-[1.2]">{{ banner_product.title | escape }}</h2>
 
-  {%- if banner_product.tags contains "Highly Rated" -%}
+  {% comment %} {%- if banner_product.tags contains "Highly Rated" -%}
     <p class="inline-flex items-center justify-center gap-1.5 px-2 py-1 text-dark bg-white rounded-lg text-[14px] m-0 absolute top-4 left-4 z-10 md:left-[130px]">
       <img src="{{ 'icon-star.svg' | asset_url }}" class="block" alt="Star" width="16" height="16">
       Highly Rated
     </p>
-  {%- endif -%}
+  {%- endif -%} {% endcomment %}
 
   {%- if banner_product.price != blank -%}
     <div class="js-price text-gray mb-4">
