@@ -1,7 +1,7 @@
 <script src="{{ 'banner-product.js' | asset_url }}" defer></script>
 {{ 'banner-product.css' | asset_url | stylesheet_tag }}
 
-<div>
+
 {%- liquid
   assign banner_product = nil
   
@@ -15,14 +15,15 @@
     Product not found or not selected.
   </div>
 {%- else -%}
-
+<div class="">
 <div class="banner-product">
   {% render 'banner-product-gallery', banner_product: banner_product %}
   {% render 'banner-product-content', banner_product: banner_product %}
 </div>
+</div>
 
 {%- endif -%}
-</div>
+
 
 {% schema %}
 {
