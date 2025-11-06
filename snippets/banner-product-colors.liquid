@@ -18,13 +18,6 @@
         {%- assign color_index = forloop.index0 -%}
         {%- assign start_index = color_index | times: images_per_color -%}
         {%- assign end_index = start_index | plus: images_per_color | minus: 1 -%}
-        
-        {%- comment %}
-          Вибираємо конкретне зображення для кнопки:
-          1-й колір -> 1-ше зображення (index 0)
-          2-й колір -> 6-те (index 5)
-          3-й колір -> 11-те (index 10)
-        {% endcomment -%}
         {%- assign color_image_index = start_index -%}
         {%- assign color_image = banner_product.images[color_image_index] | default: banner_product.featured_image -%}
 
