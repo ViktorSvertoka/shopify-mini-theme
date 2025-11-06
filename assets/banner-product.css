@@ -208,13 +208,13 @@
   color: var(--color-dark);
 } */
 
-.banner-product__sizes {
+/* .banner-product__sizes {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   gap: 8px;
   margin-bottom: 16px;
-}
+} */
 
 .banner-product__size-btn {
   padding: 12px;
