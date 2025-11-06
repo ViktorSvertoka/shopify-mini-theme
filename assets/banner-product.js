@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const gallery = document.querySelector('.banner-product__gallery');
+  const gallery = document.querySelector('.js-gallery');
   if (!gallery) return;
 
   let allImages = [];
