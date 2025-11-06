@@ -68,7 +68,7 @@
   }
 } */
 
-.banner-product__thumb {
+/* .banner-product__thumb {
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
@@ -89,7 +89,7 @@
     object-fit: cover;
     display: block;
   }
-}
+} */
 
 .banner-product__wrapper {
   display: flex;
