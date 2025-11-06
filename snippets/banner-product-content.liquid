@@ -12,7 +12,7 @@
     <div class="js-price text-gray mb-4">
       {%- if banner_product.compare_at_price > banner_product.price -%}
         <span class="text-dark font-semibold">{{ banner_product.price | money }}</span>
-        <span class="line-through text-oldPrice ml-2">{{ banner_product.compare_at_price | money }}</span>
+        <span class="line-through text-old-price ml-2">{{ banner_product.compare_at_price | money }}</span>
       {%- else -%}
         <span class="price">{{ banner_product.price | money }}</span>
       {%- endif -%}

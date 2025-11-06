@@ -398,6 +398,9 @@
   .text-gray {
     color: var(--color-gray);
   }
+  .text-old-price {
+    color: var(--color-old-price);
+  }
   .capitalize {
     text-transform: capitalize;
   }
