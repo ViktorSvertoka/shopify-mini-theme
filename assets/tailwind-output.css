@@ -622,7 +622,7 @@
 }
 @layer utilities {
   .is-active {
-    border-color: var(--c-dark);
+    border-color: var(--color-dark);
   }
   .w-main-sm {
     width: var(--sz-main-sm);

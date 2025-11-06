@@ -36,7 +36,7 @@
 @layer utilities {
   /* 🟦 Активний елемент */
   .is-active {
-    @apply border-[var(--c-dark)];
+    @apply border-dark;
   }
 
   /* 🖼️ Головне зображення */
