@@ -206,6 +206,9 @@
   .mx-auto {
     margin-inline: auto;
   }
+  .mb-4 {
+    margin-bottom: calc(var(--spacing) * 4);
+  }
   .mb-9 {
     margin-bottom: calc(var(--spacing) * 9);
   }
@@ -265,6 +268,12 @@
   }
   .items-center {
     align-items: center;
+  }
+  .justify-around {
+    justify-content: space-around;
+  }
+  .gap-2 {
+    gap: calc(var(--spacing) * 2);
   }
   .gap-4 {
     gap: calc(var(--spacing) * 4);
