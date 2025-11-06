@@ -33,7 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
         alt="Product image" 
         loading="lazy" 
         class="product__image js-main-image" 
-        style="width: 100%; height: auto; display: block;"
       />`;
 
     // Render thumbnails
@@ -48,7 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
             class="product__image js-thumb-image ${
               idx === 0 ? 'is-active' : ''
             }" 
-            style="width: 100%; height: auto; display: block;"
           />
         </div>
       `
