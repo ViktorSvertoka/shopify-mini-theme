@@ -1,6 +1,6 @@
 <p class="text-dark mb-4">Select Size:</p>
 
-<div class="grid grid-cols-3 gap-2">
+<div class="grid grid-cols-3 gap-2 w-full max-w-[420px] mx-auto">
   {%- assign sizes = banner_product.variants | map: 'option2' | uniq -%}
   {%- for size in sizes -%}
     {%- assign variant = banner_product.variants | where: 'option2', size | first -%}
