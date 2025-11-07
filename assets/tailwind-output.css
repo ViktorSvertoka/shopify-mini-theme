@@ -310,6 +310,9 @@
   .h-468 {
     height: calc(var(--spacing) * 468);
   }
+  .h-\[48px\] {
+    height: 48px;
+  }
   .h-\[68px\] {
     height: 68px;
   }
@@ -349,6 +352,9 @@
   .w-full {
     width: 100%;
   }
+  .max-w-\[420px\] {
+    max-width: 420px;
+  }
   .max-w-\[568px\] {
     max-width: 568px;
   }
@@ -363,6 +369,9 @@
   }
   .resize {
     resize: both;
+  }
+  .grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
   .flex-col {
     flex-direction: column;
