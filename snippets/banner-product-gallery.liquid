@@ -11,7 +11,8 @@
 {%- endcapture -%}
 
 <div class="js-gallery max-w-[568px] w-full flex items-center flex-col-reverse gap-6 mx-auto xl:max-w-[650px] xl:items-start xl:flex-row xl:justify-between xl:mx-0 relative" data-all-images='{{ images_json | strip_newlines }}'>
-  <div class="js-thumbs m-0 w-full px-[15px] opacity-100 transition-opacity duration-300 flex gap-4 xl:w-[88px] xl:p-0 xl:flex-col xl:gap-2"></div>
+  <div class="js-thumbs m-0 w-full px-[15px] opacity-100 transition-opacity duration-300 flex xl:flex-col xl:justify-between xl:h-full xl:w-[88px] xl:p-0 xl:gap-0"></div>
+
   <div class="js-main aspect-square m-0 rounded-lg overflow-hidden"></div>
       {%- if banner_product.tags contains "Highly Rated" -%}
     <p class="inline-flex items-center justify-center gap-1.5 px-2 py-1 text-dark bg-white rounded-lg text-sm m-0 absolute top-6 left-4 z-10 md:left-[130px]">

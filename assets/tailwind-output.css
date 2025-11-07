@@ -678,6 +678,11 @@
       margin-inline: calc(var(--spacing) * 0);
     }
   }
+  .xl\:h-full {
+    @media (width >= 80rem) {
+      height: 100%;
+    }
+  }
   .xl\:w-\[88px\] {
     @media (width >= 80rem) {
       width: 88px;
