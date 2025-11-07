@@ -38,17 +38,17 @@ document.addEventListener('DOMContentLoaded', () => {
     thumbsImage.innerHTML = images
       .map(
         (img, idx) => `
-        <div class="rounded-lg overflow-hidden cursor-pointer transition-transform duration-300 mb-9 last:mb-0 hover:scale-105">
-          <img 
-            src="${img}" 
-            alt="Product thumbnail"
-            loading="lazy" 
-            class="js-thumb-image w-88 h-88 object-cover block ${
-              idx === 0 ? 'is-active' : ''
-            }" 
-          />
-        </div>
-      `
+    <div class="rounded-lg overflow-hidden cursor-pointer transition-transform duration-300 hover:scale-105">
+      <img 
+        src="${img}" 
+        alt="Product thumbnail"
+        loading="lazy" 
+        class="js-thumb-image w-88 h-88 object-cover block ${
+          idx === 0 ? 'is-active' : ''
+        }"
+      />
+    </div>
+  `
       )
       .join('');
 
