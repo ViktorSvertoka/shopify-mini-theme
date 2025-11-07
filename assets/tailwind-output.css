@@ -274,6 +274,9 @@
   .mb-\[30px\] {
     margin-bottom: 30px;
   }
+  .mb-auto {
+    margin-bottom: auto;
+  }
   .ml-2 {
     margin-left: calc(var(--spacing) * 2);
   }
