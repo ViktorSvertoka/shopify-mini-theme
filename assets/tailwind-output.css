@@ -337,6 +337,9 @@
   .w-468 {
     width: calc(var(--spacing) * 468);
   }
+  .w-\[32\%\] {
+    width: 32%;
+  }
   .w-\[64px\] {
     width: 64px;
   }
@@ -396,6 +399,9 @@
   }
   .justify-around {
     justify-content: space-around;
+  }
+  .justify-between {
+    justify-content: space-between;
   }
   .justify-center {
     justify-content: center;
