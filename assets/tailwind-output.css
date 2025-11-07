@@ -728,6 +728,11 @@
       gap: calc(var(--spacing) * 0);
     }
   }
+  .xl\:gap-2 {
+    @media (width >= 80rem) {
+      gap: calc(var(--spacing) * 2);
+    }
+  }
   .xl\:p-0 {
     @media (width >= 80rem) {
       padding: calc(var(--spacing) * 0);
