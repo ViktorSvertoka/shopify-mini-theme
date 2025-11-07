@@ -2,7 +2,7 @@
   <h2 class="text-[24px] leading-[1.3] font-normal mb-2 md:text-[30px] md:leading-[1.2]">{{ banner_product.title | escape }}</h2>
 
   {%- if banner_product.price != blank -%}
-    <div class="js-price text-gray mb-4">
+    <div class="js-price text-gray mb-12">
       {%- if banner_product.compare_at_price > banner_product.price -%}
         <span class="text-dark font-semibold">{{ banner_product.price | money }}</span>
         <span class="line-through text-old-price ml-2">{{ banner_product.compare_at_price | money }}</span>
