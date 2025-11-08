@@ -864,19 +864,19 @@
   --color-gray-light: #555555;
   --color-stroke: #2b2b2b;
   --color-old-price: #ff9999;
-}
-#bannerProductSection.dark {
-  background-color: var(--color-white);
-  color: var(--color-dark);
-}
-#bannerProductSection.dark .text-dark {
-  color: var(--color-dark);
-}
-#bannerProductSection.dark .bg-white {
-  background-color: var(--color-white);
-}
-#bannerProductSection.dark .border-stroke {
-  border-color: var(--color-stroke);
+  &.dark {
+    background-color: var(--color-white);
+    color: var(--color-dark);
+  }
+  &.dark .text-dark {
+    color: var(--color-dark);
+  }
+  &.dark .bg-white {
+    background-color: var(--color-white);
+  }
+  &.dark .border-stroke {
+    border-color: var(--color-stroke);
+  }
 }
 @property --tw-rotate-x {
   syntax: "*";
