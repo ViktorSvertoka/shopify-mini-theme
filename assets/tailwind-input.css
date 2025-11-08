@@ -302,3 +302,31 @@
     --color-old-price: #ff9999;
   }
 }
+
+/* Dark mode локально тільки для банера */
+.banner-product.dark {
+  --color-dark: #ffffff;
+  --color-white: #111111;
+  --color-gray: #aaaaaa;
+  --color-gray-light: #555555;
+  --color-stroke: #2b2b2b;
+  --color-old-price: #ff9999;
+}
+
+/* Додатково — щоб усі текстові кольори автоматично адаптувались */
+.banner-product.dark {
+  background-color: var(--color-white);
+  color: var(--color-dark);
+}
+
+.banner-product.dark .text-dark {
+  color: var(--color-dark);
+}
+
+.banner-product.dark .bg-white {
+  background-color: var(--color-white);
+}
+
+.banner-product.dark .border-stroke {
+  border-color: var(--color-stroke);
+}
