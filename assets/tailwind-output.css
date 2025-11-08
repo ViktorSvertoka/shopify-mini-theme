@@ -225,6 +225,9 @@
   .top-6 {
     top: calc(var(--spacing) * 6);
   }
+  .top-10 {
+    top: calc(var(--spacing) * 10);
+  }
   .right-0 {
     right: calc(var(--spacing) * 0);
   }
@@ -239,6 +242,9 @@
   }
   .right-50 {
     right: calc(var(--spacing) * 50);
+  }
+  .right-54 {
+    right: calc(var(--spacing) * 54);
   }
   .right-60 {
     right: calc(var(--spacing) * 60);
