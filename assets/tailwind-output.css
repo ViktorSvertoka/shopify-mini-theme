@@ -656,6 +656,11 @@
       width: 100%;
     }
   }
+  .xl\:max-w-\(--size-650\) {
+    @media (width >= 80rem) {
+      max-width: var(--size-650);
+    }
+  }
   .xl\:max-w-\[650px\] {
     @media (width >= 80rem) {
       max-width: 650px;
