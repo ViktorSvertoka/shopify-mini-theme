@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Colors */
+  /* Light theme */
   --color-dark: #111111;
   --color-white: #ffffff;
   --color-gray: #737373;
@@ -294,6 +294,7 @@
   }
 }
 
+/* Dark theme */
 #bannerProductSection.dark {
   --color-dark: #ffffff;
   --color-white: #111111;
