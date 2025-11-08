@@ -219,8 +219,14 @@
   .static {
     position: static;
   }
+  .top-0 {
+    top: calc(var(--spacing) * 0);
+  }
   .top-6 {
     top: calc(var(--spacing) * 6);
+  }
+  .right-0 {
+    right: calc(var(--spacing) * 0);
   }
   .left-4 {
     left: calc(var(--spacing) * 4);
@@ -399,6 +405,9 @@
   .overflow-hidden {
     overflow: hidden;
   }
+  .rounded-base {
+    border-radius: var(--radius-base);
+  }
   .rounded-lg {
     border-radius: var(--radius-lg);
   }
@@ -423,6 +432,9 @@
   }
   .p-0 {
     padding: calc(var(--spacing) * 0);
+  }
+  .p-2 {
+    padding: calc(var(--spacing) * 2);
   }
   .p-4 {
     padding: calc(var(--spacing) * 4);
@@ -659,6 +671,16 @@
   .xl\:p-0 {
     @media (width >= 80rem) {
       padding: calc(var(--spacing) * 0);
+    }
+  }
+  .dark\:block {
+    @media (prefers-color-scheme: dark) {
+      display: block;
+    }
+  }
+  .dark\:hidden {
+    @media (prefers-color-scheme: dark) {
+      display: none;
     }
   }
 }

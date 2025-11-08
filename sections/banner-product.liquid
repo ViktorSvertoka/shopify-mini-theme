@@ -1,27 +1,31 @@
-<script src="{{ 'banner-product.js' | asset_url }}" defer></script>
+<script src='{{ 'banner-product.js' | asset_url }}' defer></script>
 
 {%- liquid
-  assign banner_product = nil
-  
+  assign banner_product = null
+
   if section.settings.product != blank
     assign banner_product = all_products[section.settings.product]
   endif
 -%}
 
-{%- if banner_product == nil or banner_product == blank -%}
-  <div class="text-center py-8">
-    Product not found or not selected.
-  </div>
+{%- if banner_product == null or banner_product == blank -%}
+  <div class='text-center py-8'>Product not found or not selected.</div>
 {%- else -%}
+  <div class='relative flex items-start flex-col gap-6 xl:flex-row xl:w-full mx-auto xl:justify-center mt-100'>
+    <!-- Theme toggle button -->
+    <button
+      id='themeToggle'
+      class='absolute top-0 right-0 p-2 rounded-base border border-stroke bg-white text-dark transition'
+      aria-label='Toggle theme'
+    >
+      <span class='block dark:hidden'>🌙</span>
+      <span class='hidden dark:block'>☀️</span>
+    </button>
 
-<div class="flex items-start flex-col gap-6 xl:flex-row xl:w-full mx-auto xl:justify-center mt-100">
-  {% render 'banner-product-gallery', banner_product: banner_product %}
-  {% render 'banner-product-content', banner_product: banner_product %}
-</div>
-
-
+    {% render 'banner-product-gallery', banner_product: banner_product %}
+    {% render 'banner-product-content', banner_product: banner_product %}
+  </div>
 {%- endif -%}
-
 
 {% schema %}
 {
@@ -40,4 +44,3 @@
   ]
 }
 {% endschema %}
-
