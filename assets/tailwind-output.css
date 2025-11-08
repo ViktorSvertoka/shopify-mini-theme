@@ -573,6 +573,12 @@
       left: 130px;
     }
   }
+  .md\:size-612 {
+    @media (width >= 48rem) {
+      width: var(--size-612);
+      height: var(--size-612);
+    }
+  }
   .md\:h-\[536px\] {
     @media (width >= 48rem) {
       height: 536px;
