@@ -621,6 +621,12 @@
       font-size: 30px;
     }
   }
+  .md\:leading-\(--line-xs\) {
+    @media (width >= 48rem) {
+      --tw-leading: var(--line-xs);
+      line-height: var(--line-xs);
+    }
+  }
   .md\:leading-\[1\.2\] {
     @media (width >= 48rem) {
       --tw-leading: 1.2;
