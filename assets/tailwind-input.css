@@ -292,18 +292,8 @@
   .rounded-base {
     border-radius: var(--radius-base);
   }
-
-  .dark {
-    --color-dark: #ffffff;
-    --color-white: #111111;
-    --color-gray: #aaaaaa;
-    --color-gray-light: #555555;
-    --color-stroke: #2b2b2b;
-    --color-old-price: #ff9999;
-  }
 }
 
-/* Dark mode локально тільки для банера */
 #bannerProductSection.dark {
   --color-dark: #ffffff;
   --color-white: #111111;
@@ -312,7 +302,6 @@
   --color-stroke: #2b2b2b;
   --color-old-price: #ff9999;
 
-  /* Додатково — щоб усі текстові кольори автоматично адаптувались */
   &.dark {
     background-color: var(--color-white);
     color: var(--color-dark);
