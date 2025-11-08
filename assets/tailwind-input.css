@@ -61,6 +61,9 @@
 
   /* Radius */
   --radius-base: 8px;
+
+  /* Percent */
+  --percent-32: 32%;
 }
 
 @layer utilities {
