@@ -7,12 +7,15 @@
   @variant md {
     padding-inline: 2rem;
   }
+
   @variant lg {
     padding-inline: 4rem;
   }
+
   @variant xl {
     padding-inline: 9rem;
   }
+
   @variant 2xl {
     padding-inline: 12rem;
   }
