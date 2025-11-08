@@ -581,6 +581,11 @@
       gap: calc(var(--spacing) * 3);
     }
   }
+  .md\:left-\(--size-130\) {
+    @media (width >= 48rem) {
+      left: var(--size-130);
+    }
+  }
   .md\:left-\[130px\] {
     @media (width >= 48rem) {
       left: 130px;
