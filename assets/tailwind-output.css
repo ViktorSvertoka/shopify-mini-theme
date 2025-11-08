@@ -237,6 +237,9 @@
   .right-40 {
     right: calc(var(--spacing) * 40);
   }
+  .right-50 {
+    right: calc(var(--spacing) * 50);
+  }
   .left-4 {
     left: calc(var(--spacing) * 4);
   }
