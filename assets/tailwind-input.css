@@ -320,6 +320,6 @@
   }
 
   &.dark .is-active {
-    border-color: var(--color-white);
+    border-color: var(--color-dark);
   }
 }
