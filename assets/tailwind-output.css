@@ -457,6 +457,9 @@
   .pt-10 {
     padding-top: calc(var(--spacing) * 10);
   }
+  .pb-10 {
+    padding-bottom: calc(var(--spacing) * 10);
+  }
   .text-center {
     text-align: center;
   }
