@@ -52,6 +52,7 @@
     --line-md: 1.4;
     --line-lg: 1.5;
     --radius-base: 8px;
+    --percent-32: 32%;
   }
 }
 @layer base {
@@ -315,6 +316,9 @@
   .h-\(--size-48\) {
     height: var(--size-48);
   }
+  .h-\(--size-468\) {
+    height: var(--size-468);
+  }
   .h-68 {
     height: calc(var(--spacing) * 68);
   }
@@ -326,6 +330,12 @@
   }
   .h-full {
     height: 100%;
+  }
+  .w-\(--percent-32\) {
+    width: var(--percent-32);
+  }
+  .w-\(--size-468\) {
+    width: var(--size-468);
   }
   .w-64 {
     width: calc(var(--spacing) * 64);
