@@ -584,9 +584,19 @@
       left: var(--size-130);
     }
   }
+  .md\:h-\(--size-536\) {
+    @media (width >= 48rem) {
+      height: var(--size-536);
+    }
+  }
   .md\:h-\[536px\] {
     @media (width >= 48rem) {
       height: 536px;
+    }
+  }
+  .md\:w-\(--size-536\) {
+    @media (width >= 48rem) {
+      width: var(--size-536);
     }
   }
   .md\:w-\[536px\] {

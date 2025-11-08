@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         src="${images[0]}" 
         alt="Product image" 
         loading="lazy" 
-        class="js-main-image w-(--size-468) h-(--size-468) object-cover block md:w-[536px] md:h-[536px]" 
+        class="js-main-image w-(--size-468) h-(--size-468) object-cover block md:w-(--size-536) md:h-(--size-536)" 
       />
       `;
 
