@@ -848,7 +848,7 @@
   .rounded-base {
     border-radius: var(--radius-base);
   }
-  .dark & {
+  .dark {
     --color-dark: #ffffff;
     --color-white: #111111;
     --color-gray: #aaaaaa;
