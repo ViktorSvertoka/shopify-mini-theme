@@ -304,7 +304,7 @@
 }
 
 /* Dark mode локально тільки для банера */
-.banner-product.dark {
+#bannerProductSection.dark {
   --color-dark: #ffffff;
   --color-white: #111111;
   --color-gray: #aaaaaa;
