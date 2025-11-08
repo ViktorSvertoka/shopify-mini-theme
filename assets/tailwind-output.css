@@ -875,6 +875,9 @@
   &.dark .border-stroke {
     border-color: var(--color-stroke);
   }
+  &.dark .is-active {
+    border-color: var(--color-white);
+  }
 }
 @property --tw-rotate-x {
   syntax: "*";
