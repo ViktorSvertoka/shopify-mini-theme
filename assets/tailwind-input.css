@@ -1,23 +1,13 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Light theme */
+  /* Colors */
   --color-dark: #111111;
   --color-white: #ffffff;
   --color-gray: #737373;
   --color-gray-light: #cacacb;
   --color-stroke: #ebebeb;
   --color-old-price: #ff7f7f;
-
-  /* Dark theme */
-  @variant dark {
-    --color-dark: #ffffff;
-    --color-white: #111111;
-    --color-gray: #aaaaaa;
-    --color-gray-light: #555555;
-    --color-stroke: #2b2b2b;
-    --color-old-price: #ff9999;
-  }
 
   /* Sizes */
   --size-8: 8px;
