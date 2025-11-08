@@ -688,6 +688,11 @@
       gap: calc(var(--spacing) * 9);
     }
   }
+  .xl\:gap-9\.5 {
+    @media (width >= 80rem) {
+      gap: calc(var(--spacing) * 9.5);
+    }
+  }
   .xl\:p-0 {
     @media (width >= 80rem) {
       padding: calc(var(--spacing) * 0);
