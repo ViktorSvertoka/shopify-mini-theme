@@ -1,16 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const section = document.getElementById('bannerProductSection');
   const toggle = document.getElementById('themeToggle');
-  if (!toggle) return;
 
-  const root = document.documentElement;
-  const savedTheme = localStorage.getItem('theme');
+  if (!section || !toggle) return;
 
-  if (savedTheme === 'dark') root.classList.add('dark');
-  if (savedTheme === 'light') root.classList.remove('dark');
+  // читаємо збережену тему тільки для цієї секції
+  const savedTheme = localStorage.getItem('banner-product-theme');
+  if (savedTheme === 'dark') section.classList.add('dark');
+  if (savedTheme === 'light') section.classList.remove('dark');
 
+  // перемикання теми тільки для цієї секції
   toggle.addEventListener('click', () => {
-    root.classList.toggle('dark');
-    const isDark = root.classList.contains('dark');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    section.classList.toggle('dark');
+    const isDark = section.classList.contains('dark');
+    localStorage.setItem('banner-product-theme', isDark ? 'dark' : 'light');
   });
 });
