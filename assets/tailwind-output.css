@@ -848,6 +848,14 @@
   .rounded-base {
     border-radius: var(--radius-base);
   }
+  .dark & {
+    --color-dark: #ffffff;
+    --color-white: #111111;
+    --color-gray: #aaaaaa;
+    --color-gray-light: #555555;
+    --color-stroke: #2b2b2b;
+    --color-old-price: #ff9999;
+  }
 }
 @property --tw-rotate-x {
   syntax: "*";
