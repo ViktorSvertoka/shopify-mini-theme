@@ -12,7 +12,10 @@
 {%- if banner_product == null or banner_product == blank -%}
   <div class='text-center py-8'>Product not found or not selected.</div>
 {%- else -%}
-  <div class='relative flex items-start flex-col gap-6 xl:flex-row xl:w-full mx-auto xl:justify-center mt-100'>
+  <div
+    id='bannerProductSection'
+    class='relative flex items-start flex-col gap-6 xl:flex-row xl:w-full mx-auto xl:justify-center mt-100'
+  >
     <!-- Theme toggle button -->
     <button
       id='themeToggle'
