@@ -341,6 +341,9 @@
   .w-full {
     width: 100%;
   }
+  .max-w-\(--size-568\) {
+    max-width: var(--size-568);
+  }
   .max-w-\[568px\] {
     max-width: 568px;
   }
