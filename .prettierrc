@@ -6,5 +6,6 @@
   "trailingComma": "es5",
   "bracketSpacing": true,
   "arrowParens": "avoid",
-  "proseWrap": "always"
+  "proseWrap": "always",
+  "plugins": ["@shopify/prettier-plugin-liquid"]
 }

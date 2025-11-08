@@ -4,7 +4,7 @@
   "description": "tailwindcss shopify theme boilerplate",
   "main": "index.js",
   "scripts": {
-    "dev": "npx @tailwindcss/cli -i ./assets/tailwind-input.css -o ./assets/tailwind-output.css --watch"
+    "dev": "concurrently \"shopify theme dev --theme 143335948366\" \"npx @tailwindcss/cli -i ./assets/tailwind-input.css -o ./assets/tailwind-output.css --watch\""
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,11 @@
   "homepage": "https://github.com/ViktorSvertoka/shopify-mini-theme#readme",
   "dependencies": {
     "@tailwindcss/cli": "^4.1.16",
+    "concurrently": "^9.2.1",
     "tailwindcss": "^4.1.16"
+  },
+  "devDependencies": {
+    "@shopify/prettier-plugin-liquid": "^1.10.0",
+    "prettier": "^3.6.2"
   }
 }
