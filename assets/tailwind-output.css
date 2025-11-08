@@ -466,6 +466,9 @@
     --tw-font-weight: var(--font-weight-semibold);
     font-weight: var(--font-weight-semibold);
   }
+  .text-\(--size-24\) {
+    color: var(--size-24);
+  }
   .text-dark {
     color: var(--color-dark);
   }
