@@ -31,6 +31,7 @@
     --size-16: 16px;
     --size-24: 24px;
     --size-30: 30px;
+    --size-48: 48px;
     --size-64: 64px;
     --size-68: 68px;
     --size-88: 88px;
@@ -311,8 +312,8 @@
   .aspect-square {
     aspect-ratio: 1 / 1;
   }
-  .h-12 {
-    height: calc(var(--spacing) * 12);
+  .h-\(--size-48\) {
+    height: var(--size-48);
   }
   .h-68 {
     height: calc(var(--spacing) * 68);
@@ -346,9 +347,6 @@
   }
   .max-w-\(--size-568\) {
     max-width: var(--size-568);
-  }
-  .max-w-\[568px\] {
-    max-width: 568px;
   }
   .max-w-full {
     max-width: 100%;
@@ -440,9 +438,6 @@
   .px-4 {
     padding-inline: calc(var(--spacing) * 4);
   }
-  .px-\[15px\] {
-    padding-inline: 15px;
-  }
   .py-1 {
     padding-block: calc(var(--spacing) * 1);
   }
@@ -456,16 +451,9 @@
     font-size: var(--text-sm);
     line-height: var(--tw-leading, var(--text-sm--line-height));
   }
-  .text-\[24px\] {
-    font-size: 24px;
-  }
   .leading-\(--line-sm\) {
     --tw-leading: var(--line-sm);
     line-height: var(--line-sm);
-  }
-  .leading-\[1\.3\] {
-    --tw-leading: 1.3;
-    line-height: 1.3;
   }
   .leading-normal {
     --tw-leading: var(--leading-normal);
@@ -589,17 +577,6 @@
       left: var(--size-130);
     }
   }
-  .md\:left-\[130px\] {
-    @media (width >= 48rem) {
-      left: 130px;
-    }
-  }
-  .md\:size-612 {
-    @media (width >= 48rem) {
-      width: var(--size-612);
-      height: var(--size-612);
-    }
-  }
   .md\:h-\[536px\] {
     @media (width >= 48rem) {
       height: 536px;
@@ -615,36 +592,15 @@
       max-width: var(--size-612);
     }
   }
-  .md\:max-w-612 {
-    @media (width >= 48rem) {
-      max-width: calc(var(--spacing) * 612);
-    }
-  }
-  .md\:max-w-\[612px\] {
-    @media (width >= 48rem) {
-      max-width: 612px;
-    }
-  }
   .md\:px-0 {
     @media (width >= 48rem) {
       padding-inline: calc(var(--spacing) * 0);
-    }
-  }
-  .md\:text-\[30px\] {
-    @media (width >= 48rem) {
-      font-size: 30px;
     }
   }
   .md\:leading-\(--line-xs\) {
     @media (width >= 48rem) {
       --tw-leading: var(--line-xs);
       line-height: var(--line-xs);
-    }
-  }
-  .md\:leading-\[1\.2\] {
-    @media (width >= 48rem) {
-      --tw-leading: 1.2;
-      line-height: 1.2;
     }
   }
   .md\:text-\(--size-30\) {
@@ -662,11 +618,6 @@
       width: var(--size-88);
     }
   }
-  .xl\:w-\[88px\] {
-    @media (width >= 80rem) {
-      width: 88px;
-    }
-  }
   .xl\:w-full {
     @media (width >= 80rem) {
       width: 100%;
@@ -675,11 +626,6 @@
   .xl\:max-w-\(--size-650\) {
     @media (width >= 80rem) {
       max-width: var(--size-650);
-    }
-  }
-  .xl\:max-w-\[650px\] {
-    @media (width >= 80rem) {
-      max-width: 650px;
     }
   }
   .xl\:flex-col {
