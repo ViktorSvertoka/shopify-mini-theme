@@ -627,6 +627,11 @@
       line-height: 1.2;
     }
   }
+  .md\:text-\(--size-30\) {
+    @media (width >= 48rem) {
+      color: var(--size-30);
+    }
+  }
   .xl\:mx-0 {
     @media (width >= 80rem) {
       margin-inline: calc(var(--spacing) * 0);
