@@ -589,6 +589,11 @@
       width: 536px;
     }
   }
+  .md\:max-w-\(--size-612\) {
+    @media (width >= 48rem) {
+      max-width: var(--size-612);
+    }
+  }
   .md\:max-w-612 {
     @media (width >= 48rem) {
       max-width: calc(var(--spacing) * 612);
