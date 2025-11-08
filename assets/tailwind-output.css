@@ -865,17 +865,17 @@
   --color-stroke: #2b2b2b;
   --color-old-price: #ff9999;
 }
-.banner-product.dark {
+#bannerProductSection.dark {
   background-color: var(--color-white);
   color: var(--color-dark);
 }
-.banner-product.dark .text-dark {
+#bannerProductSection.dark .text-dark {
   color: var(--color-dark);
 }
-.banner-product.dark .bg-white {
+#bannerProductSection.dark .bg-white {
   background-color: var(--color-white);
 }
-.banner-product.dark .border-stroke {
+#bannerProductSection.dark .border-stroke {
   border-color: var(--color-stroke);
 }
 @property --tw-rotate-x {

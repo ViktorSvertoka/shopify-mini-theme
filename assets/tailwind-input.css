@@ -314,19 +314,19 @@
 }
 
 /* Додатково — щоб усі текстові кольори автоматично адаптувались */
-.banner-product.dark {
+#bannerProductSection.dark {
   background-color: var(--color-white);
   color: var(--color-dark);
 }
 
-.banner-product.dark .text-dark {
+#bannerProductSection.dark .text-dark {
   color: var(--color-dark);
 }
 
-.banner-product.dark .bg-white {
+#bannerProductSection.dark .bg-white {
   background-color: var(--color-white);
 }
 
-.banner-product.dark .border-stroke {
+#bannerProductSection.dark .border-stroke {
   border-color: var(--color-stroke);
 }
