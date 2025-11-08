@@ -250,6 +250,22 @@
   .m-0 {
     margin: calc(var(--spacing) * 0);
   }
+  .container {
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+    @media (width >= 48rem) {
+      padding-inline: 2rem;
+    }
+    @media (width >= 64rem) {
+      padding-inline: 4rem;
+    }
+    @media (width >= 80rem) {
+      padding-inline: 9rem;
+    }
+    @media (width >= 96rem) {
+      padding-inline: 12rem;
+    }
+  }
   .mx-auto {
     margin-inline: auto;
   }

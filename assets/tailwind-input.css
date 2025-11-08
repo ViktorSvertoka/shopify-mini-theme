@@ -1,16 +1,22 @@
 @import 'tailwindcss';
 
-@utility container {}
-margin-inline: auto; padding-inline: 1.5rem;
-@variant md {
-padding-inline: 2rem;
-@variant 1g {
-padding-inline: 4rem;
-Unknown at
-@variant x1 {
-padding-inline: grem;
-@variant 2x1 (
-padding-inline: 12rem;
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+
+  @variant md {
+    padding-inline: 2rem;
+  }
+  @variant lg {
+    padding-inline: 4rem;
+  }
+  @variant xl {
+    padding-inline: 9rem;
+  }
+  @variant 2xl {
+    padding-inline: 12rem;
+  }
+}
 
 @theme {
   /* Colors */
