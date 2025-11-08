@@ -21,8 +21,12 @@
       class='absolute top-0 right-0 p-2 rounded-base border border-stroke bg-white text-dark transition cursor-pointer'
       aria-label='Toggle theme'
     >
-      <span class='block dark:hidden'>🌙</span>
-      <span class='hidden dark:block'>☀️</span>
+      <span class='block dark:hidden'>
+        {{- 'icon-close.svg' | inline_asset_content -}}
+      </span>
+      <span class='hidden dark:block'>
+        {{- 'icon-close.svg' | inline_asset_content -}}
+      </span>
     </button>
 
     {% render 'banner-product-gallery', banner_product: banner_product %}
