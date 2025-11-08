@@ -580,6 +580,10 @@
     --tw-duration: 300ms;
     transition-duration: 300ms;
   }
+  .duration-500 {
+    --tw-duration: 500ms;
+    transition-duration: 500ms;
+  }
   .hover\:scale-105 {
     &:hover {
       @media (hover: hover) {
