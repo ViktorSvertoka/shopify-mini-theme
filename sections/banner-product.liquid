@@ -1,0 +1,63 @@
+<script src='{{ 'banner-product.js' | asset_url }}' defer></script>
+<script src='{{ 'banner-toggle.js' | asset_url }}' defer></script>
+
+{%- liquid
+  assign banner_product = null
+
+  if section.settings.product != blank
+    assign banner_product = all_products[section.settings.product]
+  endif
+-%}
+
+{%- if banner_product == null or banner_product == blank -%}
+  <div class='text-center py-8'>Product not found or not selected.</div>
+{%- else -%}
+  <div
+    id='bannerProductSection'
+    class='transition-colors duration-500 relative flex items-start flex-col gap-6 xl:flex-row xl:w-full mx-auto xl:justify-center pt-30 pb-30'
+  >
+    <button
+      id='themeToggle'
+      class='absolute top-10 right-54 p-2 bg-white text-dark transition cursor-pointer'
+      aria-label='Toggle theme'
+    >
+      <span class='block dark:hidden'>
+        <img
+          src='{{ 'icon-sun.svg' | asset_url }}'
+          alt='Sun icon'
+          width='30'
+          height='30'
+        >
+      </span>
+      <span class='hidden dark:block'>
+        <img
+          src='{{ 'icon-moon.svg' | asset_url }}'
+          alt='Moon icon'
+          width='30'
+          height='30'
+        >
+      </span>
+    </button>
+
+    {% render 'banner-product-gallery', banner_product: banner_product %}
+    {% render 'banner-product-content', banner_product: banner_product %}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Banner Product",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Select Product"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner Product Section"
+    }
+  ]
+}
+{% endschema %}
