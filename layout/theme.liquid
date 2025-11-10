@@ -434,5 +434,7 @@
     </script>
 
     {{ 'test.js' | asset_url | script_tag }}
+
+    <script src='{{ 'test-defer.js' | asset_url }}' defer></script>
   </body>
 </html>
