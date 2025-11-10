@@ -149,6 +149,10 @@
   }
 }
 
+.collection-carousel__button--prev .collection-carousel__icon {
+  transform: rotate(180deg);
+}
+
 .collection-carousel__icon {
   width: 16px;
   height: 16px;
