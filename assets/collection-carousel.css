@@ -187,7 +187,6 @@
   pointer-events: none;
 }
 
-/* Fix: each slide should have its own width */
 .collection-carousel__item.swiper-slide {
   width: auto;
 }
