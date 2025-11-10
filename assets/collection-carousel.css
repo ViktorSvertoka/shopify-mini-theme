@@ -186,3 +186,26 @@
   opacity: 0;
   pointer-events: none;
 }
+
+/* Fix: each slide should have its own width */
+.collection-carousel__item.swiper-slide {
+  width: auto;
+}
+
+@media (max-width: 767px) {
+  .collection-carousel__item.swiper-slide {
+    width: 80%;
+  }
+}
+
+@media (min-width: 768px) {
+  .collection-carousel__item.swiper-slide {
+    width: 294px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .collection-carousel__item.swiper-slide {
+    width: 312px;
+  }
+}
