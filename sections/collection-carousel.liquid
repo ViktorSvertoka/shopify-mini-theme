@@ -7,6 +7,7 @@
   data-recommendations
   data-limit='{{ section.settings.products_limit }}'
   data-intent='{{ section.settings.intent }}'
+  data-collection='{{ section.settings.collection | default: "all" }}'
 >
   <div class='collection-carousel__container container'>
     <h2 class='collection-carousel__title'>
@@ -24,7 +25,7 @@
       type='button'
       aria-label='Previous slide'
     >
-      <svg class='collection-carousel__icon'>
+      <svg class='collection-carousel__icon' style='transform: rotate(180deg);'>
         <use href="{{ 'icon-arrow.svg' | asset_url }}"></use>
       </svg>
     </button>
@@ -60,6 +61,12 @@
         { "value": "related", "label": "Related products" },
         { "value": "complementary", "label": "Complementary products" }
       ]
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Fallback collection (used on home page)",
+      "info": "This collection will be shown if no product recommendations are available (e.g., on the home page)."
     },
     {
       "type": "range",
