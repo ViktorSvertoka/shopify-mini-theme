@@ -2,33 +2,51 @@ const initCollectionCarousel = async () => {
   const section = document.querySelector('[data-recommendations]');
   if (!section) return;
 
+  const list = section.querySelector('.collection-carousel__list');
+  const swiper = section.querySelector('.collection-carousel__swiper');
+
+  const limit = section.dataset.limit || 8;
+  const intent = section.dataset.intent || 'related';
+  const collectionHandle = section.dataset.collection || 'all';
+
   const productMeta = document.querySelector('[data-product-id]');
   const productId = productMeta
     ? productMeta.dataset.productId
     : window.meta?.product?.id;
 
-  if (!productId) {
-    console.warn('[Carousel] No product ID found.');
-    return;
+  if (productId) {
+    const url = `/recommendations/products.json?product_id=${productId}&limit=${limit}&intent=${intent}`;
+
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+
+      if (data.products?.length) {
+        renderProducts(section, data.products);
+        initSwiper(section);
+        return;
+      } else {
+        console.warn('[Carousel] No recommendations found, using fallback.');
+      }
+    } catch (error) {
+      console.error('[Carousel] Failed to load recommendations:', error);
+    }
   }
 
-  const limit = section.dataset.limit || 8;
-  const intent = section.dataset.intent || 'related';
-  const url = `/recommendations/products.json?product_id=${productId}&limit=${limit}&intent=${intent}`;
-
   try {
-    const res = await fetch(url);
+    const fallbackUrl = `/collections/${collectionHandle}/products.json?limit=${limit}`;
+    const res = await fetch(fallbackUrl);
     const data = await res.json();
 
-    if (!data.products?.length) {
+    if (data.products?.length) {
+      renderProducts(section, data.products);
+      initSwiper(section);
+    } else {
       section.style.display = 'none';
-      return;
     }
-
-    renderProducts(section, data.products);
-    initSwiper(section);
   } catch (error) {
-    console.error('[Carousel] Failed to load recommendations:', error);
+    console.error('[Carousel] Fallback load error:', error);
+    section.style.display = 'none';
   }
 };
 
