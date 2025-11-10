@@ -433,7 +433,7 @@
       console.log('JS test loaded - inline');
     </script>
 
-    {{ 'test.js' | asset_url | script_tag }}
+    {{ 'test-liquid.js' | asset_url | script_tag }}
 
     <script src='{{ 'test-defer.js' | asset_url }}' defer></script>
 
