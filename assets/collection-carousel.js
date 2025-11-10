@@ -17,6 +17,7 @@ const initCollectionCarousel = () => {
     slidesPerView: 'auto',
     spaceBetween: 24,
     centeredSlides: false,
+    loop: true,
 
     // Навігація
     navigation: {
