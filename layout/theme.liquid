@@ -436,5 +436,7 @@
     {{ 'test.js' | asset_url | script_tag }}
 
     <script src='{{ 'test-defer.js' | asset_url }}' defer></script>
+
+    <script src='{{ 'test-async.js' | asset_url }}' async></script>
   </body>
 </html>
