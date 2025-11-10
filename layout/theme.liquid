@@ -358,6 +358,12 @@
       {{ content_for_layout }}
     </main>
 
+    {% if template == 'index' %}
+      <div class='page-width' style='margin: 40px auto;'>
+        {% render 'banner-product', handle: 'nike-air-max' %}
+      </div>
+    {% endif %}
+
     {% sections 'footer-group' %}
 
     <ul hidden>
@@ -433,7 +439,7 @@
       console.log('JS test loaded - inline');
     </script>
 
-    {{ 'test-liquid.js' | asset_url }}
+    {{ 'test-liquid.js' | asset_url | script_tag }}
 
     <script src='{{ 'test-defer.js' | asset_url }}' defer></script>
 
