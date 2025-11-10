@@ -1,12 +1,4 @@
-const initCollectionCarousel = () => {
-  if (typeof Swiper === 'undefined') {
-    console.warn('Swiper library not loaded');
-    return;
-  }
-
-  const container = document.querySelector('.collection-carousel__swiper');
-  if (!container) return;
-
+if (typeof Swiper !== 'undefined') {
   const collectionCarouselConfig = {
     direction: 'horizontal',
     speed: 600,
@@ -28,9 +20,23 @@ const initCollectionCarousel = () => {
     watchSlidesProgress: true,
   };
 
-  new Swiper(container, collectionCarouselConfig);
-};
+  const initCollectionCarousel = () => {
+    const container = document.querySelector('.collection-carousel__swiper');
+    if (!container) return;
 
-['DOMContentLoaded', 'shopify:section:load'].forEach(event =>
-  document.addEventListener(event, initCollectionCarousel)
-);
+    new Swiper(container, {
+      modules: [Swiper.Navigation],
+      ...collectionCarouselConfig,
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCollectionCarousel);
+  } else {
+    initCollectionCarousel();
+  }
+} else {
+  console.warn(
+    'Swiper library not loaded — please include Swiper JS globally.'
+  );
+}
