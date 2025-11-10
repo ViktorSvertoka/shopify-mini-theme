@@ -22,6 +22,11 @@ const initCollectionCarousel = () => {
       prevEl: '.collection-carousel__button--prev',
     },
 
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+
     breakpoints: {
       320: { slidesPerView: 1.1, spaceBetween: 16 },
       768: { slidesPerView: 2.5, spaceBetween: 16 },
