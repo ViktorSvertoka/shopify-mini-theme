@@ -104,11 +104,21 @@
       "type": "product-inquiry-form",
       "name": "Product Inquiry Form",
       "settings": {}
+    },
+    "collection_carousel_eXGtJC": {
+      "type": "collection-carousel",
+      "name": "Recommendations Carousel",
+      "settings": {
+        "heading": "You may also like",
+        "intent": "related",
+        "products_limit": 12
+      }
     }
   },
   "order": [
     "main",
     "related-products",
-    "product_inquiry_form_PYJbVd"
+    "product_inquiry_form_PYJbVd",
+    "collection_carousel_eXGtJC"
   ]
 }

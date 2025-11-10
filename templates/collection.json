@@ -46,11 +46,21 @@
         "limit": 3,
         "button_label": "Show all designers →"
       }
+    },
+    "collection_carousel_VreWyf": {
+      "type": "collection-carousel",
+      "name": "Recommendations Carousel",
+      "settings": {
+        "heading": "You may also like",
+        "intent": "related",
+        "products_limit": 5
+      }
     }
   },
   "order": [
     "banner",
     "product-grid",
-    "designer_cards_a6tBky"
+    "designer_cards_a6tBky",
+    "collection_carousel_VreWyf"
   ]
 }
