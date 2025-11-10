@@ -49,13 +49,6 @@
         "show_text_below": false
       }
     },
-    "banner_product_EcYifF": {
-      "type": "banner-product",
-      "name": "Banner Product Section",
-      "settings": {
-        "product": "nike-air-max"
-      }
-    },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
@@ -157,7 +150,6 @@
   },
   "order": [
     "image_banner",
-    "banner_product_EcYifF",
     "featured_collection",
     "promo_banners_c9VXHW",
     "featured_products_KYFVRy",
