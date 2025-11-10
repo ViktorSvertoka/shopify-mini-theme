@@ -154,13 +154,13 @@
         "button_label": "Show all designers →"
       }
     },
-    "collection_carousel_j9nbUq": {
+    "collection_carousel_K4jQFE": {
       "type": "collection-carousel",
       "name": "Collection Carousel",
       "settings": {
         "heading": "Collection Carousel",
-        "collection": "collection-carousel",
-        "products_limit": 3
+        "collection": "our-designers",
+        "products_limit": 5
       }
     }
   },
@@ -171,6 +171,6 @@
     "promo_banners_c9VXHW",
     "featured_products_KYFVRy",
     "designer_cards_EQTcTq",
-    "collection_carousel_j9nbUq"
+    "collection_carousel_K4jQFE"
   ]
 }
