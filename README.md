@@ -50,3 +50,46 @@ Shopify автоматично збирає всі такі скрипти у і
 ![Banner Product](./screenshot-01.png)
 
 ![Banner Product](./screenshot-02.png)
+
+# [ДЗ] Shopify: Частина 2. Кастомний компонент — “Карусель рекомендацій”
+
+## Product Recommendations Carousel
+
+### Опис
+
+**Product Recommendations Carousel** — це кастомний JavaScript-компонент для
+теми Shopify, який автоматично підтягує **рекомендовані товари** через **Shopify
+Search & Discovery API** і відображає їх у форматі інтерактивної каруселі.  
+Компонент побудований на базі **Swiper.js** і повністю адаптивний, швидкий та
+сумісний з будь-якою сторінкою продукту.
+
+### Функціональність
+
+- **Динамічні рекомендації** — товари підтягуються автоматично відповідно до
+  поточного продукту через `/recommendations/products.json`.
+- **Карусель із плавною анімацією** — реалізована за допомогою Swiper.js
+  (підтримує autoplay, keyboard navigation, breakpoints).
+- **Клікабельні картки товарів** — кожен елемент веде на сторінку свого
+  продукту.
+- **Швидке завантаження** — підключення через `defer` і ініціалізація після
+  DOM-завантаження.
+- **Fallback-логіка** — якщо секцію вставлено на головну сторінку або іншу
+  сторінку без `product_id`, підтягуються товари з обраної fallback-колекції.
+- **Відповідає макету** — стилі виконані згідно з дизайн-референсом із тестового
+  завдання.
+
+### Технології
+
+- Shopify Liquid
+
+- Shopify Search & Discovery API
+
+- JavaScript (ES6)
+
+- Swiper.js
+
+- CSS3
+
+![Product Recommendations Carousel](./screenshot-03.png)
+
+![Product Recommendations Carousel](./screenshot-04.png)
