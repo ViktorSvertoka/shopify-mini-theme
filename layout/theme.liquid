@@ -432,5 +432,7 @@
       );
       console.log('JS test loaded - inline');
     </script>
+
+    {{ 'test.js' | asset_url | script_tag }}
   </body>
 </html>
