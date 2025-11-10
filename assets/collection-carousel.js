@@ -1,5 +1,3 @@
-// collection-carousel.js
-
 const initCollectionCarousel = () => {
   if (typeof Swiper === 'undefined') {
     console.warn(
@@ -19,13 +17,11 @@ const initCollectionCarousel = () => {
     centeredSlides: false,
     loop: true,
 
-    // Навігація
     navigation: {
       nextEl: '.collection-carousel__button--next',
       prevEl: '.collection-carousel__button--prev',
     },
 
-    // Breakpoints
     breakpoints: {
       320: { slidesPerView: 1.1, spaceBetween: 16 },
       768: { slidesPerView: 2.5, spaceBetween: 16 },
