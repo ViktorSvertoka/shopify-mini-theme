@@ -109,7 +109,7 @@
       "type": "collection-carousel",
       "name": "Recommendations Carousel",
       "settings": {
-        "heading": "You may also like",
+        "heading": "Product Recommendations Carousel",
         "intent": "related",
         "collection": "",
         "products_limit": 12
@@ -118,8 +118,8 @@
   },
   "order": [
     "main",
-    "related-products",
+    "collection_carousel_eXGtJC",
     "product_inquiry_form_PYJbVd",
-    "collection_carousel_eXGtJC"
+    "related-products"
   ]
 }
