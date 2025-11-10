@@ -7,7 +7,10 @@
   data-recommendations
   data-limit='{{ section.settings.products_limit }}'
   data-intent='{{ section.settings.intent }}'
-  data-collection='{{ section.settings.collection | default: "all" }}'
+  data-collection='{{ section.settings.collection.handle | default: "all" }}'
+  {% if request.page_type == 'product' and product %}
+    data-product-id='{{ product.id }}'
+  {% endif %}
 >
   <div class='collection-carousel__container container'>
     <h2 class='collection-carousel__title'>
@@ -65,8 +68,7 @@
     {
       "type": "collection",
       "id": "collection",
-      "label": "Fallback collection (used on home page)",
-      "info": "This collection will be shown if no product recommendations are available (e.g., on the home page)."
+      "label": "Fallback collection (used on non-product pages)"
     },
     {
       "type": "range",
@@ -78,11 +80,6 @@
       "default": 5
     }
   ],
-  "presets": [
-    {
-      "name": "Recommendations Carousel",
-      "category": "Product"
-    }
-  ]
+  "presets": [{ "name": "Recommendations Carousel", "category": "Product" }]
 }
 {% endschema %}
