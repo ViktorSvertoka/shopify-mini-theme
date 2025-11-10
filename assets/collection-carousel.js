@@ -1,6 +1,5 @@
 // collection-carousel.js
 
-// Ініціалізація каруселі після завантаження сторінки або секції
 const initCollectionCarousel = () => {
   if (typeof Swiper === 'undefined') {
     console.warn(
@@ -12,20 +11,20 @@ const initCollectionCarousel = () => {
   const container = document.querySelector('.collection-carousel__swiper');
   if (!container) return;
 
-  // Конфігурація Swiper
-  const collectionCarouselConfig = {
+  new Swiper(container, {
     direction: 'horizontal',
     speed: 600,
     slidesPerView: 'auto',
     spaceBetween: 24,
     centeredSlides: false,
 
-    // Кнопки навігації
+    // Навігація
     navigation: {
       nextEl: '.collection-carousel__button--next',
       prevEl: '.collection-carousel__button--prev',
     },
 
+    // Breakpoints
     breakpoints: {
       320: { slidesPerView: 1.1, spaceBetween: 16 },
       768: { slidesPerView: 2.5, spaceBetween: 16 },
@@ -36,13 +35,9 @@ const initCollectionCarousel = () => {
     observer: true,
     observeParents: true,
     watchSlidesProgress: true,
-  };
-
-  // Ініціалізація слайдера
-  new Swiper(container, collectionCarouselConfig);
+  });
 };
 
-// Підключення для стандартної сторінки і Theme Editor
 ['DOMContentLoaded', 'shopify:section:load'].forEach(event =>
   document.addEventListener(event, initCollectionCarousel)
 );
