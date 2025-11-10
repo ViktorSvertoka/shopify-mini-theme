@@ -6,10 +6,8 @@ const initCollectionCarousel = async () => {
   const intent = section.dataset.intent || 'related';
   const collectionHandle = section.dataset.collection || 'all';
 
-  // 1) product_id (є тільки на сторінці продукту)
   const productId = section.dataset.productId || window.meta?.product?.id;
 
-  // Спроба рекомендацій
   if (productId) {
     try {
       const url = `/recommendations/products.json?product_id=${productId}&limit=${limit}&intent=${intent}`;
@@ -29,7 +27,6 @@ const initCollectionCarousel = async () => {
     }
   }
 
-  // 2) Fallback із колекції (home/інші сторінки)
   try {
     const url = `/collections/${encodeURIComponent(collectionHandle)}/products.json?limit=${limit}`;
     const res = await fetch(url, { credentials: 'same-origin' });
@@ -54,7 +51,6 @@ function renderProducts(section, products) {
   list.innerHTML = '';
 
   products.forEach(p => {
-    // узгодження полів для двох різних JSON-схем
     const href = p.url || (p.handle ? `/products/${p.handle}` : '#');
 
     const imgSrc =
