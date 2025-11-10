@@ -454,18 +454,6 @@
       "product_count_simple": "{{ count }} products"
     },
     "product": {
-      "choose_options": "Choose options",
-      "choose_product_options": "Choose options for {{ product_name }}",
-      "description": "Description",
-      "inventory_in_stock": "In stock",
-      "inventory_in_stock_show_count": "{{ quantity }} in stock",
-      "inventory_low_stock": "Low stock",
-      "inventory_low_stock_show_count": "Low stock: {{ quantity }} left",
-      "inventory_out_of_stock": "Out of stock",
-      "inventory_out_of_stock_continue_selling": "In stock",
-      "sku": "SKU",
-      "on_sale": "Sale",
-      "product_variants": "Product variants",
       "variant": "Variant",
       "quantity": {
         "label": "Quantity"
@@ -487,13 +475,6 @@
         "gift_wrap": "Gift Wrapping",
         "gift_wrap_yes": "Yes, please",
         "gift_wrap_no": "No, thanks"
-      },
-      "banner": {
-        "not_found": "Product not found",
-        "no_colors": "This product does not have a color option.",
-        "select_color": "Choose a color",
-        "not_available": "Not available",
-        "available_with_count": "Available: %{count}"
       }
     }
   }
