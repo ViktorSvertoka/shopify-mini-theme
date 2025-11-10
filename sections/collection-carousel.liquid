@@ -1,0 +1,85 @@
+{{ 'collection-carousel.css' | asset_url | stylesheet_tag }}
+<script src='{{ 'collection-carousel.js' | asset_url }}' defer></script>
+
+<section
+  class='collection-carousel page-width'
+  id='CollectionCarousel'
+  data-recommendations
+  data-limit='{{ section.settings.products_limit }}'
+  data-intent='{{ section.settings.intent }}'
+  data-collection='{{ section.settings.collection.handle | default: "all" }}'
+  {% if request.page_type == 'product' and product %}
+    data-product-id='{{ product.id }}'
+  {% endif %}
+>
+  <div class='collection-carousel__container container'>
+    <h2 class='collection-carousel__title'>
+      {{ section.settings.heading | default: 'You may also like' }}
+    </h2>
+  </div>
+
+  <div class='collection-carousel__wrapper'>
+    <div class='collection-carousel__swiper swiper' hidden>
+      <ul class='collection-carousel__list swiper-wrapper'></ul>
+    </div>
+
+    <button
+      class='collection-carousel__button collection-carousel__button--prev'
+      type='button'
+      aria-label='Previous slide'
+    >
+      <svg class='collection-carousel__icon' style='transform: rotate(180deg);'>
+        <use href="{{ 'icon-arrow.svg' | asset_url }}"></use>
+      </svg>
+    </button>
+
+    <button
+      class='collection-carousel__button collection-carousel__button--next'
+      type='button'
+      aria-label='Next slide'
+    >
+      <svg class='collection-carousel__icon'>
+        <use href="{{ 'icon-arrow.svg' | asset_url }}"></use>
+      </svg>
+    </button>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Recommendations Carousel",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "You may also like"
+    },
+    {
+      "type": "select",
+      "id": "intent",
+      "label": "Recommendation intent",
+      "default": "related",
+      "options": [
+        { "value": "related", "label": "Related products" },
+        { "value": "complementary", "label": "Complementary products" }
+      ]
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Fallback collection (used on non-product pages)"
+    },
+    {
+      "type": "range",
+      "id": "products_limit",
+      "label": "Products to show",
+      "min": 3,
+      "max": 12,
+      "step": 1,
+      "default": 8
+    }
+  ],
+  "presets": [{ "name": "Recommendations Carousel", "category": "Product" }]
+}
+{% endschema %}
