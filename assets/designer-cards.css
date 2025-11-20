@@ -223,15 +223,17 @@
 }
 
 /* ========== 1280px — Desktop ========== */
+/* Desktop ≥ 1280px — full width */
 @media (min-width: 1280px) {
   .designer-cards__container {
-    width: 1200px;
-    padding: 0;
+    width: 100%;
+    max-width: 1600px; /* Можно менять под макет */
+    padding: 0 32px; /* боковые отступы */
     margin: 0 auto;
   }
 
   .designer-cards__grid {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(3, 1fr); /* 3 карточки равномерно */
+    gap: 32px;
   }
 }
