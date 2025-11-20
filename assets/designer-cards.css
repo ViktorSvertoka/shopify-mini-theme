@@ -179,61 +179,43 @@
   transform: translateY(-2px);
 }
 
-/* ========== 320px — Mobile ========== */
-@media (max-width: 480px) {
-  .designer-cards__container {
-    width: 100%;
-    padding: 0 16px;
-  }
-
+/* ========== Mobile: до 768px → 1 колонка ========== */
+@media (max-width: 767px) {
   .designer-cards__grid {
     grid-template-columns: 1fr !important;
     gap: 20px;
   }
 
-  .designer-card {
-    padding: 20px;
-  }
-
-  .designer-card__photo {
-    width: 110px;
-    height: 110px;
-  }
-
-  .designer-card__name {
-    font-size: 18px;
+  .designer-cards__container {
+    width: 100%;
+    padding: 0 16px;
   }
 }
 
-/* ========== 768px — Tablet ========== */
-@media (min-width: 481px) and (max-width: 1279px) {
-  .designer-cards__container {
-    width: 100%;
-    padding: 0 24px;
-  }
-
+/* ========== Tablet: 768px – 1279px → 2 колонки ========== */
+@media (min-width: 768px) and (max-width: 1279px) {
   .designer-cards__grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
   }
 
-  .designer-card {
-    padding: 22px;
+  .designer-cards__container {
+    width: 100%;
+    padding: 0 24px;
   }
 }
 
-/* ========== 1280px — Desktop ========== */
-/* Desktop ≥ 1280px — full width */
+/* ========== Desktop: від 1280px → 3 колонки на всю ширину ========== */
 @media (min-width: 1280px) {
   .designer-cards__container {
     width: 100%;
-    max-width: 1600px; /* Можно менять под макет */
-    padding: 0 32px; /* боковые отступы */
+    max-width: 1600px;
+    padding: 0 32px;
     margin: 0 auto;
   }
 
   .designer-cards__grid {
-    grid-template-columns: repeat(3, 1fr); /* 3 карточки равномерно */
+    grid-template-columns: repeat(3, 1fr);
     gap: 32px;
   }
 }
