@@ -93,3 +93,46 @@
 .product-card__button:hover {
   background-color: #333;
 }
+
+/* ===== Mobile (<768px): 1 product per row ===== */
+@media (max-width: 767px) {
+  .featured-products__grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+
+  .product-card {
+    padding: 12px;
+  }
+
+  .product-card__image {
+    max-height: 220px;
+    object-fit: contain;
+  }
+}
+
+/* ===== Tablet (768px–1279px): 2 per row ===== */
+@media (min-width: 768px) and (max-width: 1279px) {
+  .featured-products__grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 24px;
+  }
+
+  .product-card__image {
+    max-height: 260px;
+    object-fit: contain;
+  }
+}
+
+/* ===== Desktop (1280px+): 3 per row ===== */
+@media (min-width: 1280px) {
+  .featured-products__grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 32px;
+  }
+
+  .product-card__image {
+    max-height: 300px;
+    object-fit: contain;
+  }
+}
