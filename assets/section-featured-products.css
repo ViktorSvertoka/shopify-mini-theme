@@ -38,7 +38,6 @@
   color: #777;
 }
 
-/* --- Product Card --- */
 .product-card {
   border: 1px solid #eee;
   border-radius: 12px;
@@ -94,7 +93,6 @@
   background-color: #333;
 }
 
-/* ===== Mobile (<768px): 1 product per row ===== */
 @media (max-width: 767px) {
   .featured-products__grid {
     grid-template-columns: 1fr !important;
@@ -111,7 +109,6 @@
   }
 }
 
-/* ===== Tablet (768px–1279px): 2 per row ===== */
 @media (min-width: 768px) and (max-width: 1279px) {
   .featured-products__grid {
     grid-template-columns: repeat(2, 1fr) !important;
@@ -124,7 +121,6 @@
   }
 }
 
-/* ===== Desktop (1280px+): 3 per row ===== */
 @media (min-width: 1280px) {
   .featured-products__grid {
     grid-template-columns: repeat(3, 1fr) !important;
@@ -137,19 +133,17 @@
   }
 }
 
-/* --- Product Image FIX --- */
 .product-card__image {
   width: 100%;
-  height: 320px; /* регулируемая высота */
-  object-fit: contain; /* чтобы кроссы красиво умещались */
+  height: 320px;
+  object-fit: contain;
   background-color: #f8f8f8;
-  padding: 20px; /* воздух вокруг товара */
+  padding: 20px;
   border-radius: 12px;
   display: block;
   margin: 0 auto 16px;
 }
 
-/* Mobile: уменьшить высоту */
 @media (max-width: 767px) {
   .product-card__image {
     height: 240px;
@@ -157,14 +151,12 @@
   }
 }
 
-/* Tablet */
 @media (min-width: 768px) and (max-width: 1279px) {
   .product-card__image {
     height: 280px;
   }
 }
 
-/* Desktop */
 @media (min-width: 1280px) {
   .product-card__image {
     height: 300px;
