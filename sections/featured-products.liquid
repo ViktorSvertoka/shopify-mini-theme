@@ -1,5 +1,5 @@
 {{ 'section-featured-products.css' | asset_url | stylesheet_tag }}
-{{ 'featured-products.js' | asset_url | script_tag }}
+<script src='{{ 'featured-products.js' | asset_url }}' defer></script>
 
 <section
   class='featured-products'
