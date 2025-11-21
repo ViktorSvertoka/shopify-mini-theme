@@ -2,10 +2,6 @@
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 
-{%- unless section.settings.quick_add == 'none' -%}
-  {{ 'quick-add.css' | asset_url | stylesheet_tag }}
-{%- endunless -%}
-
 {%- if section.settings.quick_add == 'standard' -%}
   <script src='{{ 'quick-add.js' | asset_url }}' defer='defer'></script>
   <script src='{{ 'product-form.js' | asset_url }}' defer='defer'></script>
