@@ -4,12 +4,12 @@
       {%- if item.image -%}
         <div class='cart-notification-product__image global-media-settings'>
           {{
-            color_image
-            | image_url: width: 60
+            item.image
+            | image_url: width: 140
             | image_tag:
-              alt: color,
-              width: 60,
-              height: 60,
+              alt: item.image.alt,
+              width: 70,
+              height: 70,
               loading: 'lazy',
               class: 'w-full h-full object-cover block'
           }}
