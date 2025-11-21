@@ -1,5 +1,7 @@
 .featured-products {
   padding: 40px 0;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .featured-products__title {
@@ -33,9 +35,15 @@
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
-.featured-products__empty {
-  text-align: center;
-  color: #777;
+@media (max-width: 600px) {
+  .featured-products__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-card {
+    padding: 12px;
+    transform: scale(0.95);
+  }
 }
 
 .product-card {
@@ -75,6 +83,10 @@
 }
 
 .product-card__rating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
   color: #f4b400;
   margin-bottom: 12px;
 }
