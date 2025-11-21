@@ -1,0 +1,145 @@
+document.addEventListener('DOMContentLoaded', () => {
+  const gallery = document.querySelector('.js-gallery');
+  if (!gallery) return;
+
+  let allImages = [];
+  try {
+    allImages = JSON.parse(gallery.dataset.allImages || '[]');
+  } catch (e) {
+    console.error('Failed to parse images:', e);
+    return;
+  }
+
+  if (!allImages.length) {
+    console.warn('No images found');
+    return;
+  }
+
+  const mainImage = document.querySelector('.js-main');
+  const thumbsImage = document.querySelector('.js-thumbs');
+  const stockBlock = document.querySelector('.js-stock');
+  const colorButtons = document.querySelectorAll('.js-color-btn');
+  const sizeButtons = document.querySelectorAll('.js-size-btn');
+  const priceBlock = document.querySelector('.js-price');
+
+  function renderGallery(start, end) {
+    const images = allImages.slice(start, end + 1);
+    if (!images.length) return;
+
+    const first = images[0];
+
+    // MAIN IMAGE — важливо: НЕ lazy-load на першому зображенні
+    mainImage.innerHTML = `
+      <img
+        src="${first.src}"
+        srcset="${first.src} 1x, ${first.src_2x} 2x"
+        alt="${first.alt || 'Product image'}"
+        width="${first.width}"
+        height="${first.height}"
+        decoding="async"
+        class="js-main-image w-(--size-468) h-(--size-468) object-cover block md:w-(--size-536) md:h-(--size-536)"
+      />
+    `;
+
+    // THUMBNAILS — тут lazy-load
+    thumbsImage.innerHTML = images
+      .map(
+        (img, idx) => `
+      <div class="rounded-lg overflow-hidden cursor-pointer transition-transform duration-300 hover:scale-105">
+        <img
+          src="${img.src}"
+          srcset="${img.src} 1x, ${img.src_2x} 2x"
+          alt="${img.alt || 'Thumbnail'}"
+          width="${img.width}"
+          height="${img.height}"
+          loading="lazy"
+          decoding="async"
+          class="js-thumb-image w-88 h-88 object-cover block ${
+            idx === 0 ? 'is-active' : ''
+          }"
+        />
+      </div>
+    `
+      )
+      .join('');
+
+    const mainImg = mainImage.querySelector('.js-main-image');
+    const thumbImgs = thumbsImage.querySelectorAll('.js-thumb-image');
+
+    thumbImgs.forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        mainImg.src = thumb.src;
+        mainImg.srcset = thumb.srcset;
+        mainImg.alt = thumb.alt;
+
+        thumbImgs.forEach(t => t.classList.remove('is-active'));
+        thumb.classList.add('is-active');
+      });
+    });
+  }
+
+  function updatePrice(price, compare) {
+    if (!priceBlock) return;
+    if (compare && compare !== 'null' && compare !== '₹0.00') {
+      priceBlock.innerHTML = `
+        <span class="text-dark font-semibold">${price}</span>
+        <span class="line-through text-old-price ml-2">${compare}</span>
+      `;
+    } else {
+      priceBlock.innerHTML = `<span>${price}</span>`;
+    }
+  }
+
+  if (colorButtons.length) {
+    const firstBtn = colorButtons[0];
+    renderGallery(
+      parseInt(firstBtn.dataset.start),
+      parseInt(firstBtn.dataset.end)
+    );
+    firstBtn.classList.add('is-active');
+    updatePrice(firstBtn.dataset.price, firstBtn.dataset.compare);
+
+    colorButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const start = parseInt(btn.dataset.start);
+        const end = parseInt(btn.dataset.end);
+        const qty = parseInt(btn.dataset.qty, 10) || 0;
+        const available = btn.dataset.available === 'true';
+
+        renderGallery(start, end);
+
+        if (stockBlock) {
+          if (!available || qty === 0) {
+            stockBlock.textContent =
+              stockBlock.dataset.notAvailable || 'Not available';
+          } else {
+            const template =
+              stockBlock.dataset.availableTemplate || 'Available: __COUNT__';
+            stockBlock.textContent = template.replace('__COUNT__', qty);
+          }
+        }
+
+        updatePrice(btn.dataset.price, btn.dataset.compare);
+
+        colorButtons.forEach(b => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+      });
+    });
+  } else {
+    renderGallery(0, allImages.length - 1);
+  }
+
+  if (sizeButtons.length) {
+    sizeButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        sizeButtons.forEach(b => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+
+        const addToCartBtn = document.querySelector('.js-add-to-cart');
+        if (addToCartBtn && btn.dataset.variantId) {
+          addToCartBtn.href = `/cart/add?id=${btn.dataset.variantId}&quantity=1`;
+        }
+      });
+    });
+  }
+});
