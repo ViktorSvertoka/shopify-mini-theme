@@ -1,7 +1,3 @@
-{%- comment -%}
-  1. Определяем индекс опции "Color"
-{%- endcomment -%}
-
 {%- assign color_option_index = null -%}
 {%- for option in banner_product.options_with_values -%}
   {%- assign opt_name = option.name | downcase -%}
@@ -12,69 +8,24 @@
 {%- endfor -%}
 
 {%- if color_option_index != null -%}
-  {%- comment -%}
-    2. Получаем список уникальных цветов из соответствующей опции
-  {%- endcomment -%}
-
-  {%- assign unique_colors = '' | split: ',' -%}
-
-  {%- for variant in banner_product.variants -%}
-    {%- case color_option_index -%}
-      {%- when 0 -%}
-        {%- assign color_value = variant.option1 -%}
-      {%- when 1 -%}
-        {%- assign color_value = variant.option2 -%}
-      {%- when 2 -%}
-        {%- assign color_value = variant.option3 -%}
-    {%- endcase -%}
-
-    {%- if color_value and unique_colors contains color_value == false -%}
-      {%- assign unique_colors = unique_colors | push: color_value -%}
-    {%- endif -%}
-  {%- endfor -%}
-
-  {%- comment -%}
-    3. Сколько изображений на цвет (если нет чёткого деления — ставим 1)
-  {%- endcomment -%}
-
-  {% assign images_per_color = 5 %}
-  {% assign total_images = banner_product.images | size %}
-  {% if total_images < images_per_color %}
-    {% assign images_per_color = 1 %}
-  {% endif %}
+  {%- assign unique_colors = banner_product.variants | map: 'option1' | uniq -%}
+  {%- assign images_per_color = 5 -%}
 
   <div class='flex gap-2 mb-12'>
     {%- for color in unique_colors -%}
-      {%- comment -%}
-        4. Находим вариант по цвету
-      {%- endcomment -%}
-
-      {%- assign variant = banner_product.variants
+      {%- assign color_variant = banner_product.variants
         | where: 'option1', color
         | first
       -%}
-      {%- if variant == null -%}
-        {%- assign variant = banner_product.variants
-          | where: 'option2', color
-          | first
-        -%}
-      {%- endif -%}
-      {%- if variant == null -%}
-        {%- assign variant = banner_product.variants
-          | where: 'option3', color
-          | first
-        -%}
-      {%- endif -%}
-
-      {%- if variant -%}
+      {%- if color_variant -%}
         {%- assign color_index = forloop.index0 -%}
         {%- assign start_index = color_index | times: images_per_color -%}
         {%- assign end_index = start_index
           | plus: images_per_color
           | minus: 1
         -%}
-
-        {%- assign color_image = banner_product.images[start_index]
+        {%- assign color_image_index = start_index -%}
+        {%- assign color_image = banner_product.images[color_image_index]
           | default: banner_product.featured_image
         -%}
 
@@ -83,20 +34,19 @@
           class='js-color-btn w-64 h-68 border border-stroke rounded-lg overflow-hidden bg-transparent p-0 cursor-pointer'
           data-start='{{ start_index }}'
           data-end='{{ end_index }}'
-          data-price='{{ variant.price | money }}'
-          data-compare='{{ variant.compare_at_price | money }}'
-          data-available='{{ variant.available }}'
-          data-qty='{{ variant.inventory_quantity }}'
+          data-price='{{ color_variant.price | money }}'
+          data-compare='{{ color_variant.compare_at_price | money }}'
+          data-available='{{ color_variant.available }}'
+          data-qty='{{ color_variant.inventory_quantity }}'
           data-color='{{ color }}'
         >
-          {{
-            color_image
-            | image_url: width: 120
-            | image_tag:
-              loading: 'lazy',
-              alt: color,
-              class: 'w-full h-full object-cover block'
-          }}
+          <img
+            class='w-full h-full object-cover block'
+            src='{{ color_image | image_url: width: 60 }}'
+            alt='{{ color }}'
+            width='60'
+            height='60'
+          >
         </button>
       {%- endif -%}
     {%- endfor -%}
