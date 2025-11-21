@@ -41,16 +41,12 @@
 
         {% if image != blank %}
           <div class='promo-banners__image-wrapper'>
-            {{
-              img
-              | image_url: width: 1200
-              | image_tag:
-                loading: 'lazy',
-                widths: '400,600,800,1200',
-                sizes: '(min-width: 1200px) 33vw (min-width: 768px) 50vw 100vw',
-                alt: banner_alt,
-                class: 'promo-banners__image'
-            }}
+            <img
+              src='{{ image | image_url: width: 800 }}'
+              alt='{{ block.settings.title | escape }}'
+              class='promo-banners__image'
+              loading='lazy'
+            >
           </div>
         {% endif %}
 
