@@ -77,7 +77,22 @@ function renderProducts(section, products) {
     li.innerHTML = `
       <div class='collection-carousel__card'>
         <a href='${href}' class='collection-carousel__link' aria-label='${escapeHtml(p.title || '')}'>
-          ${imgSrc ? `<img class='collection-carousel__image' src='${imgSrc}' alt='${escapeHtml(p.title || '')}' loading='lazy'>` : ''}
+          ${
+            imgSrc
+              ? `<img
+         class="collection-carousel__image"
+         src="${imgSrc}"
+         srcset="${imgSrc.replace(/\.jpg|\.png|\.webp/i, match => `_${600}${match}`)} 1x,
+                 ${imgSrc.replace(/\.jpg|\.png|\.webp/i, match => `_${1200}${match}`)} 2x"
+         alt="${escapeHtml(p.title || '')}"
+         loading="lazy"
+         decoding="async"
+         width="600"
+         height="600"
+       >`
+              : ''
+          }
+
         </a>
         <p class='collection-carousel__name'>${escapeHtml(p.title || '')}</p>
         <span class='collection-carousel__price'>${priceHtml || ''}</span>
