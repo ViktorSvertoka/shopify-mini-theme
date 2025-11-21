@@ -5,9 +5,9 @@
       {
         "src": "{{ image | image_url: width: 800 }}",
         "src_2x": "{{ image | image_url: width: 1600 }}",
-        "alt": "{{ image.alt | escape }}",
-        "width": "{{ image.width }}",
-        "height": "{{ image.height }}"
+        "alt": {{ image.alt | json }},
+        "width": {{ image.width | json }},
+        "height": {{ image.height | json }}
       }{% unless forloop.last %},{% endunless %}
     {%- endfor -%}
   {%- else -%}
@@ -24,21 +24,24 @@
 
 <div
   class='js-gallery max-w-(--size-568) w-full flex items-center flex-col-reverse gap-6 mx-auto xl:max-w-(--size-650) xl:items-start xl:flex-row xl:justify-between xl:mx-0 relative'
-  data-all-images='{{ images_json | strip_newlines }}'
 >
+  <script type='application/json' id='BannerProductImages'>
+    {{ images_json | strip_newlines }}
+  </script>
+
   <div
     class='js-thumbs m-0 w-full px-(--size-15) opacity-100 transition-opacity duration-300 flex gap-4 xl:w-(--size-88) xl:p-0 xl:flex-col xl:gap-9.5'
   ></div>
+
   <div class='js-main aspect-square m-0 rounded-lg overflow-hidden'></div>
+
   {%- if banner_product.tags contains 'Highly Rated' -%}
     <p class='inline-flex items-center justify-center gap-1.5 px-2 py-1 text-dark bg-white rounded-lg text-sm m-0 absolute top-6 left-4 z-10 md:left-(--size-130)'>
-      <img
-        src='{{ 'icon-stars.svg' | asset_url }}'
-        class='block'
-        alt='Star'
-        width='16'
-        height='16'
-      >
+      {{
+        'icon-stars.svg'
+        | asset_url
+        | image_tag: width: 16, height: 16, alt: 'Star', loading: 'lazy'
+      }}
       Highly Rated
     </p>
   {%- endif -%}
