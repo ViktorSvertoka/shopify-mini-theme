@@ -8,10 +8,6 @@
   <script src='{{ 'product-form.js' | asset_url }}' defer='defer'></script>
 {%- endunless -%}
 
-{%- if section.settings.quick_add == 'standard' -%}
-  <script src='{{ 'quick-add.js' | asset_url }}' defer='defer'></script>
-{%- endif -%}
-
 {%- if section.settings.quick_add == 'bulk' -%}
   <script src='{{ 'quantity-popover.js' | asset_url }}' defer='defer'></script>
   <script src='{{ 'price-per-item.js' | asset_url }}' defer='defer'></script>
