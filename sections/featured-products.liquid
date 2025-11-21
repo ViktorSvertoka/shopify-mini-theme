@@ -84,12 +84,14 @@
                 | asset_url
                 | image_tag:
                   alt: 'Rating',
-                  class: 'product-card__rating-icon',
-                  loading: 'lazy',
                   width: 16,
-                  height: 16
+                  height: 16,
+                  class: 'product-card__rating-icon',
+                  loading: 'lazy'
               }}
-              {{ product.metafields.reviews.rating.value | default: '4.5' }}
+              <span class='product-card__rating-value'>
+                {{ product.metafields.reviews.rating.value | default: 4.5 }}
+              </span>
             </div>
           {% endif %}
 
