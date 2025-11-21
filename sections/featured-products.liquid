@@ -79,16 +79,15 @@
 
           {% if section.settings.show_rating %}
             <div class='product-card__rating'>
-              {{
-                'icon-stars.svg'
-                | asset_url
-                | image_tag:
-                  alt: 'Rating',
-                  width: 16,
-                  height: 16,
-                  class: 'product-card__rating-icon',
-                  loading: 'lazy'
-              }}
+              <img
+                src='{{ 'icon-stars.svg' | asset_url }}'
+                alt='Star'
+                width='16'
+                height='16'
+                loading='lazy'
+                class='product-card__rating-icon'
+              >
+
               <span class='product-card__rating-value'>
                 {{ product.metafields.reviews.rating.value | default: 4.5 }}
               </span>
