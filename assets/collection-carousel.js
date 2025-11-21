@@ -7,7 +7,6 @@ const initCollectionCarousel = async () => {
   const fallbackCollection = section.dataset.collection || 'all';
   const productId = section.dataset.productId || window.meta?.product?.id;
 
-  // ---------- Load Data ----------
   let products = [];
 
   if (productId) {
@@ -23,16 +22,10 @@ const initCollectionCarousel = async () => {
     return;
   }
 
-  // ---------- Render ----------
   renderProducts(section, products);
 
-  // ---------- Init Swiper ----------
   initSwiper(section);
 };
-
-// -------------------------------------------------------
-// Load recommended products
-// -------------------------------------------------------
 
 async function loadRecommended(id, limit, intent) {
   try {
@@ -46,10 +39,6 @@ async function loadRecommended(id, limit, intent) {
   }
 }
 
-// -------------------------------------------------------
-// Load fallback collection
-// -------------------------------------------------------
-
 async function loadCollection(handle, limit) {
   try {
     const url = `/collections/${encodeURIComponent(handle)}/products.json?limit=${limit}`;
@@ -61,10 +50,6 @@ async function loadCollection(handle, limit) {
     return [];
   }
 }
-
-// -------------------------------------------------------
-// Render product cards
-// -------------------------------------------------------
 
 function renderProducts(section, products) {
   const wrapper = section.querySelector('.collection-carousel__list');
@@ -86,7 +71,6 @@ function renderProducts(section, products) {
         ? Shopify.formatMoney(priceRaw, Shopify.money_format)
         : (priceRaw / 100).toFixed(2);
 
-    // ---- Build <li> ----
     const li = document.createElement('li');
     li.className = 'collection-carousel__item swiper-slide';
 
@@ -106,12 +90,7 @@ function renderProducts(section, products) {
   swiper.hidden = false;
 }
 
-// -------------------------------------------------------
-// Generate optimized <img> with srcset
-// -------------------------------------------------------
-
 function generateImageTag(src, alt) {
-  // Shopify CDN: append width_x to URL
   const makeSize = (url, size) =>
     url.replace(/\.jpg|\.jpeg|\.png|\.webp/i, match => `_${size}x${match}`);
 
@@ -131,10 +110,6 @@ function generateImageTag(src, alt) {
     >
   `;
 }
-
-// -------------------------------------------------------
-// Swiper init
-// -------------------------------------------------------
 
 function initSwiper(section) {
   if (typeof Swiper === 'undefined') {
@@ -169,10 +144,6 @@ function initSwiper(section) {
   });
 }
 
-// -------------------------------------------------------
-// Escape text
-// -------------------------------------------------------
-
 function escapeHtml(str) {
   return String(str).replace(
     /[&<>"']/g,
@@ -183,7 +154,6 @@ function escapeHtml(str) {
   );
 }
 
-// Init on DOM + Shopify reload
 ['DOMContentLoaded', 'shopify:section:load'].forEach(ev =>
   document.addEventListener(ev, initCollectionCarousel)
 );
