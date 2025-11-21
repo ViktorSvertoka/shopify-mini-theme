@@ -49,9 +49,6 @@
       defer='defer'
     ></script>
   {% endif %}
-  {%- if request.design_mode -%}
-    <script src='{{ 'theme-editor.js' | asset_url }}' defer='defer'></script>
-  {%- endif -%}
 
   {%- assign first_3d_model = product.media
     | where: 'media_type', 'model'
