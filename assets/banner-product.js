@@ -2,16 +2,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const gallery = document.querySelector('.js-gallery');
   if (!gallery) return;
 
+  // JSON from script tag
+  const jsonEl = document.getElementById('BannerProductImages');
   let allImages = [];
+
   try {
-    allImages = JSON.parse(gallery.dataset.allImages || '[]');
+    allImages = JSON.parse(jsonEl.textContent.trim());
   } catch (e) {
-    console.error('Failed to parse images:', e);
+    console.error('Failed to parse product images JSON:', e);
     return;
   }
 
   if (!allImages.length) {
-    console.warn('No images found');
+    console.warn('No product images found.');
     return;
   }
 
@@ -22,13 +25,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const sizeButtons = document.querySelectorAll('.js-size-btn');
   const priceBlock = document.querySelector('.js-price');
 
+  // Render gallery
   function renderGallery(start, end) {
     const images = allImages.slice(start, end + 1);
     if (!images.length) return;
 
     const first = images[0];
 
-    // MAIN IMAGE — важливо: НЕ lazy-load на першому зображенні
+    // MAIN IMAGE (LCP — no lazy)
     mainImage.innerHTML = `
       <img
         src="${first.src}"
@@ -41,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
       />
     `;
 
-    // THUMBNAILS — тут lazy-load
+    // THUMBNAILS (lazy ok)
     thumbsImage.innerHTML = images
       .map(
         (img, idx) => `
@@ -54,9 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
           height="${img.height}"
           loading="lazy"
           decoding="async"
-          class="js-thumb-image w-88 h-88 object-cover block ${
-            idx === 0 ? 'is-active' : ''
-          }"
+          class="js-thumb-image w-88 h-88 object-cover block ${idx === 0 ? 'is-active' : ''}"
         />
       </div>
     `
@@ -66,6 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainImg = mainImage.querySelector('.js-main-image');
     const thumbImgs = thumbsImage.querySelectorAll('.js-thumb-image');
 
+    // THUMB CLICK
     thumbImgs.forEach(thumb => {
       thumb.addEventListener('click', () => {
         mainImg.src = thumb.src;
@@ -78,8 +81,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // PRICE update
   function updatePrice(price, compare) {
     if (!priceBlock) return;
+
     if (compare && compare !== 'null' && compare !== '₹0.00') {
       priceBlock.innerHTML = `
         <span class="text-dark font-semibold">${price}</span>
@@ -90,12 +95,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // COLOR buttons
   if (colorButtons.length) {
     const firstBtn = colorButtons[0];
+
     renderGallery(
       parseInt(firstBtn.dataset.start),
       parseInt(firstBtn.dataset.end)
     );
+
     firstBtn.classList.add('is-active');
     updatePrice(firstBtn.dataset.price, firstBtn.dataset.compare);
 
@@ -129,6 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderGallery(0, allImages.length - 1);
   }
 
+  // SIZE buttons
   if (sizeButtons.length) {
     sizeButtons.forEach(btn => {
       btn.addEventListener('click', () => {
