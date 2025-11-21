@@ -39,14 +39,19 @@
           >
         {% endif %}
 
-        {% if image != blank %}
+        {% if img %}
+          {% assign banner_alt = block.settings.title | escape %}
           <div class='promo-banners__image-wrapper'>
-            <img
-              src='{{ image | image_url: width: 800 }}'
-              alt='{{ block.settings.title | escape }}'
-              class='promo-banners__image'
-              loading='lazy'
-            >
+            {{
+              img
+              | image_url: width: 1200
+              | image_tag:
+                loading: 'lazy',
+                widths: '400,600,800,1200',
+                sizes: '(min-width: 1200px) 33vw (min-width: 768px) 50vw 100vw',
+                alt: banner_alt,
+                class: 'promo-banners__image'
+            }}
           </div>
         {% endif %}
 
