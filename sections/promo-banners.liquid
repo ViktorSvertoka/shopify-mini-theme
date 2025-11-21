@@ -39,11 +39,11 @@
           >
         {% endif %}
 
-        {% if img %}
+        {% if image %}
           {% assign banner_alt = block.settings.title | escape %}
           <div class='promo-banners__image-wrapper'>
             {{
-              img
+              image
               | image_url: width: 1200
               | image_tag:
                 loading: 'lazy',
