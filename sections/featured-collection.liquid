@@ -5,7 +5,6 @@
 {{ 'template-collection.css' | asset_url | stylesheet_tag }}
 
 {%- unless section.settings.quick_add == 'none' -%}
-  {{ 'quick-add.css' | asset_url | stylesheet_tag }}
   <script src='{{ 'product-form.js' | asset_url }}' defer='defer'></script>
 {%- endunless -%}
 
