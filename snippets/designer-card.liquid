@@ -14,21 +14,17 @@
     </div>
   {% endif %}
 
-  {%- comment -%} Name {%- endcomment -%}
   <h3 class='designer-card__name'>{{ d.name }}</h3>
 
-  {%- comment -%} Role {%- endcomment -%}
   {% if d.role %}
     <p class='designer-card__role'>{{ d.role }}</p>
   {% endif %}
 
-  {%- comment -%} Bio {%- endcomment -%}
   {% if d.bio %}
     <h4 class='designer-card__section-label'>Bio</h4>
     <p class='designer-card__bio'>{{ d.bio }}</p>
   {% endif %}
 
-  {%- comment -%} Tags (метафилды) {%- endcomment -%}
   {% if d.tags.value and d.tags.value.size > 0 %}
     <h4 class='designer-card__section-label'>Tags</h4>
     <ul class='designer-card__tags'>
@@ -38,7 +34,6 @@
     </ul>
   {% endif %}
 
-  {%- comment -%} Portfolio links (URL) {%- endcomment -%}
   {% if d.portfolio_links %}
     <h4 class='designer-card__section-label'>Portfolio links</h4>
     <a
@@ -51,7 +46,6 @@
     </a>
   {% endif %}
 
-  {%- comment -%} DOB {%- endcomment -%}
   {% if d.date_of_birth %}
     <h4 class='designer-card__section-label'>Date of birth</h4>
     <div class='designer-card__dob'>
@@ -59,7 +53,6 @@
     </div>
   {% endif %}
 
-  {%- comment -%} Verified {%- endcomment -%}
   {% if d.verified_designer == true %}
     <div class='designer-card__verified designer-card__verified--yes'>
       <span class='designer-card__verified-icon'>✔︎</span> Verified Designer
