@@ -6,10 +6,10 @@
         d.photo
         | image_url: width: 320
         | image_tag:
-        loading: 'lazy',
-        decoding: 'async',
-        alt: d.name | escape,
-        class: 'designer-card__photo'
+          loading: 'lazy',
+          decoding: 'async',
+          alt: d.name,
+          class: 'designer-card__photo'
       }}
     </div>
   {% endif %}
