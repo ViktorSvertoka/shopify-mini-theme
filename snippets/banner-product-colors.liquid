@@ -40,13 +40,16 @@
           data-qty='{{ color_variant.inventory_quantity }}'
           data-color='{{ color }}'
         >
-          <img
-            class='w-full h-full object-cover block'
-            src='{{ color_image | image_url: width: 60 }}'
-            alt='{{ color }}'
-            width='60'
-            height='60'
-          >
+          {{
+            color_image
+            | image_url: width: 120
+            | image_tag:
+              loading: 'lazy',
+              alt: color,
+              class: 'w-full h-full object-cover block',
+              width: '60',
+              height: '60'
+          }}
         </button>
       {%- endif -%}
     {%- endfor -%}
