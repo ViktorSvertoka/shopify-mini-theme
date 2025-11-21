@@ -4,10 +4,6 @@
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 {{ 'template-collection.css' | asset_url | stylesheet_tag }}
 
-{% if section.settings.image_shape == 'blob' %}
-  {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
-{%- endif -%}
-
 {%- unless section.settings.quick_add == 'none' -%}
   {{ 'quick-add.css' | asset_url | stylesheet_tag }}
   <script src='{{ 'product-form.js' | asset_url }}' defer='defer'></script>
