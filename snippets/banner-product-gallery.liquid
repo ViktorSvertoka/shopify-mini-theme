@@ -1,13 +1,25 @@
 {%- capture images_json -%}
-  [
+[
   {%- if banner_product.images != blank -%}
     {%- for image in banner_product.images -%}
-      "{{ image | image_url: width: 800 }}"{% unless forloop.last %},{% endunless %}
+      {
+        "src": "{{ image | image_url: width: 800 }}",
+        "src_2x": "{{ image | image_url: width: 1600 }}",
+        "alt": "{{ image.alt | escape }}",
+        "width": "{{ image.width }}",
+        "height": "{{ image.height }}"
+      }{% unless forloop.last %},{% endunless %}
     {%- endfor -%}
   {%- else -%}
-    "{{ 'product-placeholder.jpg' | asset_url }}"
+      {
+        "src": "{{ 'product-placeholder.jpg' | asset_url }}",
+        "src_2x": "{{ 'product-placeholder.jpg' | asset_url }}",
+        "alt": "Placeholder",
+        "width": 600,
+        "height": 600
+      }
   {%- endif -%}
-  ]
+]
 {%- endcapture -%}
 
 <div
