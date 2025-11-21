@@ -3,11 +3,11 @@
 
 <section
   class='collection-carousel page-width'
-  id='CollectionCarousel'
+  id='CollectionCarousel-{{ section.id }}'
   data-recommendations
   data-limit='{{ section.settings.products_limit }}'
   data-intent='{{ section.settings.intent }}'
-  data-collection='{{ section.settings.collection.handle | default: "all" }}'
+  data-collection='{{ section.settings.collection.handle | default: 'all' }}'
   {% if request.page_type == 'product' and product %}
     data-product-id='{{ product.id }}'
   {% endif %}
