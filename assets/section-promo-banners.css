@@ -127,7 +127,6 @@
   color: #3a3a3a;
 }
 
-/* Мобильные улучшения */
 @media (max-width: 480px) {
   .promo-banners__heading {
     font-size: 1.4rem;
