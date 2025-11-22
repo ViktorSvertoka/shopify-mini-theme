@@ -269,7 +269,12 @@
     {% endstyle %}
 
     {{ 'tailwind-output.css' | asset_url | stylesheet_tag }}
-    {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{
+      'base.css'
+      | asset_url
+      | stylesheet_tag: media: 'print', onload: "this.media='all'"
+    }}
+
     <link
       rel='stylesheet'
       href='{{ 'component-cart-items.css' | asset_url }}'
