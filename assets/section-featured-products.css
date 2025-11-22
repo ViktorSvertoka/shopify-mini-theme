@@ -58,6 +58,7 @@
   background-color: #fff;
   transition: box-shadow 0.3s ease;
   color: #111;
+  width: 400px;
 }
 
 .product-card:hover {
@@ -70,7 +71,7 @@
 }
 
 .product-card__image {
-  width: 600px;
+  width: 100%;
   border-radius: 8px;
   margin-bottom: 12px;
 }
