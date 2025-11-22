@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
           srcset="${img.src} 1x, ${img.src_2x} 2x"
           alt="${img.alt || 'Thumbnail'}"
           width="88"
-        height="88"
+          height="88"
           loading="lazy"
           decoding="async"
           class="js-thumb-image w-88 h-88 object-cover block ${idx === 0 ? 'is-active' : ''}"
