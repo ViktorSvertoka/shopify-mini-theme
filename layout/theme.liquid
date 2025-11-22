@@ -28,6 +28,31 @@
 
     {% if page_description %}
       <meta name='description' content='{{ page_description | escape }}'>
+    {% elsif product %}
+      <meta
+        name='description'
+        content='{{ product.description | strip_html | truncate: 160 | escape }}'
+      >
+    {% elsif collection %}
+      <meta
+        name='description'
+        content='{{ collection.description | strip_html | truncate: 160 | escape }}'
+      >
+    {% elsif article %}
+      <meta
+        name='description'
+        content='{{ article.excerpt_or_content | strip_html | truncate: 160 | escape }}'
+      >
+    {% elsif page %}
+      <meta
+        name='description'
+        content='{{ page.content | strip_html | truncate: 160 | escape }}'
+      >
+    {% else %}
+      <meta
+        name='description'
+        content='{{ shop.description | strip_html | truncate: 160 | escape }}'
+      >
     {% endif %}
 
     {% render 'meta-tags' %}
