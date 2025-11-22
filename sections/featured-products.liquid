@@ -49,7 +49,9 @@
                 | image_tag:
                   alt: alt_text,
                   class: 'product-card__image',
-                  loading: 'lazy'
+                  loading: 'lazy',
+                  widths: '320,480,640,800,1200',
+                  sizes: '(max-width: 600px) 90vw, (max-width: 1024px) 45vw, 360px'
               }}
             {% else %}
               {{
@@ -58,7 +60,9 @@
                 | image_tag:
                   alt: product.title,
                   class: 'product-card__image product-card__image--placeholder',
-                  loading: 'lazy'
+                  loading: 'lazy',
+                  widths: '320,480,640,800,1200',
+                  sizes: '(max-width: 600px) 90vw, (max-width: 1024px) 45vw, 360px'
               }}
             {% endif %}
 
