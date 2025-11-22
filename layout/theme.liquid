@@ -270,15 +270,6 @@
       {{ 'component-price.css' | asset_url | stylesheet_tag }}
     {%- endif -%}
 
-    {%- if settings.predictive_search_enabled -%}
-      <link
-        rel='stylesheet'
-        href='{{ 'component-predictive-search.css' | asset_url }}'
-        media='print'
-        onload="this.media='all'"
-      >
-    {%- endif -%}
-
     <script>
       if (Shopify.designMode) {
         document.documentElement.classList.add('shopify-design-mode');
@@ -286,9 +277,10 @@
     </script>
 
     <script
-      src='https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js'
       defer
+      src='https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js'
     ></script>
+
     <link
       href='https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css'
       rel='stylesheet'
