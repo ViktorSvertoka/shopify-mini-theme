@@ -179,7 +179,6 @@
   transform: translateY(-2px);
 }
 
-/* ========== Mobile: до 768px → 1 колонка ========== */
 @media (max-width: 767px) {
   .designer-cards__grid {
     grid-template-columns: 1fr !important;
@@ -192,7 +191,6 @@
   }
 }
 
-/* ========== Tablet: 768px – 1279px → 2 колонки ========== */
 @media (min-width: 768px) and (max-width: 1279px) {
   .designer-cards__grid {
     grid-template-columns: repeat(2, 1fr);
@@ -205,7 +203,6 @@
   }
 }
 
-/* ========== Desktop: від 1280px → 3 колонки на всю ширину ========== */
 @media (min-width: 1280px) {
   .designer-cards__container {
     width: 100%;
