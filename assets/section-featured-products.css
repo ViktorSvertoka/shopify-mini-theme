@@ -37,6 +37,7 @@
   display: grid;
   gap: 20px;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  justify-items: center;
 }
 
 @media (max-width: 600px) {
