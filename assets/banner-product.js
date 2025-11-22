@@ -2,16 +2,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const gallery = document.querySelector('.js-gallery');
   if (!gallery) return;
 
+  const jsonEl = document.getElementById('BannerProductImages');
   let allImages = [];
+
   try {
-    allImages = JSON.parse(gallery.dataset.allImages || '[]');
+    allImages = JSON.parse(jsonEl.textContent.trim());
   } catch (e) {
-    console.error('Failed to parse images:', e);
+    console.error('Failed to parse product images JSON:', e);
     return;
   }
 
   if (!allImages.length) {
-    console.warn('No images found');
+    console.warn('No product images found.');
     return;
   }
 
@@ -26,29 +28,36 @@ document.addEventListener('DOMContentLoaded', () => {
     const images = allImages.slice(start, end + 1);
     if (!images.length) return;
 
+    const first = images[0];
+
     mainImage.innerHTML = `
       <img
-        src="${images[0]}" 
-        alt="Product image" 
-        loading="lazy" 
-        class="js-main-image w-(--size-468) h-(--size-468) object-cover block md:w-(--size-536) md:h-(--size-536)" 
+        src="${first.src}"
+        srcset="${first.src} 1x, ${first.src_2x} 2x"
+        alt="${first.alt || 'Product image'}"
+        width="${first.width}"
+        height="${first.height}"
+        decoding="async"
+        class="js-main-image w-(--size-468) h-(--size-468) object-cover block md:w-(--size-536) md:h-(--size-536)"
       />
-      `;
+    `;
 
     thumbsImage.innerHTML = images
       .map(
         (img, idx) => `
-    <div class="rounded-lg overflow-hidden cursor-pointer transition-transform duration-300 hover:scale-105">
-      <img 
-        src="${img}" 
-        alt="Product thumbnail"
-        loading="lazy" 
-        class="js-thumb-image w-88 h-88 object-cover block ${
-          idx === 0 ? 'is-active' : ''
-        }"
-      />
-    </div>
-  `
+      <div class="rounded-lg overflow-hidden cursor-pointer transition-transform duration-300 hover:scale-105">
+        <img
+          src="${img.src}"
+          srcset="${img.src} 1x, ${img.src_2x} 2x"
+          alt="${img.alt || 'Thumbnail'}"
+          width="${img.width}"
+          height="${img.height}"
+          loading="lazy"
+          decoding="async"
+          class="js-thumb-image w-88 h-88 object-cover block ${idx === 0 ? 'is-active' : ''}"
+        />
+      </div>
+    `
       )
       .join('');
 
@@ -58,6 +67,9 @@ document.addEventListener('DOMContentLoaded', () => {
     thumbImgs.forEach(thumb => {
       thumb.addEventListener('click', () => {
         mainImg.src = thumb.src;
+        mainImg.srcset = thumb.srcset;
+        mainImg.alt = thumb.alt;
+
         thumbImgs.forEach(t => t.classList.remove('is-active'));
         thumb.classList.add('is-active');
       });
@@ -66,6 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function updatePrice(price, compare) {
     if (!priceBlock) return;
+
     if (compare && compare !== 'null' && compare !== '₹0.00') {
       priceBlock.innerHTML = `
         <span class="text-dark font-semibold">${price}</span>
@@ -78,10 +91,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (colorButtons.length) {
     const firstBtn = colorButtons[0];
+
     renderGallery(
       parseInt(firstBtn.dataset.start),
       parseInt(firstBtn.dataset.end)
     );
+
     firstBtn.classList.add('is-active');
     updatePrice(firstBtn.dataset.price, firstBtn.dataset.compare);
 

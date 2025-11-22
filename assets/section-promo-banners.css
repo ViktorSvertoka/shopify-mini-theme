@@ -1,25 +1,25 @@
-/* Promo Banners Section */
 .promo-banners {
   max-width: 1280px;
   margin: 0 auto;
+  padding: 20px 16px;
 }
 
 .promo-banners__header {
-  margin-bottom: 32px;
+  margin-bottom: 24px;
+  text-align: center;
 }
 
 .promo-banners__heading {
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .promo-banners__subheading {
-  font-size: 1rem;
+  font-size: 0.95rem;
   opacity: 0.8;
 }
 
-/* Grid Layout */
 .promo-banners__grid {
   display: grid;
   gap: 20px;
@@ -29,21 +29,24 @@
 @media (min-width: 768px) {
   .promo-banners__grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
   }
 }
 
 @media (min-width: 1280px) {
   .promo-banners__grid {
     grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
   }
 }
 
-/* Banner Item */
 .promo-banners__item {
   border-radius: 12px;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.5);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   position: relative;
 }
 
@@ -58,7 +61,6 @@
   display: block;
 }
 
-/* Image Wrapper */
 .promo-banners__image-wrapper {
   width: 100%;
   overflow: hidden;
@@ -76,47 +78,33 @@
   transform: scale(1.05);
 }
 
-/* Aspect Ratios */
-.promo-banners__item--16-9 .promo-banners__image-wrapper {
-  aspect-ratio: 16 / 9;
-}
-
-.promo-banners__item--1-1 .promo-banners__image-wrapper {
-  aspect-ratio: 1 / 1;
-}
-
-.promo-banners__item--3-2 .promo-banners__image-wrapper {
-  aspect-ratio: 3 / 2;
-}
-
 .promo-banners__image-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* Content */
 .promo-banners__content {
-  padding: 20px;
+  padding: 16px;
   text-align: center;
 }
 
 .promo-banners__title {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 600;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
-/* Button Styles */
 .promo-banners__btn {
   display: inline-block;
   background-color: #111;
   color: #fff;
   border: none;
-  padding: 8px 16px;
+  padding: 10px 20px;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  font-size: 0.95rem;
 }
 
 .promo-banners__btn:hover {
@@ -124,7 +112,6 @@
   transform: translateY(-2px);
 }
 
-/* Color Schemes - Pastel Tones */
 .promo-banners--light {
   background: #faf9f7;
   color: #2c2c2c;
@@ -138,4 +125,19 @@
 .promo-banners--accent {
   background: #f4e8d8;
   color: #3a3a3a;
+}
+
+@media (max-width: 480px) {
+  .promo-banners__heading {
+    font-size: 1.4rem;
+  }
+
+  .promo-banners__title {
+    font-size: 1.05rem;
+  }
+
+  .promo-banners__btn {
+    padding: 12px 22px;
+    font-size: 1rem;
+  }
 }

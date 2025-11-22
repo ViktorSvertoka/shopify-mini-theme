@@ -1,46 +1,69 @@
 {{ 'section-promo-banners.css' | asset_url | stylesheet_tag }}
 
-<div class="promo-banners promo-banners--{{ section.settings.color_scheme }}" style="padding: {{ section.settings.section_padding }}px 20px;">
-  <div class="promo-banners__header" style="text-align: {{ section.settings.text_alignment }};">
+<div
+  class='promo-banners promo-banners--{{ section.settings.color_scheme }}'
+  style='padding: {{ section.settings.section_padding }}px 20px;'
+>
+  <div
+    class='promo-banners__header'
+    style='text-align: {{ section.settings.text_alignment }};'
+  >
     {% if section.settings.heading != blank %}
-      <h2 class="promo-banners__heading">{{ section.settings.heading }}</h2>
+      <h2 class='promo-banners__heading'>{{ section.settings.heading }}</h2>
     {% endif %}
     {% if section.settings.subheading != blank %}
-      <div class="promo-banners__subheading">{{ section.settings.subheading }}</div>
+      <div class='promo-banners__subheading'>
+        {{ section.settings.subheading }}
+      </div>
     {% endif %}
   </div>
 
-  <div class="promo-banners__grid">
+  <div class='promo-banners__grid'>
     {% for block in section.blocks %}
       {% assign image = block.settings.image %}
       {% assign has_link = false %}
-      {% if block.settings.button_link != blank and block.settings.button_link != '' %}
+      {% if block.settings.button_link != blank
+        and block.settings.button_link != ''
+      %}
         {% assign has_link = true %}
       {% endif %}
 
-      <div class="promo-banners__item promo-banners__item--{{ block.settings.aspect_ratio }}" {{ block.shopify_attributes }}>
+      <div
+        class='promo-banners__item promo-banners__item--{{ block.settings.aspect_ratio }}'
+        {{ block.shopify_attributes }}
+      >
         {% if has_link %}
-          <a href="{{ block.settings.button_link }}" class="promo-banners__link">
+          <a
+            href='{{ block.settings.button_link }}'
+            class='promo-banners__link'
+          >
         {% endif %}
-        
-        {% if image != blank %}
-          <div class="promo-banners__image-wrapper">
-            <img 
-              src="{{ image | image_url: width: 800 }}" 
-              alt="{{ block.settings.title | escape }}"
-              class="promo-banners__image"
-              loading="lazy"
-            >
+
+        {% if image %}
+          {% assign banner_alt = block.settings.title | escape %}
+          <div class='promo-banners__image-wrapper'>
+            {{
+              image
+              | image_url: width: 400
+              | image_tag:
+                loading: 'lazy',
+                widths: '400,600,800,1200',
+                sizes: '(min-width: 1200px) 33vw (min-width: 768px) 50vw 100vw',
+                alt: banner_alt,
+                class: 'promo-banners__image'
+            }}
           </div>
         {% endif %}
 
-        <div class="promo-banners__content">
+        <div class='promo-banners__content'>
           {% if block.settings.title != blank %}
-            <h3 class="promo-banners__title">{{ block.settings.title }}</h3>
+            <h3 class='promo-banners__title'>{{ block.settings.title }}</h3>
           {% endif %}
 
           {% if block.settings.button_text != blank and has_link %}
-            <span class="promo-banners__btn">{{ block.settings.button_text }}</span>
+            <span class='promo-banners__btn'>
+              {{- block.settings.button_text -}}
+            </span>
           {% endif %}
         </div>
 

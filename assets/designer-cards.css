@@ -1,19 +1,17 @@
 :root {
   --color-bg: #fff;
   --color-text: #111;
-  --color-text-secondary: #444;
-  --color-text-muted: #777;
-  --color-border: rgba(0, 0, 0, 0.08);
-  --color-tag-bg: #f2f4f7;
-  --color-link: #007ace;
-  --color-shadow-light: rgba(0, 0, 0, 0.04);
-  --color-shadow-hover: rgba(0, 0, 0, 0.08);
-
-  --color-verified-bg: #e8f5e9;
-  --color-verified-text: #1b5e20;
-  --color-unverified-bg: #f3f4f6;
-  --color-unverified-text: #6b7280;
-
+  --color-text-secondary: #2e2e2e;
+  --color-text-muted: #555;
+  --color-border: rgba(0, 0, 0, 0.12);
+  --color-tag-bg: #edf0f4;
+  --color-link: #005bb8;
+  --color-shadow-light: rgba(0, 0, 0, 0.08);
+  --color-shadow-hover: rgba(0, 0, 0, 0.16);
+  --color-verified-bg: #dff3e3;
+  --color-verified-text: #104d19;
+  --color-unverified-bg: #eceef1;
+  --color-unverified-text: #555;
   --color-btn-bg: #111;
   --color-btn-bg-hover: #222;
   --color-btn-text: #fff;
@@ -48,7 +46,9 @@
   padding: 24px;
   background: var(--color-bg);
   box-shadow: 0 2px 6px var(--color-shadow-light);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .designer-card:hover {
@@ -167,10 +167,47 @@
   padding: 12px 24px;
   border-radius: 8px;
   text-decoration: none;
-  transition: background-color 0.25s ease, transform 0.2s ease;
+  transition:
+    background-color 0.25s ease,
+    transform 0.2s ease;
 }
 
 .designer-cards__button:hover {
   background-color: var(--color-btn-bg-hover);
   transform: translateY(-2px);
+}
+
+@media (max-width: 767px) {
+  .designer-cards__grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px;
+  }
+  .designer-cards__container {
+    width: 100%;
+    padding: 0 16px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  .designer-cards__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .designer-cards__container {
+    width: 100%;
+    padding: 0 24px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .designer-cards__container {
+    width: 100%;
+    max-width: 1600px;
+    padding: 0 32px;
+    margin: 0 auto;
+  }
+  .designer-cards__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
 }
