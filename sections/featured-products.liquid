@@ -40,11 +40,14 @@
         >
           <a href='{{ product.url }}' class='product-card__link'>
             {% if product.featured_image %}
+              {% assign alt_text = 'Featured product — '
+                | append: product.title
+              %}
               {{
                 product.featured_image
                 | image_url: width: 400
                 | image_tag:
-                  alt: product.title,
+                  alt: alt_text,
                   class: 'product-card__image',
                   loading: 'lazy'
               }}
