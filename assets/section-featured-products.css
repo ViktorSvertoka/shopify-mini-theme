@@ -35,8 +35,6 @@
 
 .featured-products__grid {
   display: grid;
-  align-items: center;
-  justify-content: center;
   gap: 20px;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
