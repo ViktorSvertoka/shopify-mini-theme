@@ -1,105 +1,154 @@
 {{ 'contact-form.css' | asset_url | stylesheet_tag }}
 
-<section class="contact" id="contact-section-{{ section.id }}">
-  <div class="contact__container">
-    <h2 class="contact__title">
+<section class='contact' id='contact-section-{{ section.id }}'>
+  <div class='contact__container'>
+    <h2 class='contact__title'>
       {{ section.settings.heading | default: 'contact.form.title' | t }}
     </h2>
 
     {%- form 'contact', class: 'contact__form', id: 'ContactForm' -%}
-
       {%- if form.posted_successfully? -%}
-        <div class="contact__status contact__status--success" role="status" aria-live="polite" tabindex="-1" autofocus>
-          <svg class="contact__status-icon" aria-hidden="true" focusable="false" width="20" height="20">
+        <div
+          class='contact__status contact__status--success'
+          role='status'
+          aria-live='polite'
+          tabindex='-1'
+          autofocus
+        >
+          <svg
+            class='contact__status-icon'
+            aria-hidden='true'
+            focusable='false'
+            width='20'
+            height='20'
+          >
             <use href="#icon-success"></use>
           </svg>
-          <p class="contact__status-text">{{ 'contact.form.post_success' | t }}</p>
+          <p class='contact__status-text'>
+            {{ 'contact.form.post_success' | t }}
+          </p>
         </div>
       {%- endif -%}
 
       {%- if form.errors -%}
-        <div class="contact__status contact__status--error" role="alert" aria-live="assertive" tabindex="-1" autofocus>
-          <h3 class="contact__status-title">{{ 'contact.form.error_heading' | t }}</h3>
+        <div
+          class='contact__status contact__status--error'
+          role='alert'
+          aria-live='assertive'
+          tabindex='-1'
+          autofocus
+        >
+          <h3 class='contact__status-title'>
+            {{ 'contact.form.error_heading' | t }}
+          </h3>
           {{ form.errors | default_errors }}
         </div>
       {%- endif -%}
 
-      <div class="contact__field contact__field--hidden" aria-hidden="true">
-        <label for="contact-honeypot" class="contact__label">{{ 'contact.form.honeypot_label' | t }}</label>
-        <input type="text" name="contact[honeypot]" id="contact-honeypot" class="contact__input" tabindex="-1" autocomplete="off">
-      </div>
-
-      <div class="contact__field">
-        <label for="ContactForm-name" class="contact__label">{{ 'contact.form.name' | t }}</label>
+      <div class='contact__field contact__field--hidden' aria-hidden='true'>
+        <label for='contact-honeypot' class='contact__label'>
+          {{- 'contact.form.honeypot_label' | t -}}
+        </label>
         <input
-          type="text"
-          id="ContactForm-name"
-          class="contact__input"
-          name="contact[{{ 'contact.form.name' | t }}]"
-          autocomplete="name"
-          placeholder="{{ 'contact.form.name_placeholder' | t }}"
-          value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+          type='text'
+          name='contact[honeypot]'
+          id='contact-honeypot'
+          class='contact__input'
+          tabindex='-1'
+          autocomplete='off'
         >
       </div>
 
-      <div class="contact__field">
-        <label for="ContactForm-email" class="contact__label">
-          {{ 'contact.form.email' | t }} <span class="contact__required" aria-label="{{ 'contact.form.required' | t }}">*</span>
+      <div class='contact__field'>
+        <label for='ContactForm-name' class='contact__label'>
+          {{- 'contact.form.name' | t -}}
         </label>
         <input
-          type="email"
-          id="ContactForm-email"
-          class="contact__input{% if form.errors contains 'email' %} contact__input--error{% endif %}"
-          name="contact[email]"
-          autocomplete="email"
-          placeholder="{{ 'contact.form.email_placeholder' | t }}"
-          value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+          type='text'
+          id='ContactForm-name'
+          class='contact__input'
+          name='contact[{{ 'contact.form.name' | t }}]'
+          autocomplete='name'
+          placeholder='{{ 'contact.form.name_placeholder' | t }}'
+          value='{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}'
+        >
+      </div>
+
+      <div class='contact__field'>
+        <label for='ContactForm-email' class='contact__label'>
+          {{ 'contact.form.email' | t }}
+          <span
+            class='contact__required'
+            aria-label='{{ 'contact.form.required' | t }}'
+            >*</span
+          >
+        </label>
+        <input
+          type='email'
+          id='ContactForm-email'
+          class='contact__input{% if form.errors contains 'email' %} contact__input--error{% endif %}'
+          name='contact[email]'
+          autocomplete='email'
+          placeholder='{{ 'contact.form.email_placeholder' | t }}'
+          value='{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}'
           required
         >
         {%- if form.errors contains 'email' -%}
-          <span class="contact__error">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</span>
+          <span class='contact__error'>
+            {{- form.errors.translated_fields.email | capitalize }}
+            {{ form.errors.messages.email -}}
+          </span>
         {%- endif -%}
       </div>
 
-      <div class="contact__field">
-        <label for="ContactForm-phone" class="contact__label">{{ 'contact.form.phone' | t }}</label>
+      <div class='contact__field'>
+        <label for='ContactForm-phone' class='contact__label'>
+          {{- 'contact.form.phone' | t -}}
+        </label>
         <input
-          type="tel"
-          id="ContactForm-phone"
-          class="contact__input"
-          name="contact[{{ 'contact.form.phone' | t }}]"
-          autocomplete="tel"
-          placeholder="{{ 'contact.form.phone_placeholder' | t }}"
-          pattern="\+?[0-9\s\-\(\)]+"
-          value="{{ form.phone }}"
+          type='tel'
+          id='ContactForm-phone'
+          class='contact__input'
+          name='contact[{{ 'contact.form.phone' | t }}]'
+          autocomplete='tel'
+          placeholder='{{ 'contact.form.phone_placeholder' | t }}'
+          pattern='\+?[0-9\s\-\(\)]+'
+          value='{{ form.phone }}'
         >
       </div>
 
-      <div class="contact__field">
-        <label for="ContactForm-message" class="contact__label">
-          {{ 'contact.form.comment' | t }} <span class="contact__required" aria-label="{{ 'contact.form.required' | t }}">*</span>
+      <div class='contact__field'>
+        <label for='ContactForm-message' class='contact__label'>
+          {{ 'contact.form.comment' | t }}
+          <span
+            class='contact__required'
+            aria-label='{{ 'contact.form.required' | t }}'
+            >*</span
+          >
         </label>
         <textarea
-          id="ContactForm-message"
-          class="contact__textarea{% if form.errors contains 'body' %} contact__input--error{% endif %}"
-          name="contact[body]"
-          rows="5"
-          placeholder="{{ 'contact.form.comment_placeholder' | t }}"
+          id='ContactForm-message'
+          class='contact__textarea{% if form.errors contains 'body' %} contact__input--error{% endif %}'
+          name='contact[body]'
+          rows='5'
+          placeholder='{{ 'contact.form.comment_placeholder' | t }}'
           required
         >{{ form.body }}</textarea>
         {%- if form.errors contains 'body' -%}
-          <span class="contact__error">{{ form.errors.translated_fields.body | capitalize }} {{ form.errors.messages.body }}</span>
+          <span class='contact__error'>
+            {{- form.errors.translated_fields.body | capitalize }}
+            {{ form.errors.messages.body -}}
+          </span>
         {%- endif -%}
       </div>
 
-      <input type="hidden" name="contact[tag]" value="contact-form">
+      <input type='hidden' name='contact[tag]' value='contact-form'>
 
-      <div class="contact__actions">
-        <button type="submit" class="contact__button">
+      <div class='contact__actions'>
+        <button type='submit' class='contact__button'>
           {{ 'contact.form.send' | t }}
         </button>
       </div>
-
     {%- endform -%}
   </div>
 </section>
@@ -116,7 +165,7 @@
         alert('Spam detected');
         return false;
       }
-      
+
       const submitBtn = form.querySelector('button[type="submit"]');
       if (submitBtn && !submitBtn.disabled) {
         submitBtn.disabled = true;
@@ -138,8 +187,6 @@
       "default": "Contact Us"
     }
   ],
-  "presets": [
-    { "name": "Contact Form" }
-  ]
+  "presets": [{ "name": "Contact Form" }]
 }
 {% endschema %}
