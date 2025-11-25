@@ -84,3 +84,7 @@
 - Проведено аудит доступності теми
 - Протестовано через W3C, Lighthouse, VoiceOver і TAB-навігацію
 - Виправлено знайдені проблеми
+
+![Accessibility](./screenshot-01.png)
+
+![Accessibility](./screenshot-02.png)
