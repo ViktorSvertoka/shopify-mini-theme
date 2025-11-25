@@ -45,18 +45,22 @@ document.addEventListener('DOMContentLoaded', () => {
     thumbsImage.innerHTML = images
       .map(
         (img, idx) => `
-      <div class="rounded-lg overflow-hidden cursor-pointer transition-transform duration-300 hover:scale-105">
+      <button 
+        class="rounded-lg overflow-hidden cursor-pointer transition-transform duration-300 hover:scale-105 js-thumb-btn"
+        aria-label="Show image ${idx + 1}"
+        type="button"
+      >
         <img
           src="${img.src}"
           srcset="${img.src} 1x, ${img.src_2x} 2x"
-          alt="${img.alt || 'Thumbnail'}"
+          alt="${img.alt || 'Product thumbnail'}"
           width="${img.width}"
           height="${img.height}"
           loading="lazy"
           decoding="async"
           class="js-thumb-image w-88 h-88 object-cover block ${idx === 0 ? 'is-active' : ''}"
         />
-      </div>
+      </button>
     `
       )
       .join('');

@@ -61,9 +61,12 @@
           {% endif %}
 
           {% if block.settings.button_text != blank and has_link %}
-            <span class='promo-banners__btn'>
-              {{- block.settings.button_text -}}
-            </span>
+            <a
+              href='{{ block.settings.button_link }}'
+              class='promo-banners__btn'
+            >
+              {{ block.settings.button_text }}
+            </a>
           {% endif %}
         </div>
 
